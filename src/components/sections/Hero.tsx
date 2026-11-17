@@ -15,13 +15,13 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="flex flex-col gap-6"
         >
-          <p className="eyebrow-on-dark">{siteConfig.firm.name} · {siteConfig.firm.tagline}</p>
+          <p className="eyebrow-on-dark">{siteConfig.firm.tagline} · Nalgonda</p>
           <h1 id="hero-title" className="text-[38px] font-semibold leading-[1.08] !text-white sm:text-[52px] lg:text-[58px]">
             Your trusted partner in taxation, compliance &amp; financial advisory.
           </h1>
           <p className="max-w-xl text-[17.5px] text-navy-100/80">
-            Income tax, GST, audit and accounting handled with care, explained in plain language and filed on time, for individuals,
-            professionals and growing businesses.
+            {siteConfig.firm.slogan}. ITR filing, GST, business registrations, licences and loan assistance, handled with care and filed
+            on time. {siteConfig.firm.subSlogan}.
           </p>
           <div className="flex flex-col gap-3 pt-2 sm:flex-row">
             <ButtonLink to="/contact" variant="gold">

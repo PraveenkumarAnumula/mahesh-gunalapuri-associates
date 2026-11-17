@@ -1,4 +1,4 @@
-export const SITE_URL = ((import.meta.env.VITE_SITE_URL as string | undefined) || 'https://ams-tax-associates.netlify.app').replace(
+export const SITE_URL = ((import.meta.env.VITE_SITE_URL as string | undefined) || 'https://mahesh-gunalapuri-associates.netlify.app').replace(
   /\/$/,
   '',
 );

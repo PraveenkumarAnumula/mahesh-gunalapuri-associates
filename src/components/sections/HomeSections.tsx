@@ -30,7 +30,7 @@ export function AboutIntro() {
             </div>
           </div>
           <Link to="/about" className="inline-flex items-center gap-2 text-[15px] font-medium text-navy-800 hover:text-navy-900">
-            More about AMS Tax Associates <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            More about the firm <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
         <div className="rounded-md bg-mist p-6 sm:p-8">
@@ -184,7 +184,7 @@ export function Testimonials() {
   );
 }
 
-export function CtaBand({ title = 'Let’s simplify your financial journey.' }: { title?: string }) {
+export function CtaBand({ title = `${siteConfig.firm.closingLine}.` }: { title?: string }) {
   return (
     <section aria-labelledby="cta-band" className="ledger-lines bg-navy-900">
       <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center">

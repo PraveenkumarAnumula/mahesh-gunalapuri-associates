@@ -41,7 +41,7 @@ export default function Layout() {
       </a>
       {siteConfig.showPreviewBanner && (
         <p className="bg-gold-300/40 px-4 py-1.5 text-center text-[12.5px] text-navy-900">
-          Preview site: names, figures and contact details shown are placeholders.
+          Preview site: some profile details, such as the founder’s biography and photo, are still placeholders.
         </p>
       )}
       <Header />

@@ -16,7 +16,7 @@ export const expertise: ExpertiseArea[] = [
     title: 'Individual Taxation',
     summary: 'Returns, planning and notices for salaried people, professionals, investors and NRIs.',
     topics: ['Old vs new regime', 'Capital gains', 'Foreign income and assets', 'Notices and rectifications'],
-    serviceId: 'income-tax',
+    serviceId: 'itr-filing',
   },
   {
     id: 'business-taxation',
@@ -24,7 +24,7 @@ export const expertise: ExpertiseArea[] = [
     title: 'Business Taxation',
     summary: 'Tax computation, audit and planning for proprietorships, firms, LLPs and companies.',
     topics: ['Presumptive taxation', 'Tax audit', 'TDS and TCS compliance', 'Advance tax'],
-    serviceId: 'income-tax',
+    serviceId: 'itr-filing',
   },
   {
     id: 'gst-compliance',
@@ -56,7 +56,7 @@ export const expertise: ExpertiseArea[] = [
     title: 'Business Structuring',
     summary: 'Choosing and setting up the right legal and tax structure for a venture.',
     topics: ['Entity selection', 'Incorporation', 'Conversion of entities', 'Partner arrangements'],
-    serviceId: 'company-llp-registration',
+    serviceId: 'business-registration',
   },
   {
     id: 'regulatory-compliance',

@@ -29,7 +29,7 @@ async function fillValidForm(user: ReturnType<typeof userEvent.setup>) {
   await user.type(screen.getByLabelText(/full name/i), 'Test Person');
   await user.type(screen.getByLabelText(/phone number/i), '98765 43210');
   await user.type(screen.getByLabelText(/email address/i), 'test@example.com');
-  await user.selectOptions(screen.getByLabelText(/service required/i), 'GST Services');
+  await user.selectOptions(screen.getByLabelText(/service required/i), 'GST Registrations & Return Filings');
   await user.type(screen.getByLabelText(/^message/i), 'Need help with monthly GST returns.');
   await user.click(screen.getByLabelText(/agree to be contacted/i));
 }
@@ -37,8 +37,8 @@ async function fillValidForm(user: ReturnType<typeof userEvent.setup>) {
 describe('pages', () => {
   it.each([
     ['/', /your trusted partner in taxation/i],
-    ['/about', /about ams tax associates/i],
-    ['/ca-profile', /CA \[Founder Name\]/],
+    ['/about', /about mahesh gunalapuri & associates/i],
+    ['/ca-profile', /CA Mahesh Gunalapuri/],
     ['/services', /services for individuals/i],
     ['/expertise', /areas of professional expertise/i],
     ['/insights', /updates, reminders and practical guidance/i],
@@ -53,9 +53,10 @@ describe('pages', () => {
     expect(await screen.findByRole('heading', { level: 1, name: heading })).toBeInTheDocument();
   });
 
-  it('marks placeholder statistics as sample figures', () => {
+  it('shows the track-record figures without sample labels', () => {
     renderAt('/');
-    expect(screen.getAllByText('Sample figure').length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByText('ITR filings')).toBeInTheDocument();
+    expect(screen.queryByText('Sample figure')).not.toBeInTheDocument();
   });
 
   it('labels demo articles', async () => {
@@ -71,14 +72,17 @@ describe('pages', () => {
     expect(screen.getByRole('button', { name: 'GST Notifications' })).toHaveAttribute('aria-pressed', 'true');
   });
 
-  it('keeps WhatsApp disabled until a number is configured', async () => {
+  it('links WhatsApp, phone and email to the configured details', async () => {
     renderAt('/contact');
-    expect(await screen.findByRole('button', { name: /whatsapp/i })).toBeDisabled();
+    expect(await screen.findByRole('link', { name: /chat on whatsapp/i })).toHaveAttribute('href', expect.stringContaining('https://wa.me/919347944995'));
+    expect(screen.getAllByRole('link', { name: '93479 44995' })[0]).toHaveAttribute('href', 'tel:+919347944995');
+    expect(screen.getAllByRole('link', { name: '90595 96977' })[0]).toHaveAttribute('href', 'tel:+919059596977');
+    expect(screen.getAllByRole('link', { name: 'camaheshgunalapuri@gmail.com' })[0]).toHaveAttribute('href', expect.stringContaining('mailto:camaheshgunalapuri@gmail.com'));
   });
 
   it('preselects the service passed in the URL', async () => {
-    renderAt('/contact?service=GST%20Services');
-    expect(await screen.findByLabelText(/service required/i)).toHaveValue('GST Services');
+    renderAt('/contact?service=Food%20License%20(FSSAI)');
+    expect(await screen.findByLabelText(/service required/i)).toHaveValue('Food License (FSSAI)');
   });
 });
 

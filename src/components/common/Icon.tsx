@@ -4,11 +4,15 @@ import {
   Building2,
   ChartColumn,
   Compass,
+  Factory,
+  HandCoins,
+  HardHat,
   Landmark,
   ReceiptText,
   Search,
   ShieldCheck,
   User,
+  UtensilsCrossed,
   type LucideProps,
 } from 'lucide-react';
 
@@ -24,6 +28,10 @@ const icons = {
   chart: ChartColumn,
   shield: ShieldCheck,
   user: User,
+  factory: Factory,
+  hardhat: HardHat,
+  utensils: UtensilsCrossed,
+  handcoins: HandCoins,
 } as const;
 
 export type IconName = keyof typeof icons;

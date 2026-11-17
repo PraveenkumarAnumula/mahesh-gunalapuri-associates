@@ -10,7 +10,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-navy-950 text-navy-100">
-      <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_1fr_1.2fr]">
+      <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.7fr_1fr_1.35fr]">
         <div className="flex flex-col gap-5">
           <Logo variant="light" />
           <p className="max-w-xs text-[14.5px] text-navy-100/70">{siteConfig.firm.description}</p>

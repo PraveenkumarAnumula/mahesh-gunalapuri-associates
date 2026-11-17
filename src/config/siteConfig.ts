@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- *  AMS TAX ASSOCIATES — CENTRAL SITE CONFIGURATION
+ *  MAHESH GUNALAPURI & ASSOCIATES — CENTRAL SITE CONFIGURATION
  * ============================================================================
  *  Almost every piece of firm or personal information on the website comes
  *  from this file. Edit the values below and the whole site updates.
@@ -43,9 +43,15 @@ export const siteConfig = {
   showPreviewBanner: true,
 
   firm: {
-    name: 'AMS Tax Associates',
-    shortName: 'AMS',
+    name: 'Mahesh Gunalapuri & Associates',
+    shortName: 'MGA',
     tagline: 'Chartered Accountants',
+    /** Service line from the firm's card, shown under the hero eyebrow. */
+    serviceLine: 'Tax · Compliance · Registration · Financial Solutions',
+    /** Taglines from the firm's card. */
+    slogan: 'Your Partner for Business Growth & Compliance',
+    subSlogan: 'Supporting Your Today for a Brighter Tomorrow',
+    closingLine: 'Let’s Grow Together',
     /** Year the firm was established, e.g. '2012'. Leave '' to hide. */
     established: '',
     /**
@@ -54,7 +60,7 @@ export const siteConfig = {
      */
     logo: '',
     description:
-      'AMS Tax Associates is a Chartered Accountancy practice offering income tax, GST, audit, accounting and business advisory services to individuals, professionals and growing businesses.',
+      'Mahesh Gunalapuri & Associates is a Chartered Accountancy firm in Nalgonda offering ITR filing, GST registration and returns, business registrations, MSME, labour and FSSAI licences, and loan assistance for individuals and businesses.',
     introduction:
       'We help individuals and businesses meet their tax and regulatory obligations with clarity and confidence. Our work is built on careful analysis, plain-language advice and filings that are done right and on time.',
     history:
@@ -69,13 +75,13 @@ export const siteConfig = {
 
   founder: {
     /** Full name as it should appear, e.g. 'CA Firstname Lastname'. */
-    name: 'CA [Founder Name]',
+    name: 'CA Mahesh Gunalapuri',
     designation: 'Founder & Principal, Chartered Accountant',
     /** Membership number issued by ICAI. Leave '' until provided. Never invent one. */
     icaiMembershipNo: '',
     /** Path to a portrait inside /public, e.g. '/images/founder.jpg'. Leave '' for the placeholder. */
     photo: '',
-    photoAlt: 'Portrait of the founder of AMS Tax Associates',
+    photoAlt: 'Portrait of CA Mahesh Gunalapuri',
     qualifications: ['Chartered Accountant (ACA / FCA) — [confirm]', '[Degree, University, Year]', '[Additional certification, if any]'],
     /** Short line used on cards, e.g. '12+ years in taxation and audit'. */
     experienceSummary: '[X] years of professional experience — placeholder',
@@ -95,7 +101,7 @@ export const siteConfig = {
       {
         period: '[Year] – Present',
         role: 'Founder & Principal',
-        organisation: 'AMS Tax Associates',
+        organisation: 'Mahesh Gunalapuri & Associates',
         summary: '[Describe responsibilities and practice focus.]',
       },
       {
@@ -114,25 +120,28 @@ export const siteConfig = {
 
   contact: {
     /** Display form, e.g. '+91 98765 43210'. Leave '' until provided. */
-    phone: '',
+    phone: '93479 44995',
+    /** Optional second number. Leave '' to hide. */
+    phoneAlt: '90595 96977',
     /** WhatsApp number with country code, digits only, e.g. '919876543210'. Leave '' to keep the button disabled. */
-    whatsapp: '',
-    email: '',
+    whatsapp: '919347944995',
+    email: 'camaheshgunalapuri@gmail.com',
     address: {
-      line1: '[Office address line 1]',
-      line2: '[Office address line 2]',
-      city: '[City]',
-      state: '[State]',
-      postalCode: '[PIN code]',
+      line1: '4-11-522/1A, Beside Kanuka Durga Colony Arch',
+      line2: 'DVK Road',
+      city: 'Nalgonda',
+      state: 'Telangana',
+      postalCode: '508001',
       country: 'India',
     },
     /** Set true only once the address above is real. Controls address display in structured data. */
-    addressIsReal: false,
+    addressIsReal: true,
     /**
      * Google Maps embed URL (Google Maps → Share → Embed a map → copy the src="..." value).
      * Leave '' to show a placeholder panel.
      */
-    mapEmbedUrl: '',
+    mapEmbedUrl:
+      'https://maps.google.com/maps?q=Kanuka%20Durga%20Colony%2C%20DVK%20Road%2C%20Nalgonda%20508001&z=16&output=embed',
     hours: [
       { days: 'Monday – Friday', time: '[10:00 AM – 7:00 PM]' },
       { days: 'Saturday', time: '[10:00 AM – 2:00 PM]' },
@@ -150,8 +159,10 @@ export const siteConfig = {
   },
 
   stats: [
-    { value: '[10+]', label: 'Years of experience', isSample: true },
-    { value: '[500+]', label: 'Clients served', isSample: true },
+    { value: '500+', label: 'ITR filings', isSample: false },
+    { value: '100+', label: 'GST registrations and filings', isSample: false },
+    { value: '50+', label: 'Company incorporations', isSample: false },
+    { value: '70+', label: 'Partnership registrations', isSample: false },
   ] as Stat[],
 
   values: [
@@ -165,10 +176,10 @@ export const siteConfig = {
   testimonials: [] as Testimonial[],
 
   seo: {
-    defaultTitle: 'AMS Tax Associates | Chartered Accountants — Income Tax, GST & Audit',
+    defaultTitle: 'Mahesh Gunalapuri & Associates | Chartered Accountants in Nalgonda — ITR, GST & Registrations',
     defaultDescription:
-      'AMS Tax Associates is a Chartered Accountancy practice offering income tax filing, GST registration and compliance, audit, accounting and business advisory services.',
-    keywords: 'Chartered Accountant, CA services, income tax consultant, GST consultant, tax advisory, audit, AMS Tax Associates',
+      'Chartered Accountants in Nalgonda, Telangana: ITR filing, GST registration and returns, company, partnership, society and trust registration, MSME, labour licence, FSSAI and loan assistance.',
+    keywords: 'Chartered Accountant Nalgonda, CA in Nalgonda, ITR filing, GST registration, GST consultant, income tax consultant, FSSAI license, MSME Udyam registration, Mahesh Gunalapuri & Associates',
     ogImage: '/og-image.png',
   },
 };

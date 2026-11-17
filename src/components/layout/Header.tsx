@@ -34,7 +34,7 @@ export default function Header() {
   }, [open]);
 
   const linkCls = ({ isActive }: { isActive: boolean }) =>
-    `relative py-2 text-[14.5px] transition-colors ${
+    `relative whitespace-nowrap py-2 text-[14.5px] transition-colors ${
       isActive ? 'text-navy-900 font-medium after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-gold-500' : 'text-slate hover:text-navy-900'
     }`;
 
@@ -42,7 +42,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
       <div className="container-page flex h-[72px] items-center justify-between gap-6">
         <Logo />
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center gap-7">
             {navRoutes.map((r) => (
               <li key={r.path}>
@@ -60,7 +60,7 @@ export default function Header() {
           <button
             ref={toggleRef}
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-md border border-line text-navy-900 lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md border border-line text-navy-900 xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -80,7 +80,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="absolute inset-x-0 top-full h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-white lg:hidden"
+            className="absolute inset-x-0 top-full h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-white xl:hidden"
           >
             <ul className="container-page flex flex-col py-4">
               {navRoutes.map((r) => (

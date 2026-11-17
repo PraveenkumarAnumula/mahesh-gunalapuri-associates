@@ -27,7 +27,7 @@ export default function Insights() {
     <>
       <Seo
         title="Insights — Tax Updates, GST and Compliance Reminders"
-        description="Articles on income tax updates, GST, financial planning, compliance reminders and business advisory from AMS Tax Associates."
+        description="Articles on income tax updates, GST, financial planning, compliance reminders and business advisory from Mahesh Gunalapuri & Associates."
       />
       <PageHeader
         eyebrow="Insights"

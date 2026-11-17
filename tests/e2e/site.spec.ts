@@ -2,8 +2,8 @@ import { expect, test, type Page } from '@playwright/test';
 
 const pages = [
   { path: '/', h1: /trusted partner in taxation/i },
-  { path: '/about', h1: /about ams tax associates/i },
-  { path: '/ca-profile', h1: /founder name/i },
+  { path: '/about', h1: /about mahesh gunalapuri & associates/i },
+  { path: '/ca-profile', h1: /mahesh gunalapuri/i },
   { path: '/services', h1: /services for individuals/i },
   { path: '/expertise', h1: /areas of professional expertise/i },
   { path: '/insights', h1: /updates, reminders/i },
@@ -21,7 +21,7 @@ function trackErrors(page: Page) {
   return errors;
 }
 
-const isMobile = (page: Page) => (page.viewportSize()?.width ?? 1280) < 1024;
+const isMobile = (page: Page) => (page.viewportSize()?.width ?? 1366) < 1280;
 
 for (const p of pages) {
   test(`${p.path} renders with SEO metadata, no console errors and no horizontal scroll`, async ({ page }) => {
@@ -29,9 +29,9 @@ for (const p of pages) {
     const res = await page.goto(p.path);
     expect(res?.status()).toBe(200);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(p.h1);
-    await expect(page).toHaveTitle(/AMS Tax Associates/);
+    await expect(page).toHaveTitle(/Mahesh Gunalapuri & Associates/);
     await expect(page.locator('meta[name="description"]').first()).toHaveAttribute('content', /.{40,}/);
-    await expect(page.locator('meta[property="og:title"]').first()).toHaveAttribute('content', /AMS Tax Associates/);
+    await expect(page.locator('meta[property="og:title"]').first()).toHaveAttribute('content', /Mahesh Gunalapuri & Associates/);
     await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(0);
@@ -107,7 +107,7 @@ test('hero and founder CTAs lead to the right pages', async ({ page }) => {
 
 test('service cards jump to the matching section', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('link', { name: /GST Registration & Compliance/ }).click();
+  await page.getByRole('link', { name: /GST Registration & Returns/ }).click();
   await expect(page).toHaveURL(/\/services#gst$/);
   await expect(page.locator('#gst')).toBeInViewport();
 });
@@ -115,7 +115,7 @@ test('service cards jump to the matching section', async ({ page }) => {
 test('service enquiry button preselects the service on the contact form', async ({ page }) => {
   await page.goto('/services');
   await page.getByRole('link', { name: /enquire about GST/i }).click();
-  await expect(page.getByLabel(/service required/i)).toHaveValue('GST Services');
+  await expect(page.getByLabel(/service required/i)).toHaveValue('GST Registrations & Return Filings');
 });
 
 test('no broken internal links', async ({ page, request }) => {
@@ -156,7 +156,7 @@ test('keyboard users can skip to content and reach the nav', async ({ page }) =>
   await page.goto('/');
   await page.keyboard.press('Tab'); // skip link
   await page.keyboard.press('Tab'); // logo
-  await expect(page.getByRole('banner').getByRole('link', { name: /ams tax associates — home/i })).toBeFocused();
+  await expect(page.getByRole('banner').getByRole('link', { name: /mahesh gunalapuri & associates — home/i })).toBeFocused();
 });
 
 test.describe('contact form', () => {
@@ -182,7 +182,7 @@ test.describe('contact form', () => {
     await page.getByLabel(/full name/i).fill('Playwright Test');
     await page.getByLabel(/phone number/i).fill('98765 43210');
     await page.getByLabel(/email address/i).fill('playwright@example.com');
-    await page.getByLabel(/service required/i).selectOption('Income Tax Services');
+    await page.getByLabel(/service required/i).selectOption('ITR Filing');
     await page.getByLabel(/^message/i).fill('Automated end-to-end test. Please ignore.');
     await page.getByLabel(/agree to be contacted/i).check();
   }

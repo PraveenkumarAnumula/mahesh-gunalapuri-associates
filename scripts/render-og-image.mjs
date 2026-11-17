@@ -10,18 +10,18 @@ const lines = `background-image:repeating-linear-gradient(to bottom,transparent 
 const og = `<html><head>${fonts}</head><body style="margin:0">
 <div style="width:1200px;height:630px;background:${navy};${lines};display:flex;flex-direction:column;justify-content:space-between;padding:72px 80px;box-sizing:border-box;font-family:Inter,sans-serif;color:white">
   <div style="display:flex;align-items:center;gap:20px">
-    <div style="width:72px;height:72px;border:1.5px solid ${gold}99;display:grid;place-items:center;font-family:'Source Serif 4',serif;font-weight:600;font-size:26px;color:${goldLight}">AMS</div>
+    <div style="width:72px;height:72px;border:1.5px solid ${gold}99;display:grid;place-items:center;font-family:'Source Serif 4',serif;font-weight:600;font-size:26px;color:${goldLight}">MGA</div>
     <div style="font-family:monospace;letter-spacing:.18em;text-transform:uppercase;color:${goldLight};font-size:18px">Chartered Accountants</div>
   </div>
   <div>
-    <div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:84px;line-height:1.05">AMS Tax Associates</div>
-    <div style="margin-top:22px;font-size:30px;color:#E5EAF2cc">Income Tax · GST · Audit · Accounting · Advisory</div>
+    <div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:72px;line-height:1.05">Mahesh Gunalapuri &amp; Associates</div>
+    <div style="margin-top:22px;font-size:30px;color:#E5EAF2cc">Tax · Compliance · Registration · Financial Solutions · Nalgonda</div>
   </div>
   <div style="height:2px;background:${gold}80"></div>
 </div></body></html>`;
 
 const icon = (size, font) => `<html><head>${fonts}</head><body style="margin:0">
-<div style="width:${size}px;height:${size}px;background:${navy};display:grid;place-items:center;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:${font}px;color:${goldLight};letter-spacing:.04em">AMS</div></body></html>`;
+<div style="width:${size}px;height:${size}px;background:${navy};display:grid;place-items:center;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:${font}px;color:${goldLight};letter-spacing:.04em">MGA</div></body></html>`;
 
 const browser = await chromium.launch();
 async function shot(html, w, h) {

@@ -103,17 +103,18 @@ describe('content integrity', () => {
       expect(Number.isNaN(new Date(a.date).getTime())).toBe(false);
     }
   });
-  it('has the nine required services with unique ids', () => {
-    expect(services).toHaveLength(9);
-    expect(new Set(services.map((s) => s.id)).size).toBe(9);
+  it('has unique service ids, with the seven services from the firm card first', () => {
+    expect(new Set(services.map((s) => s.id)).size).toBe(services.length);
+    expect(services.slice(0, 7).map((s) => s.id)).toEqual(['itr-filing', 'gst', 'business-registration', 'msme-registration', 'labour-license', 'fssai', 'loans']);
   });
   it('links each expertise area to an existing service', () => {
     for (const e of expertise) expect(services.some((s) => s.id === e.serviceId)).toBe(true);
   });
-  it('leaves placeholder contact details out of structured data', () => {
+  it('includes the real office address and contact details in structured data', () => {
     const data = organizationSchema();
-    expect(data).not.toHaveProperty('address');
-    expect(data).not.toHaveProperty('telephone');
     expect(data['@type']).toBe('AccountingService');
+    expect(data.address).toMatchObject({ addressLocality: 'Nalgonda', postalCode: '508001' });
+    expect(data.telephone).toBe('93479 44995');
+    expect(data.email).toBe('camaheshgunalapuri@gmail.com');
   });
 });

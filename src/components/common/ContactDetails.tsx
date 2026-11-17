@@ -10,6 +10,7 @@ const pending = 'To be added';
 /** Phone, email, address and hours. Links appear only for values that are actually set. */
 export default function ContactDetails({ onDark = false, showHours = true }: { onDark?: boolean; showHours?: boolean }) {
   const tel = telHref(contact.phone);
+  const telAlt = telHref(contact.phoneAlt);
   const mail = mailtoHref(contact.email, `Enquiry for ${firm.name}`);
   const muted = onDark ? 'text-navy-100/70' : 'text-slate';
   const strong = onDark ? 'text-white' : 'text-ink';
@@ -23,13 +24,14 @@ export default function ContactDetails({ onDark = false, showHours = true }: { o
         <span className="flex flex-col">
           <span className={`text-[12px] uppercase tracking-wider ${muted}`}>Phone</span>
           {tel ? <a href={tel} className={link}>{contact.phone}</a> : <span className={muted}>{pending}</span>}
+          {telAlt && <a href={telAlt} className={link}>{contact.phoneAlt}</a>}
         </span>
       </li>
       <li className="flex gap-3">
         <Mail className={iconCls} aria-hidden="true" />
         <span className="flex min-w-0 flex-col">
           <span className={`text-[12px] uppercase tracking-wider ${muted}`}>Email</span>
-          {mail ? <a href={mail} className={`${link} break-all`}>{contact.email}</a> : <span className={muted}>{pending}</span>}
+          {mail ? <a href={mail} className={`${link} [overflow-wrap:anywhere]`}>{contact.email}</a> : <span className={muted}>{pending}</span>}
         </span>
       </li>
       <li className="flex gap-3">

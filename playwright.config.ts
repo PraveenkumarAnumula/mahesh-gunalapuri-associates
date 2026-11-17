@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * End-to-end tests run against the production build (`vite preview`) by default.
  * Set E2E_BASE_URL to run the same suite against the live site, e.g.
- *   E2E_BASE_URL=https://ams-tax-associates.netlify.app npx playwright test
+ *   E2E_BASE_URL=https://mahesh-gunalapuri-associates.netlify.app npx playwright test
  */
 const baseURL = process.env.E2E_BASE_URL || 'http://localhost:4173';
 const local = !process.env.E2E_BASE_URL;
