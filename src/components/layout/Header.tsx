@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Logo from '../common/Logo';
 import { ButtonLink } from '../common/Button';
@@ -9,7 +8,6 @@ import { navRoutes } from '../../config/routes';
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
-  const reduceMotion = useReducedMotion();
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Close the menu whenever the route changes.
@@ -71,15 +69,10 @@ export default function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.nav
+      {open && (
+          <nav
             id="mobile-menu"
             aria-label="Mobile"
-            initial={reduceMotion ? false : { opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
             className="absolute inset-x-0 top-full h-[calc(100vh-72px)] overflow-y-auto overscroll-contain border-t border-line bg-white pb-[env(safe-area-inset-bottom)] supports-[height:100dvh]:h-[calc(100dvh-72px)] xl:hidden"
           >
             <ul className="container-page flex flex-col py-4">
@@ -103,9 +96,8 @@ export default function Header() {
                 </ButtonLink>
               </li>
             </ul>
-          </motion.nav>
+          </nav>
         )}
-      </AnimatePresence>
     </header>
   );
 }

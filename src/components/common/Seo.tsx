@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { siteConfig } from '../../config/siteConfig';
-import { SITE_URL } from '../../utils/env';
+import { pageUrl, SITE_URL } from '../../utils/site';
 
 interface SeoProps {
   /** Page-specific title. The firm name is appended automatically. */
@@ -16,7 +16,7 @@ export default function Seo({ title, description, noindex = false, type = 'websi
   const { pathname } = useLocation();
   const fullTitle = title ? `${title} | ${siteConfig.firm.name}` : siteConfig.seo.defaultTitle;
   const desc = description ?? siteConfig.seo.defaultDescription;
-  const canonical = `${SITE_URL}${pathname === '/' ? '/' : pathname.replace(/\/$/, '')}`;
+  const canonical = pageUrl(pathname);
   const image = `${SITE_URL}${siteConfig.seo.ogImage}`;
 
   return (
@@ -26,6 +26,8 @@ export default function Seo({ title, description, noindex = false, type = 'websi
       <meta name="keywords" content={siteConfig.seo.keywords} />
       {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
       <meta property="og:type" content={type} />
+      <meta property="og:site_name" content={siteConfig.firm.name} />
+      <meta property="og:locale" content="en_IN" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={desc} />
       <meta property="og:url" content={canonical} />

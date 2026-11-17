@@ -58,7 +58,8 @@ test('page titles are unique', async ({ page }) => {
 });
 
 test('unknown URLs show the 404 page with noindex', async ({ page }) => {
-  await page.goto('/no-such-page');
+  const res = await page.goto('/no-such-page');
+  expect(res?.status()).toBe(404);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(/couldn’t find that page/i);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   await page.getByRole('link', { name: /back to home/i }).click();
@@ -73,7 +74,7 @@ test('sitemap.xml and robots.txt are served', async ({ request }) => {
   expect(xml).toContain('/insights/');
   const robots = await request.get('/robots.txt');
   expect(await robots.text()).toMatch(/Sitemap: https?:\/\/.+\/sitemap\.xml/);
-  for (const asset of ['/favicon.svg', '/favicon.ico', '/og-image.png', '/apple-touch-icon.png']) {
+  for (const asset of ['/favicon.svg', '/favicon.ico', '/og-image.png', '/apple-touch-icon.png', '/fonts/inter-var.woff2']) {
     expect((await request.get(asset)).ok(), asset).toBe(true);
   }
 });
@@ -159,52 +160,76 @@ test('keyboard users can skip to content and reach the nav', async ({ page }) =>
   await expect(page.getByRole('banner').getByRole('link', { name: /mahesh gunalapuri & associates — home/i })).toBeFocused();
 });
 
-test.describe('contact form', () => {
-  test('validates fields before sending', async ({ page }) => {
-    let called = false;
-    await page.route('https://api.web3forms.com/**', (r) => {
-      called = true;
-      return r.abort();
-    });
+test.describe('contact form (opens email app / WhatsApp, no server)', () => {
+  test('validates fields before opening anything', async ({ page }) => {
     await page.goto('/contact');
-    await page.getByRole('button', { name: /send enquiry/i }).click();
+    await page.getByRole('button', { name: /send by email/i }).click();
     await expect(page.getByText(/enter your full name/i)).toBeVisible();
     await page.getByLabel(/email address/i).fill('bad@');
     await page.getByLabel(/phone number/i).fill('12345');
     await page.getByLabel(/phone number/i).blur();
     await expect(page.getByText(/valid email address/i)).toBeVisible();
     await expect(page.getByText(/valid 10-digit indian mobile/i)).toBeVisible();
-    expect(called).toBe(false);
+    await expect(page.getByRole('status')).toHaveCount(0);
   });
 
   async function fill(page: Page) {
     await page.goto('/contact');
+    // Stop the browser from actually launching an email app or new tab during the test.
+    await page.evaluate(() => {
+      window.open = () => null;
+    });
     await page.getByLabel(/full name/i).fill('Playwright Test');
     await page.getByLabel(/phone number/i).fill('98765 43210');
     await page.getByLabel(/email address/i).fill('playwright@example.com');
     await page.getByLabel(/service required/i).selectOption('ITR Filing');
     await page.getByLabel(/^message/i).fill('Automated end-to-end test. Please ignore.');
-    await page.getByLabel(/agree to be contacted/i).check();
   }
 
-  test('reports success only when the service confirms (mocked)', async ({ page }) => {
-    await page.route('https://api.web3forms.com/**', async (r) => {
-      await new Promise((res) => setTimeout(res, 300));
-      await r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ success: true }) });
-    });
+  test('WhatsApp button prepares a pre-filled chat with the firm', async ({ page }) => {
     await fill(page);
-    await page.getByRole('button', { name: /send enquiry/i }).click();
-    await expect(page.getByRole('button', { name: /sending/i })).toBeDisabled();
-    await expect(page.getByText(/enquiry has been sent/i)).toBeVisible();
+    await page.getByRole('button', { name: /send on whatsapp/i }).click();
+    await expect(page.getByText(/whatsapp should now be open/i)).toBeVisible();
+    const href = await page.getByRole('link', { name: /open whatsapp again/i }).getAttribute('href');
+    expect(href).toMatch(/^https:\/\/wa\.me\/919347944995\?text=/);
+    expect(decodeURIComponent(href!)).toContain('Name: Playwright Test');
   });
 
-  test('shows the error when the service fails (mocked)', async ({ page }) => {
-    await page.route('https://api.web3forms.com/**', (r) =>
-      r.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ success: false, message: 'Server unavailable' }) }),
-    );
+  test('email fallback link carries the full message', async ({ page }) => {
     await fill(page);
-    await page.getByRole('button', { name: /send enquiry/i }).click();
-    await expect(page.getByRole('alert')).toBeVisible();
-    await expect(page.getByText(/enquiry has been sent/i)).toBeHidden();
+    // Clicking "Send by email" hands a mailto: link to the operating system; check the link it builds instead.
+    await page.getByRole('button', { name: /send by email/i }).click();
+    const link = page.getByRole('link', { name: /open the email again/i });
+    await expect(link).toBeVisible();
+    const href = await link.getAttribute('href');
+    expect(href).toMatch(/^mailto:camaheshgunalapuri@gmail\.com\?subject=/);
+    expect(decodeURIComponent(href!)).toContain('Automated end-to-end test');
   });
+});
+
+test('no requests leave the site except the visitor\'s own clicks', async ({ page }) => {
+  const external: string[] = [];
+  page.on('request', (r) => {
+    const u = new URL(r.url());
+    if (!['localhost', '127.0.0.1'].includes(u.hostname)) external.push(r.url());
+  });
+  for (const p of pages) {
+    await page.goto(p.path);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  }
+  expect(external).toEqual([]);
+});
+
+test('pages are complete HTML before any JavaScript runs', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  for (const p of pages) {
+    await page.goto(p.path);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(p.h1);
+  }
+  await page.goto('/contact');
+  await expect(page.locator('a[href="tel:+919347944995"]').first()).toBeVisible();
+  await expect(page.locator('a[href^="mailto:camaheshgunalapuri@gmail.com"]').first()).toBeVisible();
+  await expect(page.locator('a[href^="https://wa.me/919347944995"]').first()).toBeVisible();
+  await context.close();
 });

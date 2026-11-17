@@ -39,6 +39,16 @@ export interface ExperienceItem {
 }
 
 export const siteConfig = {
+  /**
+   * The live web address of the site, with no trailing slash. Used for search-engine links,
+   * the sitemap and social-media previews. Change it when you know the final address:
+   *   Netlify:       'https://your-site-name.netlify.app'
+   *   GitHub Pages:  'https://<github-username>.github.io/<repository-name>'
+   *   Own domain:    'https://www.yourdomain.in'
+   * For a GitHub Pages address ending in /<repository-name>, the build adjusts all links automatically.
+   */
+  siteUrl: 'https://mahesh-gunalapuri-associates.netlify.app',
+
   /** Shows a thin notice at the top of every page saying the content is placeholder. */
   showPreviewBanner: true,
 
@@ -53,7 +63,11 @@ export const siteConfig = {
     subSlogan: 'Supporting Your Today for a Brighter Tomorrow',
     closingLine: 'Let’s Grow Together',
     /** Year the firm was established, e.g. '2012'. Leave '' to hide. */
-    established: '',
+    established: 'August 2026',
+    /** ICAI Firm Registration Number (from the ICAI firm certificate). */
+    frn: '032056S',
+    /** Constitution of the firm as registered with ICAI. */
+    constitution: 'Proprietorship firm',
     /**
      * Path to the logo image inside /public, e.g. '/images/logo.svg'.
      * Leave '' to use the built-in text monogram.
@@ -64,7 +78,7 @@ export const siteConfig = {
     introduction:
       'We help individuals and businesses meet their tax and regulatory obligations with clarity and confidence. Our work is built on careful analysis, plain-language advice and filings that are done right and on time.',
     history:
-      '[Firm history placeholder — describe when and why the practice was founded, how it has grown, and the kinds of clients it serves today. Two or three short paragraphs work well.]',
+      'Mahesh Gunalapuri & Associates was established in August 2026 in Nalgonda, Telangana, as a proprietorship firm of Chartered Accountants registered with the Institute of Chartered Accountants of India (Firm Registration No. 032056S). The firm serves individuals, professionals and businesses with income tax, GST, registrations, licences and compliance work.',
     mission:
       'To give every client accurate, timely and practical financial guidance, so that compliance never stands in the way of their goals.',
     vision:
@@ -76,15 +90,15 @@ export const siteConfig = {
   founder: {
     /** Full name as it should appear, e.g. 'CA Firstname Lastname'. */
     name: 'CA Mahesh Gunalapuri',
-    designation: 'Founder & Principal, Chartered Accountant',
+    designation: 'Proprietor, Chartered Accountant',
     /** Membership number issued by ICAI. Leave '' until provided. Never invent one. */
-    icaiMembershipNo: '',
+    icaiMembershipNo: '297023',
     /** Path to a portrait inside /public, e.g. '/images/founder.jpg'. Leave '' for the placeholder. */
-    photo: '',
+    photo: '/images/mahesh-gunalapuri.jpg',
     photoAlt: 'Portrait of CA Mahesh Gunalapuri',
-    qualifications: ['Chartered Accountant (ACA / FCA) — [confirm]', '[Degree, University, Year]', '[Additional certification, if any]'],
+    qualifications: ['Chartered Accountant (ACA), Associate Member of ICAI since August 2026', '[Degree, University, Year]'],
     /** Short line used on cards, e.g. '12+ years in taxation and audit'. */
-    experienceSummary: '[X] years of professional experience — placeholder',
+    experienceSummary: 'Associate Member of ICAI (ACA), membership no. 297023',
     shortBio:
       '[Short biography placeholder — two or three sentences on the founder’s background, areas of focus and the kind of clients they work with.]',
     fullBio: [
@@ -99,8 +113,8 @@ export const siteConfig = {
     ],
     experience: [
       {
-        period: '[Year] – Present',
-        role: 'Founder & Principal',
+        period: 'August 2026 – Present',
+        role: 'Proprietor',
         organisation: 'Mahesh Gunalapuri & Associates',
         summary: '[Describe responsibilities and practice focus.]',
       },
@@ -127,8 +141,8 @@ export const siteConfig = {
     whatsapp: '919347944995',
     email: 'camaheshgunalapuri@gmail.com',
     address: {
-      line1: '4-11-522/1A, Beside Kanuka Durga Colony Arch',
-      line2: 'DVK Road',
+      line1: 'H No 6-2-0005, Sri Laxmi Nagar Colony, Road No 4',
+      line2: 'Near Shanmuka Apartment',
       city: 'Nalgonda',
       state: 'Telangana',
       postalCode: '508001',
@@ -137,11 +151,10 @@ export const siteConfig = {
     /** Set true only once the address above is real. Controls address display in structured data. */
     addressIsReal: true,
     /**
-     * Google Maps embed URL (Google Maps → Share → Embed a map → copy the src="..." value).
-     * Leave '' to show a placeholder panel.
+     * Link for the "Open in Google Maps" button. For the exact office pin, open the firm's
+     * Google Maps listing, tap Share and paste that link here.
      */
-    mapEmbedUrl:
-      'https://maps.google.com/maps?q=Kanuka%20Durga%20Colony%2C%20DVK%20Road%2C%20Nalgonda%20508001&z=16&output=embed',
+    mapsLink: 'https://www.google.com/maps/search/?api=1&query=Sri%20Laxmi%20Nagar%20Colony%20Road%20No%204%2C%20Near%20Shanmuka%20Apartment%2C%20Nalgonda%20508001',
     hours: [
       { days: 'Monday – Friday', time: '[10:00 AM – 7:00 PM]' },
       { days: 'Saturday', time: '[10:00 AM – 2:00 PM]' },

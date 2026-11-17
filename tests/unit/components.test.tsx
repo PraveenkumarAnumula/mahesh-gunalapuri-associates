@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from '../../src/App';
 import ContactForm from '../../src/components/sections/ContactForm';
-import DueDatesPanel from '../../src/components/sections/DueDatesPanel';
+import KeyDatesPanel from '../../src/components/sections/KeyDatesPanel';
 
 function renderAt(path: string) {
   return render(
@@ -31,7 +31,6 @@ async function fillValidForm(user: ReturnType<typeof userEvent.setup>) {
   await user.type(screen.getByLabelText(/email address/i), 'test@example.com');
   await user.selectOptions(screen.getByLabelText(/service required/i), 'GST Registrations & Return Filings');
   await user.type(screen.getByLabelText(/^message/i), 'Need help with monthly GST returns.');
-  await user.click(screen.getByLabelText(/agree to be contacted/i));
 }
 
 describe('pages', () => {
@@ -101,68 +100,64 @@ describe('mobile menu', () => {
   });
 });
 
-describe('ContactForm', () => {
-  it('shows required-field errors and does not submit', async () => {
+describe('ContactForm (no server: opens email app or WhatsApp)', () => {
+  it('shows required-field errors and opens nothing', async () => {
     const user = userEvent.setup();
-    const fetchImpl = vi.fn();
-    renderForm({ accessKey: 'key', fetchImpl });
-    await user.click(screen.getByRole('button', { name: /send enquiry/i }));
+    const openLink = vi.fn();
+    renderForm({ openLink });
+    await user.click(screen.getByRole('button', { name: /send by email/i }));
     expect(await screen.findByText(/enter your full name/i)).toBeInTheDocument();
     expect(screen.getByText(/enter your email address/i)).toBeInTheDocument();
     expect(screen.getByText(/enter your phone number/i)).toBeInTheDocument();
     expect(screen.getByText(/choose the service/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/full name/i)).toHaveAttribute('aria-invalid', 'true');
-    expect(fetchImpl).not.toHaveBeenCalled();
+    expect(openLink).not.toHaveBeenCalled();
   });
 
   it('validates email and Indian phone formats', async () => {
     const user = userEvent.setup();
-    renderForm({ accessKey: 'key', fetchImpl: vi.fn() });
+    renderForm({ openLink: vi.fn() });
     await user.type(screen.getByLabelText(/email address/i), 'wrong@');
     await user.type(screen.getByLabelText(/phone number/i), '12345');
-    await user.click(screen.getByRole('button', { name: /send enquiry/i }));
+    await user.click(screen.getByRole('button', { name: /send by email/i }));
     expect(await screen.findByText(/valid email address/i)).toBeInTheDocument();
     expect(screen.getByText(/valid 10-digit indian mobile/i)).toBeInTheDocument();
   });
 
-  it('shows a loading state, then success only after the service confirms', async () => {
+  it('opens a pre-filled email to the firm and explains the next step', async () => {
     const user = userEvent.setup();
-    let resolve!: (r: Response) => void;
-    const fetchImpl = vi.fn(() => new Promise<Response>((r) => (resolve = r)));
-    renderForm({ accessKey: 'key', fetchImpl });
+    const openLink = vi.fn();
+    renderForm({ openLink });
     await fillValidForm(user);
-    await user.click(screen.getByRole('button', { name: /send enquiry/i }));
-    const busy = await screen.findByRole('button', { name: /sending/i });
-    expect(busy).toBeDisabled();
-    expect(screen.queryByText(/enquiry has been sent/i)).not.toBeInTheDocument();
-    resolve(new Response(JSON.stringify({ success: true }), { status: 200 }));
-    expect(await screen.findByText(/enquiry has been sent/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/full name/i)).toHaveValue('');
+    await user.click(screen.getByRole('button', { name: /send by email/i }));
+    expect(openLink).toHaveBeenCalledTimes(1);
+    const [href, channel] = openLink.mock.calls[0];
+    expect(channel).toBe('email');
+    expect(href).toMatch(/^mailto:camaheshgunalapuri@gmail\.com\?subject=/);
+    expect(decodeURIComponent(href)).toContain('Name: Test Person');
+    expect(decodeURIComponent(href)).toContain('Need help with monthly GST returns.');
+    expect(await screen.findByText(/press send there/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /open the email again/i })).toHaveAttribute('href', href);
   });
 
-  it('shows the error when the service rejects the submission', async () => {
+  it('opens a pre-filled WhatsApp chat with the firm', async () => {
     const user = userEvent.setup();
-    const fetchImpl = vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: false, message: 'Rate limited' }), { status: 429 }));
-    renderForm({ accessKey: 'key', fetchImpl });
+    const openLink = vi.fn();
+    renderForm({ openLink });
     await fillValidForm(user);
-    await user.click(screen.getByRole('button', { name: /send enquiry/i }));
-    expect(await screen.findByRole('alert')).toHaveTextContent('Rate limited');
-    expect(screen.queryByText(/enquiry has been sent/i)).not.toBeInTheDocument();
-  });
-
-  it('explains that the form is not connected when no key is set', async () => {
-    const user = userEvent.setup();
-    renderForm({ accessKey: '' });
-    await fillValidForm(user);
-    await user.click(screen.getByRole('button', { name: /send enquiry/i }));
-    expect(await screen.findByRole('alert')).toHaveTextContent(/not connected yet/i);
+    await user.click(screen.getByRole('button', { name: /send on whatsapp/i }));
+    const [href, channel] = openLink.mock.calls[0];
+    expect(channel).toBe('whatsapp');
+    expect(href).toMatch(/^https:\/\/wa\.me\/919347944995\?text=/);
+    expect(decodeURIComponent(href)).toContain('Service required: GST Registrations & Return Filings');
   });
 });
 
-describe('DueDatesPanel', () => {
-  it('lists upcoming due dates relative to the given day', () => {
-    render(<DueDatesPanel date={new Date(2026, 10, 17)} />);
-    expect(screen.getByText('GSTR-3B (monthly filers)')).toBeInTheDocument();
-    expect(screen.getByText('in 3 days')).toBeInTheDocument();
+describe('KeyDatesPanel', () => {
+  it('shows fixed due dates with no live data', () => {
+    render(<KeyDatesPanel />);
+    expect(screen.getByText('GSTR-3B')).toBeInTheDocument();
+    expect(screen.getByText('20th')).toBeInTheDocument();
+    expect(screen.queryByText(/live/i)).not.toBeInTheDocument();
   });
 });

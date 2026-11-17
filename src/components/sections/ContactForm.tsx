@@ -1,33 +1,46 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { AlertCircle, CheckCircle2, Loader2, Send } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Mail, MessageCircle } from 'lucide-react';
 import { contactSchema, type ContactFormValues } from '../../utils/validation';
-import { submitContact } from '../../utils/submitContact';
+import { enquiryMailto, enquiryWhatsApp } from '../../utils/contact';
 import { serviceOptions } from '../../content/services';
 import { siteConfig } from '../../config/siteConfig';
-import { WEB3FORMS_ACCESS_KEY } from '../../utils/env';
 
-type Status = { state: 'idle' } | { state: 'success' } | { state: 'error'; message: string };
+type Channel = 'email' | 'whatsapp';
+interface Opened {
+  channel: Channel;
+  href: string;
+}
 
 interface Props {
   defaultService?: string;
-  /** Injected in tests. Defaults to the Web3Forms access key from the environment. */
-  accessKey?: string;
-  fetchImpl?: typeof fetch;
+  /** Opens the generated link. Replaced in tests. */
+  openLink?: (href: string, channel: Channel) => void;
 }
 
 const OTHER = 'Other / Not sure';
 
-export default function ContactForm({ defaultService = '', accessKey = WEB3FORMS_ACCESS_KEY, fetchImpl }: Props) {
-  const [status, setStatus] = useState<Status>({ state: 'idle' });
+function defaultOpen(href: string, channel: Channel) {
+  if (channel === 'whatsapp') window.open(href, '_blank', 'noopener,noreferrer');
+  else window.location.href = href;
+}
+
+/**
+ * Enquiry form with no server. On submit it builds the message and opens the visitor's own
+ * email app or WhatsApp with everything filled in; the visitor presses Send there.
+ */
+export default function ContactForm({ defaultService = '', openLink = defaultOpen }: Props) {
+  const [opened, setOpened] = useState<Opened | null>(null);
+  const channelRef = useRef<Channel>('email');
   const statusRef = useRef<HTMLDivElement>(null);
+  const { contact } = siteConfig;
+  const canWhatsApp = Boolean(enquiryWhatsApp(contact.whatsapp, { name: '', email: '', phone: '', service: '', message: '' }));
+
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     mode: 'onTouched',
@@ -37,29 +50,19 @@ export default function ContactForm({ defaultService = '', accessKey = WEB3FORMS
       phone: '',
       service: [...serviceOptions, OTHER].includes(defaultService) ? defaultService : '',
       message: '',
-      consent: false,
-      botcheck: '',
     },
   });
 
   useEffect(() => {
-    if (status.state !== 'idle') statusRef.current?.focus();
-  }, [status]);
+    if (opened) statusRef.current?.focus();
+  }, [opened]);
 
-  const onSubmit = async (values: ContactFormValues) => {
-    setStatus({ state: 'idle' });
-    // Honeypot filled in: almost certainly a bot. Do not send, and do not claim success.
-    if (values.botcheck) {
-      setStatus({ state: 'error', message: 'Your message could not be sent. Please try again.' });
-      return;
-    }
-    try {
-      await submitContact(values, { accessKey, firmName: siteConfig.firm.name, fetchImpl });
-      setStatus({ state: 'success' });
-      reset();
-    } catch (err) {
-      setStatus({ state: 'error', message: err instanceof Error ? err.message : 'Something went wrong. Please try again.' });
-    }
+  const onSubmit = (values: ContactFormValues) => {
+    const channel = channelRef.current;
+    const href = channel === 'whatsapp' ? enquiryWhatsApp(contact.whatsapp, values) : enquiryMailto(contact.email, values);
+    if (!href) return;
+    setOpened({ channel, href });
+    openLink(href, channel);
   };
 
   const fieldError = (name: keyof ContactFormValues) =>
@@ -72,42 +75,48 @@ export default function ContactForm({ defaultService = '', accessKey = WEB3FORMS
     'aria-describedby': errors[name] ? `${name}-error` : undefined,
   });
 
+  const required = <span aria-hidden="true" className="text-red-700">*</span>;
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate aria-label="Consultation request" className="flex flex-col gap-5">
       <div ref={statusRef} tabIndex={-1} aria-live="polite" className="focus:outline-none">
-        {status.state === 'success' && (
-          <p role="status" className="flex gap-3 rounded-md border border-emerald-700/30 bg-emerald-50 p-4 text-[15px] text-emerald-900">
-            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-            Thank you. Your enquiry has been sent, and we will get back to you soon.
-          </p>
-        )}
-        {status.state === 'error' && (
-          <p role="alert" className="flex gap-3 rounded-md border border-red-700/30 bg-red-50 p-4 text-[15px] text-red-900">
-            <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-            {status.message}
-          </p>
+        {opened && (
+          <div role="status" className="flex flex-col gap-2 rounded-md border border-navy-700/20 bg-navy-50 p-4 text-[15px] text-ink">
+            <p className="font-medium text-navy-900">
+              {opened.channel === 'email'
+                ? 'Your email app should now be open with your message ready. Press Send there to send it to us.'
+                : 'WhatsApp should now be open with your message ready. Press Send there to send it to us.'}
+            </p>
+            <p className="text-slate">
+              Nothing opened?{' '}
+              <a href={opened.href} target={opened.channel === 'whatsapp' ? '_blank' : undefined} rel="noopener noreferrer" className="font-medium text-navy-800 underline underline-offset-2">
+                {opened.channel === 'email' ? 'Open the email again' : 'Open WhatsApp again'}
+              </a>
+              , or call us on {contact.phone}.
+            </p>
+          </div>
         )}
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-[14px] font-medium text-ink">Full name <span aria-hidden="true" className="text-red-700">*</span></label>
+          <label htmlFor="name" className="mb-1.5 block text-[14px] font-medium text-ink">Full name {required}</label>
           <input id="name" type="text" autoComplete="name" className="field-input" {...aria('name')} {...register('name')} />
           {fieldError('name')}
         </div>
         <div>
-          <label htmlFor="phone" className="mb-1.5 block text-[14px] font-medium text-ink">Phone number <span aria-hidden="true" className="text-red-700">*</span></label>
+          <label htmlFor="phone" className="mb-1.5 block text-[14px] font-medium text-ink">Phone number {required}</label>
           <input id="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="98765 43210" className="field-input" {...aria('phone')} {...register('phone')} />
           {fieldError('phone')}
         </div>
       </div>
       <div>
-        <label htmlFor="email" className="mb-1.5 block text-[14px] font-medium text-ink">Email address <span aria-hidden="true" className="text-red-700">*</span></label>
+        <label htmlFor="email" className="mb-1.5 block text-[14px] font-medium text-ink">Email address {required}</label>
         <input id="email" type="email" autoComplete="email" className="field-input" {...aria('email')} {...register('email')} />
         {fieldError('email')}
       </div>
       <div>
-        <label htmlFor="service" className="mb-1.5 block text-[14px] font-medium text-ink">Service required <span aria-hidden="true" className="text-red-700">*</span></label>
+        <label htmlFor="service" className="mb-1.5 block text-[14px] font-medium text-ink">Service required {required}</label>
         <select id="service" className="field-input" {...aria('service')} {...register('service')}>
           <option value="">Choose a service</option>
           {serviceOptions.map((s) => (
@@ -118,40 +127,31 @@ export default function ContactForm({ defaultService = '', accessKey = WEB3FORMS
         {fieldError('service')}
       </div>
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-[14px] font-medium text-ink">Message <span aria-hidden="true" className="text-red-700">*</span></label>
+        <label htmlFor="message" className="mb-1.5 block text-[14px] font-medium text-ink">Message {required}</label>
         <textarea id="message" rows={5} className="field-input resize-y" placeholder="Briefly describe what you need help with." {...aria('message')} {...register('message')} />
         {fieldError('message')}
       </div>
 
-      {/* Honeypot: hidden from people and assistive technology; bots tend to fill it. */}
-      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
-        <label htmlFor="botcheck">Leave this field empty</label>
-        <input id="botcheck" type="text" tabIndex={-1} autoComplete="off" {...register('botcheck')} />
-      </div>
-
-      <div>
-        <label className="flex items-start gap-3 text-[14px] text-slate">
-          <input id="consent" type="checkbox" className="mt-1 h-4 w-4 rounded border-line accent-navy-900" {...aria('consent')} {...register('consent')} />
-          <span>
-            I agree to be contacted about this enquiry and have read the{' '}
-            <Link to="/privacy-policy" className="text-navy-800 underline underline-offset-2">Privacy Policy</Link>.
-          </span>
-        </label>
-        {fieldError('consent')}
-      </div>
-
-      <div>
+      <p className="text-[13.5px] text-slate">
+        Choose how to send: your message opens in your own email app or in WhatsApp, ready to send. This website does not store anything you type.
+      </p>
+      <div className="flex flex-col gap-3 sm:flex-row">
         <button
           type="submit"
-          disabled={isSubmitting}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-navy-900 px-6 py-3.5 text-[15px] font-medium text-white hover:bg-navy-800 disabled:cursor-wait disabled:opacity-75 sm:w-auto"
+          onClick={() => (channelRef.current = 'email')}
+          className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md bg-navy-900 px-6 py-3 text-[15px] font-medium text-white hover:bg-navy-800 sm:w-auto"
         >
-          {isSubmitting ? (
-            <><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Sending…</>
-          ) : (
-            <><Send className="h-4 w-4" aria-hidden="true" /> Send enquiry</>
-          )}
+          <Mail className="h-4 w-4" aria-hidden="true" /> Send by email
         </button>
+        {canWhatsApp && (
+          <button
+            type="submit"
+            onClick={() => (channelRef.current = 'whatsapp')}
+            className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md bg-[#1F7A4D] px-6 py-3 text-[15px] font-medium text-white hover:bg-[#19663F] sm:w-auto"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden="true" /> Send on WhatsApp
+          </button>
+        )}
       </div>
     </form>
   );

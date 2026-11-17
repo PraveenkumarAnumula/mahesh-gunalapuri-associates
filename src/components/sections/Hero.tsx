@@ -1,20 +1,13 @@
-import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { ButtonLink } from '../common/Button';
-import DueDatesPanel from './DueDatesPanel';
+import KeyDatesPanel from './KeyDatesPanel';
 import { siteConfig } from '../../config/siteConfig';
 
 export default function Hero() {
-  const reduce = useReducedMotion();
   return (
     <section aria-labelledby="hero-title" className="ledger-lines relative overflow-hidden bg-navy-900 text-white">
       <div className="container-page grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:py-24">
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="flex flex-col gap-6"
-        >
+        <div className="flex flex-col gap-6">
           <p className="eyebrow-on-dark">{siteConfig.firm.tagline} · Nalgonda</p>
           <h1 id="hero-title" className="text-[clamp(31px,9vw,38px)] font-semibold leading-[1.1] !text-white sm:text-[52px] lg:text-[58px]">
             Your trusted partner in taxation, compliance &amp; financial advisory.
@@ -31,8 +24,8 @@ export default function Hero() {
               Explore Our Services
             </ButtonLink>
           </div>
-        </motion.div>
-        <DueDatesPanel />
+        </div>
+        <KeyDatesPanel />
       </div>
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-gold-500/40" />
     </section>

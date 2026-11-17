@@ -1,7 +1,7 @@
 import { siteConfig } from '../config/siteConfig';
 import { services } from '../content/services';
 import { isSet } from './contact';
-import { SITE_URL } from './env';
+import { SITE_URL } from './site';
 
 /** schema.org AccountingService data. Only real (non-placeholder) details are included. */
 export function organizationSchema(): Record<string, unknown> {

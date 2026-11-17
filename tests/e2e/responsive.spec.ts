@@ -53,7 +53,8 @@ test('primary controls are finger-sized (at least 44px tall)', async ({ page }) 
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   const vw = page.viewportSize()!.width;
   const controls = [
-    page.getByRole('button', { name: /send enquiry/i }),
+    page.getByRole('button', { name: /send by email/i }),
+    page.getByRole('button', { name: /send on whatsapp/i }),
     page.getByLabel(/full name/i),
     page.getByLabel(/service required/i),
     page.getByRole('link', { name: /chat on whatsapp/i }),
@@ -88,7 +89,8 @@ test('menu works at this screen size', async ({ page }) => {
 
 test('header stays visible while scrolling', async ({ page }) => {
   await page.goto('/services');
-  await page.evaluate(() => window.scrollTo(0, 2500));
+  await page.evaluate(() => window.scrollTo({ top: 2500, behavior: 'instant' as ScrollBehavior }));
+  await page.waitForFunction(() => window.scrollY > 1000);
   const header = page.getByRole('banner').first();
   const box = await header.boundingBox();
   // A few px of tolerance for sub-pixel rounding on high-density screens (e.g. Galaxy S9+ at 4.5x).

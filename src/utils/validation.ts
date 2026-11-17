@@ -23,10 +23,7 @@ export const contactSchema = z.object({
     .string()
     .trim()
     .min(10, 'Please add a few details (at least 10 characters).')
-    .max(2000, 'Message is too long (2000 characters max).'),
-  consent: z.boolean().refine((v) => v === true, 'Please agree to be contacted about your enquiry.'),
-  /** Honeypot field. Real visitors never see or fill it. */
-  botcheck: z.string().optional(),
+    .max(1500, 'Message is too long (1500 characters max).'),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;

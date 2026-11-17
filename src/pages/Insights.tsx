@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/common/Seo';
@@ -8,7 +9,10 @@ import { articleCategories, sortedArticles, type ArticleCategory } from '../cont
 
 export default function Insights() {
   const [params, setParams] = useSearchParams();
-  const active = params.get('category') as ArticleCategory | null;
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+  // The pre-built page lists every article; the ?category= filter applies once the page is running.
+  const active = ready ? (params.get('category') as ArticleCategory | null) : null;
   const list = active ? sortedArticles.filter((a) => a.category === active) : sortedArticles;
 
   const select = (c: ArticleCategory | null) => {

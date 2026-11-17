@@ -1,6 +1,7 @@
 node_modules
 dist
 dist-e2e
+dist-ssr
 .env
 .env.local
 .env.*.local
@@ -9,3 +10,6 @@ test-results
 .vercel
 *.log
 .DS_Store
+
+# Original photo as supplied; the site uses the optimised copy in public/images/
+Image.jpg

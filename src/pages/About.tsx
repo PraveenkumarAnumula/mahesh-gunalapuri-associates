@@ -23,6 +23,7 @@ export default function About() {
             <p className="eyebrow">Our story</p>
             <h2 id="history" className="text-[30px] font-semibold sm:text-[34px]">History and background</h2>
             {firm.established && <p className="text-[15px] text-slate">Established {firm.established}</p>}
+            {firm.frn && <p className="text-[15px] text-slate">ICAI Firm Registration No. <span className="font-mono">{firm.frn}</span></p>}
           </div>
           <p className="max-w-prose text-[17px] text-slate">{firm.history}</p>
         </div>

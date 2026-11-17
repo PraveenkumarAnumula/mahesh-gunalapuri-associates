@@ -14,8 +14,9 @@ export default function PrivacyPolicy() {
           heading: 'Information we collect',
           body: (
             <p>
-              When you submit the contact form, we collect your name, email address, phone number, the service you are interested in and your
-              message. We do not use advertising cookies or tracking pixels on this website.
+              This website does not collect or store personal information. It has no database, no cookies and no tracking. When you use the
+              enquiry form, your details are placed into a message in your own email app or WhatsApp, and they reach us only if you choose to
+              send that message.
             </p>
           ),
         },
@@ -23,8 +24,8 @@ export default function PrivacyPolicy() {
           heading: 'How we use it',
           body: (
             <p>
-              We use this information only to respond to your enquiry and, if you become a client, to provide the services you request. We do
-              not sell or rent personal information.
+              We use the details in messages you send us only to respond to your enquiry and, if you become a client, to provide the services
+              you request. We do not sell or rent personal information.
             </p>
           ),
         },
@@ -32,8 +33,8 @@ export default function PrivacyPolicy() {
           heading: 'Service providers',
           body: (
             <p>
-              Contact-form submissions are delivered to us by email through Web3Forms, a third-party form service. The website is hosted on
-              Netlify. These providers process data on our behalf under their own privacy terms.
+              The website is hosted on a static web hosting service, which may keep standard server logs. Messages you send by email or
+              WhatsApp are handled by those services under their own privacy terms.
             </p>
           ),
         },

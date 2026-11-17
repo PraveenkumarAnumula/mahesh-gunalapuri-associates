@@ -1,14 +1,18 @@
 import { siteConfig } from '../../config/siteConfig';
+import { asset } from '../../utils/site';
 
 /** Founder photo from siteConfig.founder.photo, or a neutral placeholder until one is supplied. */
-export default function Portrait({ className = '' }: { className?: string }) {
+/** `priority` loads the photo immediately (use it where the photo is at the top of the page). */
+export default function Portrait({ className = '', priority = false }: { className?: string; priority?: boolean }) {
   const { founder } = siteConfig;
   if (founder.photo) {
     return (
       <img
-        src={founder.photo}
+        src={asset(founder.photo)}
         alt={founder.photoAlt}
-        loading="lazy"
+        loading={priority ? 'eager' : 'lazy'}
+        // Lower-case attribute: React 18 doesn't know the camelCase prop yet.
+        {...{ fetchpriority: priority ? 'high' : 'auto' }}
         decoding="async"
         width={480}
         height={600}

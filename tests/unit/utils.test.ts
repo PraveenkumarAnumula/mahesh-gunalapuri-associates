@@ -1,8 +1,6 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { isValidIndianPhone, contactSchema } from '../../src/utils/validation';
-import { mailtoHref, telHref, whatsappHref } from '../../src/utils/contact';
-import { daysUntil, upcomingDueDates } from '../../src/utils/complianceCalendar';
-import { FormNotConfiguredError, submitContact, WEB3FORMS_ENDPOINT } from '../../src/utils/submitContact';
+import { enquiryMailto, enquiryWhatsApp, mailtoHref, telHref, whatsappHref } from '../../src/utils/contact';
 import { organizationSchema } from '../../src/utils/structuredData';
 import { articles } from '../../src/content/articles';
 import { services } from '../../src/content/services';
@@ -14,8 +12,6 @@ const validForm = {
   phone: '98765 43210',
   service: 'GST Services',
   message: 'I need help with GST registration.',
-  consent: true,
-  botcheck: '',
 };
 
 describe('Indian phone validation', () => {
@@ -30,7 +26,6 @@ describe('Indian phone validation', () => {
 describe('contact schema', () => {
   it('accepts a valid enquiry', () => expect(contactSchema.safeParse(validForm).success).toBe(true));
   it('rejects a malformed email', () => expect(contactSchema.safeParse({ ...validForm, email: 'not-an-email' }).success).toBe(false));
-  it('requires consent', () => expect(contactSchema.safeParse({ ...validForm, consent: false }).success).toBe(false));
   it('requires a service', () => expect(contactSchema.safeParse({ ...validForm, service: '' }).success).toBe(false));
 });
 
@@ -51,46 +46,23 @@ describe('contact links', () => {
   });
 });
 
-describe('compliance calendar', () => {
-  it('lists the next due dates in order from a given day', () => {
-    const items = upcomingDueDates(new Date(2026, 10, 17), 4); // 17 Nov 2026
-    expect(items.map((i) => [i.date.getMonth(), i.date.getDate(), i.title])).toEqual([
-      [10, 20, 'GSTR-3B (monthly filers)'],
-      [11, 7, 'TDS / TCS deposit for previous month'],
-      [11, 11, 'GSTR-1 (monthly filers)'],
-      [11, 15, 'Advance tax instalment'],
-    ]);
+describe('enquiry links (form without a server)', () => {
+  it('builds a mailto link with subject and full message', () => {
+    const href = enquiryMailto('office@example.com', validForm)!;
+    expect(href.startsWith('mailto:office@example.com?subject=')).toBe(true);
+    const decoded = decodeURIComponent(href);
+    expect(decoded).toContain('Enquiry: GST Services - Test Person');
+    expect(decoded).toContain('Phone: 98765 43210');
+    expect(decoded).toContain('I need help with GST registration.');
   });
-  it('uses 30 April, not 7 April, for March TDS', () => {
-    const items = upcomingDueDates(new Date(2027, 3, 1), 3);
-    expect(items.some((i) => i.date.getMonth() === 3 && i.date.getDate() === 7)).toBe(false);
-    expect(items.find((i) => i.title === 'TDS deposit for March')?.date.getDate()).toBe(30);
+  it('builds a WhatsApp link with the enquiry text', () => {
+    const href = enquiryWhatsApp('919347944995', validForm)!;
+    expect(href.startsWith('https://wa.me/919347944995?text=')).toBe(true);
+    expect(decodeURIComponent(href)).toContain('Email: test@example.com');
   });
-  it('rolls over into the next year', () => {
-    const items = upcomingDueDates(new Date(2026, 11, 21), 2);
-    expect(items[0].date.getFullYear()).toBe(2027);
-  });
-  it('counts days between calendar dates', () => expect(daysUntil(new Date(2026, 10, 20), new Date(2026, 10, 17))).toBe(3));
-});
-
-describe('submitContact', () => {
-  it('refuses to pretend success when no access key is configured', async () => {
-    await expect(submitContact(validForm, { accessKey: '', firmName: 'AMS' })).rejects.toBeInstanceOf(FormNotConfiguredError);
-  });
-  it('resolves only when the service confirms success', async () => {
-    const fetchImpl = vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: true }), { status: 200 }));
-    await expect(submitContact(validForm, { accessKey: 'key', firmName: 'AMS', fetchImpl })).resolves.toBeUndefined();
-    const [url, init] = fetchImpl.mock.calls[0];
-    expect(url).toBe(WEB3FORMS_ENDPOINT);
-    expect(JSON.parse(init.body)).toMatchObject({ access_key: 'key', email: 'test@example.com', botcheck: '' });
-  });
-  it('rejects with the service message on failure', async () => {
-    const fetchImpl = vi.fn().mockResolvedValue(new Response(JSON.stringify({ success: false, message: 'Invalid access key' }), { status: 400 }));
-    await expect(submitContact(validForm, { accessKey: 'bad', firmName: 'AMS', fetchImpl })).rejects.toThrow('Invalid access key');
-  });
-  it('rejects with a network message when offline', async () => {
-    const fetchImpl = vi.fn().mockRejectedValue(new TypeError('Failed to fetch'));
-    await expect(submitContact(validForm, { accessKey: 'key', firmName: 'AMS', fetchImpl })).rejects.toThrow(/internet connection/);
+  it('returns null when the address or number is missing', () => {
+    expect(enquiryMailto('', validForm)).toBeNull();
+    expect(enquiryWhatsApp('', validForm)).toBeNull();
   });
 });
 

@@ -25,7 +25,7 @@ export default function CAProfile() {
       <header className="ledger-lines bg-navy-900">
         <div className="container-page grid items-end gap-10 pt-14 sm:pt-20 md:grid-cols-[0.75fr_1.25fr] lg:gap-16">
           <div className="mx-auto w-full max-w-xs md:mx-0 md:translate-y-12">
-            <Portrait className="border-4 border-white shadow-panel" />
+            <Portrait priority className="border-4 border-white shadow-panel" />
           </div>
           <div className="flex flex-col gap-4 pb-12">
             <p className="eyebrow-on-dark">CA Profile · {firm.name}</p>
@@ -36,8 +36,14 @@ export default function CAProfile() {
                 <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">ICAI membership no.</dt>
                 <dd className="font-mono tabular-nums text-white">{founder.icaiMembershipNo || 'To be added'}</dd>
               </div>
+              {firm.frn && (
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">Firm Reg. No. (ICAI)</dt>
+                  <dd className="font-mono tabular-nums text-white">{firm.frn}</dd>
+                </div>
+              )}
               <div>
-                <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">Experience</dt>
+                <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">Qualification</dt>
                 <dd className="text-white">{founder.experienceSummary}</dd>
               </div>
             </dl>

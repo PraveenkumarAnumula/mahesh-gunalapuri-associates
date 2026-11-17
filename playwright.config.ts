@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * End-to-end tests run against the production build (`vite preview`) by default.
+ * End-to-end tests run against the static build (served by scripts/serve-static.mjs) by default.
  * Set E2E_BASE_URL to run the same suite against the live site, e.g.
  *   E2E_BASE_URL=https://mahesh-gunalapuri-associates.netlify.app npx playwright test
  */
@@ -37,13 +37,11 @@ export default defineConfig({
   ],
   webServer: local
     ? {
-        // Separate output folder and port, so a running `npm run preview` is left alone.
-        command: 'npx tsc -b && npx vite build --outDir dist-e2e && npx vite preview --outDir dist-e2e --port 4174 --strictPort',
+        // Builds the static site and serves it the way Netlify / GitHub Pages do (real 404s, folder index pages).
+        command: 'npm run build && node scripts/serve-static.mjs dist 4174',
         url: baseURL,
         reuseExistingServer: false,
         timeout: 180_000,
-        // Dummy key so the form tries to submit; every e2e test intercepts the request, so nothing is sent.
-        env: { VITE_WEB3FORMS_ACCESS_KEY: 'e2e-dummy-key' },
       }
     : undefined,
 });

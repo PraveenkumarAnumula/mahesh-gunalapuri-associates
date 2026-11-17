@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { siteConfig } from '../../config/siteConfig';
+import { asset } from '../../utils/site';
 
 /** Firm logo. Uses siteConfig.firm.logo if set, otherwise a text monogram. */
 export default function Logo({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
@@ -8,7 +9,7 @@ export default function Logo({ variant = 'dark' }: { variant?: 'dark' | 'light' 
   return (
     <Link to="/" className="group inline-flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label={`${firm.name} — home`}>
       {firm.logo ? (
-        <img src={firm.logo} alt="" className="h-10 w-auto" width={120} height={40} />
+        <img src={asset(firm.logo)} alt="" className="h-10 w-auto" width={120} height={40} />
       ) : (
         <span
           aria-hidden="true"

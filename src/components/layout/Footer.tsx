@@ -7,7 +7,8 @@ import { siteConfig } from '../../config/siteConfig';
 import { services } from '../../content/services';
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  // Year the site was built; fixed into the HTML so the page never changes after the build.
+  const year = __BUILD_YEAR__;
   return (
     <footer className="bg-navy-950 text-navy-100">
       <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.7fr_1fr_1.35fr]">
@@ -46,7 +47,10 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-3 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-[13px] text-navy-100/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {siteConfig.firm.name}. All rights reserved.</p>
+          <p>
+            © {year} {siteConfig.firm.name}. All rights reserved.
+            {siteConfig.firm.frn && <span className="block sm:inline"> ICAI Firm Reg. No. {siteConfig.firm.frn}</span>}
+          </p>
           <ul className="flex gap-5">
             <li><Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-white">Terms &amp; Conditions</Link></li>
