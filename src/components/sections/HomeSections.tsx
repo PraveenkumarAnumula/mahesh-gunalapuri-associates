@@ -130,12 +130,14 @@ export function FounderIntro() {
           <h2 id="founder-intro" className="text-[30px] font-semibold leading-[1.15] sm:text-[38px]">{founder.name}</h2>
           <p className="text-[15px] font-medium text-navy-800">{founder.designation}</p>
           <ul className="flex flex-col gap-1.5 text-[15px] text-slate">
-            {founder.qualifications.slice(0, 2).map((q) => (
+            {founder.qualifications.map((q) => (
               <li key={q} className="flex gap-2"><span aria-hidden="true" className="text-gold-700">—</span>{q}</li>
             ))}
             <li className="flex gap-2"><span aria-hidden="true" className="text-gold-700">—</span>{founder.experienceSummary}</li>
           </ul>
-          <p className="max-w-prose text-[16px] text-slate">{founder.shortBio}</p>
+          <blockquote className="max-w-prose border-l-2 border-gold-500 pl-4 font-display text-[19px] leading-snug text-navy-900">
+            “{founder.philosophy}”
+          </blockquote>
           <div>
             <ButtonLink to="/ca-profile">View Full Profile <ArrowRight className="h-4 w-4" aria-hidden="true" /></ButtonLink>
           </div>

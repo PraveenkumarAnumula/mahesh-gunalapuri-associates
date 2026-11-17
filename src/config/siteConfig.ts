@@ -50,7 +50,7 @@ export const siteConfig = {
   siteUrl: 'https://mahesh-gunalapuri-associates.netlify.app',
 
   /** Shows a thin notice at the top of every page saying the content is placeholder. */
-  showPreviewBanner: true,
+  showPreviewBanner: false,
 
   firm: {
     name: 'Mahesh Gunalapuri & Associates',
@@ -96,39 +96,34 @@ export const siteConfig = {
     /** Path to a portrait inside /public, e.g. '/images/founder.jpg'. Leave '' for the placeholder. */
     photo: '/images/mahesh-gunalapuri.jpg',
     photoAlt: 'Portrait of CA Mahesh Gunalapuri',
-    qualifications: ['Chartered Accountant (ACA), Associate Member of ICAI since August 2026', '[Degree, University, Year]'],
-    /** Short line used on cards, e.g. '12+ years in taxation and audit'. */
-    experienceSummary: 'Associate Member of ICAI (ACA), membership no. 297023',
-    shortBio:
-      '[Short biography placeholder — two or three sentences on the founder’s background, areas of focus and the kind of clients they work with.]',
-    fullBio: [
-      '[Biography paragraph 1 placeholder — professional background, articleship and early career.]',
-      '[Biography paragraph 2 placeholder — practice areas, industries served and approach to client work.]',
-    ],
+    qualifications: ['Chartered Accountant (ACA), Associate Member of ICAI since August 2026'],
+    /** Short line used on cards. */
+    experienceSummary: 'ICAI membership no. 297023',
+    /** Optional biography paragraphs for the CA Profile page. The section is hidden while empty. */
+    fullBio: [] as string[],
     specializations: [
-      'Individual and business income tax',
-      'GST registration, returns and advisory',
-      'Statutory, tax and internal audit',
-      'Company and LLP compliance',
+      'Income tax return filing and tax compliance',
+      'GST registration, returns and compliance',
+      'Company, partnership, society and trust registration',
+      'MSME, labour licence and FSSAI registration',
     ],
     experience: [
       {
         period: 'August 2026 – Present',
         role: 'Proprietor',
         organisation: 'Mahesh Gunalapuri & Associates',
-        summary: '[Describe responsibilities and practice focus.]',
-      },
-      {
-        period: '[Year] – [Year]',
-        role: '[Previous role]',
-        organisation: '[Previous firm or organisation]',
-        summary: '[Describe responsibilities and key areas of work.]',
+        summary:
+          'Leads the firm’s income tax, GST, registration and compliance work for individuals, professionals and businesses in and around Nalgonda.',
       },
     ] as ExperienceItem[],
-    industries: ['[Industry 1, e.g. Manufacturing]', '[Industry 2, e.g. Retail & Trading]', '[Industry 3, e.g. Professional Services]', '[Industry 4, e.g. Startups]'],
-    achievements: ['[Professional achievement placeholder]', '[Professional achievement placeholder]'],
+    /** Optional lists for the CA Profile page. Each box is hidden while its list is empty. */
+    industries: [] as string[],
+    achievements: [] as string[],
+    /** Professional philosophy, written in the founder’s voice. */
     philosophy:
-      '“[Personal professional philosophy placeholder — one or two sentences in the founder’s own words.]”',
+      'Every return I file and every registration I complete is a promise kept to a client. I believe good financial advice should be honest, easy to understand and always on time, so that you can focus on building your future with confidence.',
+    /** Short motivational line shown in the founder sections on the Home and About pages. */
+    motto: 'Compliance done right today builds the confidence to grow tomorrow.',
     linkedinUrl: '',
   },
 
@@ -155,11 +150,8 @@ export const siteConfig = {
      * Google Maps listing, tap Share and paste that link here.
      */
     mapsLink: 'https://www.google.com/maps/search/?api=1&query=Sri%20Laxmi%20Nagar%20Colony%20Road%20No%204%2C%20Near%20Shanmuka%20Apartment%2C%20Nalgonda%20508001',
-    hours: [
-      { days: 'Monday – Friday', time: '[10:00 AM – 7:00 PM]' },
-      { days: 'Saturday', time: '[10:00 AM – 2:00 PM]' },
-      { days: 'Sunday', time: 'Closed' },
-    ],
+    /** Office hours, e.g. { days: 'Monday – Saturday', time: '10:00 AM – 7:00 PM' }. Hidden while empty. */
+    hours: [] as { days: string; time: string }[],
   },
 
   /** Leave any value '' to hide that icon. */

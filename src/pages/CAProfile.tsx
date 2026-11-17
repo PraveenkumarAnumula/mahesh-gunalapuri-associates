@@ -44,7 +44,7 @@ export default function CAProfile() {
               )}
               <div>
                 <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">Qualification</dt>
-                <dd className="text-white">{founder.experienceSummary}</dd>
+                <dd className="text-white">{founder.qualifications[0]}</dd>
               </div>
             </dl>
             <div className="flex flex-wrap gap-3 pt-3">
@@ -58,11 +58,7 @@ export default function CAProfile() {
                 >
                   <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn profile
                 </a>
-              ) : (
-                <span className="inline-flex items-center gap-2 px-1 py-3 text-[13.5px] text-navy-100/60">
-                  <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn profile link to be added
-                </span>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
@@ -70,12 +66,14 @@ export default function CAProfile() {
 
       <div className="container-page grid gap-14 pb-20 pt-24 lg:grid-cols-[1.3fr_0.7fr] lg:gap-20">
         <div className="flex min-w-0 flex-col gap-14">
-          <section aria-labelledby="bio" className="flex flex-col gap-4">
-            <h2 id="bio" className="text-[28px] font-semibold">Biography</h2>
-            {founder.fullBio.map((p) => (
-              <p key={p} className="max-w-prose text-[16.5px] text-slate">{p}</p>
-            ))}
-          </section>
+          {founder.fullBio.length > 0 && (
+            <section aria-labelledby="bio" className="flex flex-col gap-4">
+              <h2 id="bio" className="text-[28px] font-semibold">Biography</h2>
+              {founder.fullBio.map((p) => (
+                <p key={p} className="max-w-prose text-[16.5px] text-slate">{p}</p>
+              ))}
+            </section>
+          )}
 
           <section aria-labelledby="experience" className="flex flex-col gap-6">
             <h2 id="experience" className="text-[28px] font-semibold">Professional experience</h2>
@@ -105,14 +103,19 @@ export default function CAProfile() {
 
           <section aria-labelledby="philosophy" className="rounded-md bg-mist p-8">
             <h2 id="philosophy" className="eyebrow mb-3 !font-mono">Professional philosophy</h2>
-            <p className="font-display text-[22px] leading-snug text-navy-900">{founder.philosophy}</p>
+            <blockquote className="font-display text-[22px] leading-snug text-navy-900">“{founder.philosophy}”</blockquote>
+            <p className="mt-4 text-[14px] text-slate">— {founder.name}</p>
           </section>
         </div>
 
         <aside className="flex flex-col gap-8">
           <ProfileList icon={<GraduationCap className="h-5 w-5" />} title="Qualifications" items={founder.qualifications} />
-          <ProfileList icon={<Building2 className="h-5 w-5" />} title="Industry experience" items={founder.industries} />
-          <ProfileList icon={<Award className="h-5 w-5" />} title="Professional achievements" items={founder.achievements} />
+          {founder.industries.length > 0 && (
+            <ProfileList icon={<Building2 className="h-5 w-5" />} title="Industry experience" items={founder.industries} />
+          )}
+          {founder.achievements.length > 0 && (
+            <ProfileList icon={<Award className="h-5 w-5" />} title="Professional achievements" items={founder.achievements} />
+          )}
         </aside>
       </div>
       <CtaBand title={`Speak with ${founder.name}.`} />

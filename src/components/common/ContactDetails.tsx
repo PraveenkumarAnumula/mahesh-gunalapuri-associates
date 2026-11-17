@@ -45,7 +45,7 @@ export default function ContactDetails({ onDark = false, showHours = true }: { o
           </address>
         </span>
       </li>
-      {showHours && (
+      {showHours && contact.hours.length > 0 && (
         <li className="flex gap-3">
           <Clock className={iconCls} aria-hidden="true" />
           <span className="flex flex-col">
