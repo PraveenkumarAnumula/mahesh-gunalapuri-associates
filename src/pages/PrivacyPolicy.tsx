@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
           body: (
             <p>
               Contact-form submissions are delivered to us by email through Web3Forms, a third-party form service. The website is hosted on
-              Vercel. These providers process data on our behalf under their own privacy terms.
+              Netlify. These providers process data on our behalf under their own privacy terms.
             </p>
           ),
         },

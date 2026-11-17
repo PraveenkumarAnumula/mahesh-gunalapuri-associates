@@ -2,7 +2,7 @@
 
 Website for AMS Tax Associates, Chartered Accountants: a firm profile, CA portfolio, services, insights (blog) and a consultation request form.
 
-**Stack:** React 18 + Vite 5 + TypeScript, Tailwind CSS 3, React Router 6, React Hook Form + Zod, Lucide icons, Framer Motion (mobile menu and hero only), react-helmet-async for SEO tags. Tests: Vitest + React Testing Library, Playwright. Hosting: Vercel (free Hobby plan). Contact form: Web3Forms (free plan).
+**Stack:** React 18 + Vite 5 + TypeScript, Tailwind CSS 3, React Router 6, React Hook Form + Zod, Lucide icons, Framer Motion (mobile menu and hero only), react-helmet-async for SEO tags. Tests: Vitest + React Testing Library, Playwright. Hosting: Netlify (free plan). Contact form: Web3Forms (free plan).
 
 The site currently uses **placeholder content**. Placeholders are written in `[square brackets]`, sample figures are labelled “Sample figure”, and demo articles are labelled “Demonstration content”.
 
@@ -62,12 +62,12 @@ Put image files in `public/images/`, then reference them from `siteConfig.ts`:
 
 ## 4. Environment variables
 
-Copy `.env.example` to `.env.local` for local development. On Vercel, set them under **Project → Settings → Environment Variables**, then redeploy.
+Copy `.env.example` to `.env.local` for local development. On Netlify, set them under **Site configuration → Environment variables**, then trigger a redeploy (Deploys → Trigger deploy).
 
 | Variable | Purpose |
 |---|---|
 | `VITE_WEB3FORMS_ACCESS_KEY` | Free key from [web3forms.com](https://web3forms.com). Enquiries are emailed to the address used to create the key. Without it, the form says it is not connected yet; it never shows a false success. |
-| `VITE_SITE_URL` | Live address without trailing slash, e.g. `https://ams-tax-associates.vercel.app` or your own domain. Used for canonical URLs, sitemap and share previews. |
+| `VITE_SITE_URL` | Live address without trailing slash, e.g. `https://ams-tax-associates.netlify.app` or your own domain. Used for canonical URLs, sitemap and share previews. |
 
 The Web3Forms key is designed to be used in the browser; it only allows sending form emails to you.
 
@@ -87,12 +87,12 @@ npm run build        # output in dist/
 Run the end-to-end suite against the live site:
 
 ```bash
-E2E_BASE_URL=https://your-site.vercel.app npx playwright test
+E2E_BASE_URL=https://your-site.netlify.app npx playwright test
 ```
 
 ## 6. Redeploy after changes
 
-The GitHub repository is connected to Vercel. Every push to `main` deploys automatically:
+The GitHub repository is connected to Netlify. Every push to `main` deploys automatically:
 
 ```bash
 git add -A
@@ -100,13 +100,13 @@ git commit -m "Update CA details"
 git push
 ```
 
-Vercel builds the site in about a minute. Check progress in the Vercel dashboard.
+Netlify builds the site in a minute or two. Check progress under **Deploys** in the Netlify dashboard.
 
 ## Free-tier notes
 
-- **Vercel Hobby**: free for personal, non-commercial use, 100 GB bandwidth/month. Vercel’s terms require the **Pro plan for commercial use**, so consider upgrading or moving to Netlify or Cloudflare Pages (both have free tiers that allow commercial use) once the firm uses the site for business.
+- **Netlify free plan**: commercial use allowed; 100 GB bandwidth and 300 build minutes per month. If limits are exceeded, the site is paused until the next month rather than billed automatically.
 - **Web3Forms free**: 250 submissions/month; submissions are emailed and not stored in a dashboard.
-- **Custom domain**: buying a domain costs money; connecting one in Vercel is free.
+- **Custom domain**: buying a domain costs money; connecting one in Netlify is free (HTTPS included).
 
 ## Project structure
 
@@ -123,5 +123,5 @@ src/
 tests/unit/              ← Vitest + Testing Library
 tests/e2e/               ← Playwright
 public/                  ← favicon, share image, images/
-vercel.json              ← SPA routing + security headers
+netlify.toml             ← build settings, SPA routing + security headers
 ```

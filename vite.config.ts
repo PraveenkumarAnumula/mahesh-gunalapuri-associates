@@ -37,7 +37,7 @@ function seoFiles(siteUrl: string): Plugin {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const siteUrl = (env.VITE_SITE_URL || 'https://ams-tax-associates.vercel.app').replace(/\/$/, '');
+  const siteUrl = (env.VITE_SITE_URL || 'https://ams-tax-associates.netlify.app').replace(/\/$/, '');
   return {
     plugins: [
       react(),

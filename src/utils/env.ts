@@ -1,4 +1,4 @@
-export const SITE_URL = ((import.meta.env.VITE_SITE_URL as string | undefined) || 'https://ams-tax-associates.vercel.app').replace(
+export const SITE_URL = ((import.meta.env.VITE_SITE_URL as string | undefined) || 'https://ams-tax-associates.netlify.app').replace(
   /\/$/,
   '',
 );
