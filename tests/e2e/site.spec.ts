@@ -207,11 +207,12 @@ test.describe('contact form (opens email app / WhatsApp, no server)', () => {
   });
 });
 
-test('no requests leave the site except the visitor\'s own clicks', async ({ page }) => {
+test('no requests leave the site except the visitor\'s own clicks', async ({ page, baseURL }) => {
   const external: string[] = [];
+  const siteHost = new URL(baseURL!).hostname;
   page.on('request', (r) => {
     const u = new URL(r.url());
-    if (!['localhost', '127.0.0.1'].includes(u.hostname)) external.push(r.url());
+    if (u.hostname !== siteHost) external.push(r.url());
   });
   for (const p of pages) {
     await page.goto(p.path);

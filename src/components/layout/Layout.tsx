@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Header from './Header';
@@ -6,10 +6,19 @@ import Footer from './Footer';
 import { siteConfig } from '../../config/siteConfig';
 import { organizationSchema } from '../../utils/structuredData';
 
-/** Scrolls to the top on page change, or to the #anchor when the URL has one. */
+/**
+ * Scrolls to the top when moving to another page, or to the #anchor when the URL has one.
+ * Does nothing on the first load: the browser already handles that, and acting then could
+ * undo a tap the visitor made while the page was still loading.
+ */
 function useScrollManagement() {
   const { pathname, hash } = useLocation();
+  const firstRun = useRef(true);
   useEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
     if (hash) {
       // Wait a frame so lazily loaded pages have rendered their sections.
       const id = decodeURIComponent(hash.slice(1));

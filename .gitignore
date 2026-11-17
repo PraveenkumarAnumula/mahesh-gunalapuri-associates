@@ -13,3 +13,6 @@ test-results
 
 # Original photo as supplied; the site uses the optimised copy in public/images/
 Image.jpg
+
+# Local Netlify folder
+.netlify
