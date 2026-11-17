@@ -192,7 +192,7 @@ export function CtaBand({ title = `${siteConfig.firm.closingLine}.` }: { title?:
           <h2 id="cta-band" className="text-[30px] font-semibold leading-[1.15] !text-white sm:text-[36px]">{title}</h2>
           <p className="text-[16.5px] text-navy-100/80">Tell us what you need help with. We will respond to discuss your requirement and next steps.</p>
         </div>
-        <ButtonLink to="/contact" variant="gold" className="shrink-0">
+        <ButtonLink to="/contact" variant="gold" className="w-full shrink-0 md:w-auto">
           Contact Us <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </ButtonLink>
       </div>

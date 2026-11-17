@@ -16,7 +16,7 @@ export default function Hero() {
           className="flex flex-col gap-6"
         >
           <p className="eyebrow-on-dark">{siteConfig.firm.tagline} · Nalgonda</p>
-          <h1 id="hero-title" className="text-[38px] font-semibold leading-[1.08] !text-white sm:text-[52px] lg:text-[58px]">
+          <h1 id="hero-title" className="text-[clamp(31px,9vw,38px)] font-semibold leading-[1.1] !text-white sm:text-[52px] lg:text-[58px]">
             Your trusted partner in taxation, compliance &amp; financial advisory.
           </h1>
           <p className="max-w-xl text-[17.5px] text-navy-100/80">

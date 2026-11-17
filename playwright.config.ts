@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
  * Set E2E_BASE_URL to run the same suite against the live site, e.g.
  *   E2E_BASE_URL=https://mahesh-gunalapuri-associates.netlify.app npx playwright test
  */
-const baseURL = process.env.E2E_BASE_URL || 'http://localhost:4173';
+const baseURL = process.env.E2E_BASE_URL || 'http://localhost:4174';
 const local = !process.env.E2E_BASE_URL;
 
 export default defineConfig({
@@ -15,12 +15,30 @@ export default defineConfig({
   reporter: [['list']],
   use: { baseURL, trace: 'retain-on-failure' },
   projects: [
+    // Full functional suite
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
+    // Responsive checks on real device profiles. iPhones and iPads run in WebKit (Safari's engine).
+    ...[
+      'iPhone SE',
+      'iPhone 14',
+      'iPhone 14 Pro Max',
+      'iPhone 14 landscape',
+      'Galaxy S8',
+      'Galaxy S9+',
+      'Pixel 7 landscape',
+      'iPad Mini',
+      'iPad Pro 11 landscape',
+    ].map((name) => ({
+      name: `device: ${name}`,
+      testMatch: /responsive\.spec\.ts/,
+      use: { ...devices[name] },
+    })),
   ],
   webServer: local
     ? {
-        command: 'npm run build && npm run preview',
+        // Separate output folder and port, so a running `npm run preview` is left alone.
+        command: 'npx tsc -b && npx vite build --outDir dist-e2e && npx vite preview --outDir dist-e2e --port 4174 --strictPort',
         url: baseURL,
         reuseExistingServer: false,
         timeout: 180_000,

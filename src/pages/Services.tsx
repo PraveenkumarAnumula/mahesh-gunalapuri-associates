@@ -22,14 +22,14 @@ export default function Services() {
       />
 
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[240px_1fr] lg:gap-16">
-        <nav aria-label="Services on this page" className="lg:sticky lg:top-28 lg:self-start">
+        <nav aria-label="Services on this page" className="min-w-0 lg:sticky lg:top-28 lg:self-start">
           <p className="eyebrow mb-3">On this page</p>
-          <ul className="flex flex-wrap gap-2 lg:flex-col lg:gap-0">
+          <ul className="swipe-row lg:mx-0 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0">
             {services.map((s) => (
               <li key={s.id}>
                 <a
                   href={`#${s.id}`}
-                  className="block rounded-md border border-line px-3 py-1.5 text-[14px] text-slate hover:border-navy-700 hover:text-navy-900 lg:rounded-none lg:border-0 lg:border-l-2 lg:px-4 lg:py-2"
+                  className="block whitespace-nowrap rounded-full border border-line px-3.5 py-2 text-[14px] text-slate hover:border-navy-700 hover:text-navy-900 lg:whitespace-normal lg:rounded-none lg:border-0 lg:border-l-2 lg:px-4 lg:py-2"
                 >
                   {s.title}
                 </a>
@@ -42,11 +42,11 @@ export default function Services() {
           {services.map((s) => (
             <article key={s.id} id={s.id} aria-labelledby={`${s.id}-title`} className="flex flex-col gap-6 border-b border-line py-12 first:pt-0 last:border-0">
               <div className="flex items-start gap-4">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-navy-900">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-navy-900 sm:h-12 sm:w-12">
                   <Icon name={s.icon} className="h-6 w-6 text-gold-300" />
                 </span>
                 <div className="flex flex-col gap-1">
-                  <h2 id={`${s.id}-title`} className="text-[26px] font-semibold leading-tight sm:text-[30px]">{s.title}</h2>
+                  <h2 id={`${s.id}-title`} className="text-[23px] font-semibold leading-tight sm:text-[30px]">{s.title}</h2>
                   <p className="text-[16px] text-slate">{s.short}</p>
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function Services() {
                 </div>
               </div>
               <div>
-                <ButtonLink to={`/contact?service=${encodeURIComponent(s.title)}`}>
+                <ButtonLink to={`/contact?service=${encodeURIComponent(s.title)}`} className="w-full sm:w-auto">
                   Enquire about {s.title.replace(/ Services$/, '')} <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </ButtonLink>
               </div>

@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-3 py-6 text-[13px] text-navy-100/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col gap-3 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-[13px] text-navy-100/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {siteConfig.firm.name}. All rights reserved.</p>
           <ul className="flex gap-5">
             <li><Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>

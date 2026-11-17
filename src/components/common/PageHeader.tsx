@@ -14,7 +14,7 @@ interface Props {
 export default function PageHeader({ eyebrow, title, intro, crumbs = [], children }: Props) {
   return (
     <header className="ledger-lines bg-navy-900 text-white">
-      <div className="container-page flex flex-col gap-5 py-14 sm:py-20">
+      <div className="container-page flex flex-col gap-4 py-12 sm:gap-5 sm:py-20">
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-1.5 text-[13px] text-navy-100/70">
             <li>
@@ -33,7 +33,7 @@ export default function PageHeader({ eyebrow, title, intro, crumbs = [], childre
           </ol>
         </nav>
         <p className="eyebrow-on-dark">{eyebrow}</p>
-        <h1 className="max-w-3xl text-[36px] font-semibold leading-[1.1] !text-white sm:text-[48px]">{title}</h1>
+        <h1 className="max-w-3xl text-[clamp(30px,8.5vw,36px)] font-semibold leading-[1.12] !text-white sm:text-[48px]">{title}</h1>
         {intro && <p className="max-w-2xl text-[17px] text-navy-100/80">{intro}</p>}
         {children}
       </div>

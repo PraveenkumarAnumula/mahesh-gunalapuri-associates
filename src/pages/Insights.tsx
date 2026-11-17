@@ -19,7 +19,7 @@ export default function Insights() {
   };
 
   const chip = (selected: boolean) =>
-    `rounded-full border px-3.5 py-1.5 text-[13.5px] transition-colors ${
+    `whitespace-nowrap rounded-full border px-3.5 py-2 text-[14px] transition-colors ${
       selected ? 'border-navy-900 bg-navy-900 text-white' : 'border-line bg-white text-slate hover:border-navy-700 hover:text-navy-900'
     }`;
 
@@ -37,7 +37,7 @@ export default function Insights() {
       />
       <section aria-label="Articles" className="py-14 sm:py-16">
         <div className="container-page flex flex-col gap-10">
-          <div role="group" aria-label="Filter articles by category" className="flex flex-wrap gap-2">
+          <div role="group" aria-label="Filter articles by category" className="swipe-row sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
             <button type="button" className={chip(!active)} aria-pressed={!active} onClick={() => select(null)}>All</button>
             {articleCategories.map((c) => (
               <button key={c} type="button" className={chip(active === c)} aria-pressed={active === c} onClick={() => select(c)}>

@@ -40,7 +40,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
-      <div className="container-page flex h-[72px] items-center justify-between gap-6">
+      <div className="container-page flex h-[72px] items-center justify-between gap-3 sm:gap-6">
         <Logo />
         <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center gap-7">
@@ -60,7 +60,7 @@ export default function Header() {
           <button
             ref={toggleRef}
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-md border border-line text-navy-900 xl:hidden"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-line text-navy-900 xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -80,7 +80,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="absolute inset-x-0 top-full h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-white xl:hidden"
+            className="absolute inset-x-0 top-full h-[calc(100vh-72px)] overflow-y-auto overscroll-contain border-t border-line bg-white pb-[env(safe-area-inset-bottom)] supports-[height:100dvh]:h-[calc(100dvh-72px)] xl:hidden"
           >
             <ul className="container-page flex flex-col py-4">
               {navRoutes.map((r) => (
