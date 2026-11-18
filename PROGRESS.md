@@ -2,11 +2,11 @@
 
 Last updated: 18 November 2026
 
-**Live site:** https://mahesh-gunalapuri-associates.netlify.app (Netlify free plan, deployed by Netlify CLI on 17 Nov 2026; not connected to GitHub, so pushing never deploys)
+**Live site:** https://mahesh-gunalapuri-associates.netlify.app (Netlify free plan, deployed by Netlify CLI; last deploy 18 Nov 2026 from commit `ca6adb1`; not connected to GitHub, so pushing never deploys)
 
 **Branches**
 - `fixes`: all work happens here.
-- `main` on GitHub: older code from before the static conversion. Local `main` was last deployed at commit `6969594`.
+- `main` on GitHub: matches the live site (`ca6adb1`, merged and pushed 18 Nov 2026).
 
 ## Done
 
@@ -18,7 +18,7 @@ Last updated: 18 November 2026
 - Mobile layout tested on iPhone, Android and iPad sizes; self-hosted fonts; SEO tags, sitemap and robots.txt.
 - Tests: 48 unit tests; Playwright end-to-end and device suite (214 passing, 18 Nov 2026); axe accessibility scan clean on all pages.
 
-### Fixed on `fixes`, not yet live (18 Nov 2026)
+### Fixes of 18 Nov 2026 (live since the 18 Nov deploy)
 
 - Scrolling: tapping a service shortcut while a page was still loading could jump back to the top (`6d54c3c`).
 - Removed the horizontal stripe lines from all navy sections, on mobile and desktop; also the gold line under the home hero and the dividers in the key-dates panel (`edf191c`).
@@ -37,7 +37,7 @@ Last updated: 18 November 2026
 
 ## Pending
 
-- [ ] **Publish the fixes above** when the user says "deploy to live" (merge `fixes` into `main` only after the user says "deploy").
+- [ ] **Netlify badge:** Netlify adds a floating "Powered by Netlify" badge (bottom-right) to the live site. Turning it off (`built_with_badge_enabled: false`) was refused by Netlify on this plan. On phones it can cover whatever is in that corner, e.g. the footer's Terms link at the very bottom. Options: extra bottom space in the footer on phones (small code change + redeploy), a paid Netlify plan, or moving to a free host without a badge (GitHub Pages / Cloudflare Pages).
 - [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (1000+ ITR filings etc.). (Loans service already removed.)
 - [ ] Mahesh sir to approve the philosophy and motto written in his voice (`founder.philosophy`, `founder.motto` in `siteConfig.ts`).
 - [ ] Optional details (each is hidden until added): business hours (`contact.hours`), LinkedIn (`founder.linkedinUrl`), social media links (`social`), biography paragraphs (`founder.fullBio`).
