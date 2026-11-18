@@ -13,9 +13,8 @@ const items = [
 /** Renders only the profiles configured in siteConfig.social. */
 export default function SocialLinks() {
   const active = items.filter((i) => isSet(siteConfig.social[i.key]));
-  if (!active.length) {
-    return <p className="text-[13px] text-navy-100/60">Social media profiles will appear here once added.</p>;
-  }
+  // Nothing is shown until at least one profile link is set in siteConfig.social.
+  if (!active.length) return null;
   return (
     <ul className="flex gap-2">
       {active.map(({ key, label, Icon }) => (
