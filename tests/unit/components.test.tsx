@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -159,5 +159,23 @@ describe('KeyDatesPanel', () => {
     expect(screen.getByText('GSTR-3B')).toBeInTheDocument();
     expect(screen.getByText('20th')).toBeInTheDocument();
     expect(screen.queryByText(/live/i)).not.toBeInTheDocument();
+  });
+});
+
+describe('footer copyright year', () => {
+  afterEach(() => vi.useRealTimers());
+
+  it('shows the founding year while it is still that year', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(2026, 10, 18));
+    renderAt('/');
+    expect(await screen.findByText(/© 2026 Mahesh Gunalapuri & Associates/)).toBeInTheDocument();
+  });
+
+  it('extends to the current year automatically, with no rebuild', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(2028, 0, 5));
+    renderAt('/');
+    expect(await screen.findByText(/© 2026–2028 Mahesh Gunalapuri & Associates/)).toBeInTheDocument();
   });
 });

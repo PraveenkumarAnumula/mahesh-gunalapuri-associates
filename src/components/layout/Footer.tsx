@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../common/Logo';
 import ContactDetails from '../common/ContactDetails';
@@ -7,8 +8,12 @@ import { siteConfig } from '../../config/siteConfig';
 import { services } from '../../content/services';
 
 export default function Footer() {
-  // Year the site was built; fixed into the HTML so the page never changes after the build.
-  const year = __BUILD_YEAR__;
+  // Copyright runs from the founding year to the current year, so it never needs a manual update.
+  // The built HTML shows the build year; after the page loads, the visitor's own clock takes over.
+  const startYear = Number(/\d{4}/.exec(siteConfig.firm.established)?.[0] ?? __BUILD_YEAR__);
+  const [year, setYear] = useState(__BUILD_YEAR__);
+  useEffect(() => setYear(new Date().getFullYear()), []);
+  const years = year > startYear ? `${startYear}–${year}` : `${startYear}`;
   return (
     <footer className="bg-navy-950 text-navy-100">
       <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.7fr_1fr_1.35fr]">
@@ -48,7 +53,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-3 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-[13px] text-navy-100/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.firm.name}. All rights reserved.
+            © {years} {siteConfig.firm.name}. All rights reserved.
             {siteConfig.firm.frn && <span className="block sm:inline"> ICAI Firm Reg. No. {siteConfig.firm.frn}</span>}
           </p>
           <ul className="flex gap-5">
