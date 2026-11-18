@@ -24,6 +24,7 @@ Last updated: 18 November 2026
 - Removed the horizontal stripe lines from all navy sections, on mobile and desktop; also the gold line under the home hero and the dividers in the key-dates panel (`edf191c`).
 - Buttons and links made clearly clickable: solid buttons at least 48px tall with hover and pressed effects; "Learn more" and "Read article" are buttons; new "Call 93479 44995" buttons on Contact and in the "Let's Grow Together" band; phone, email and inline links are underlined in the brand colour (`5f07bc6`).
 - Qualification line shortened to "Chartered Accountant (ACA), Associate Member of ICAI" (removed "since August 2026").
+- Home page figures (500+ ITR filings etc.) shown in a bordered panel with a line between each figure, on mobile and desktop.
 - Accessibility: no nested landmark regions (`b0a5e0a`, plus the contact sidebar in `5f07bc6`).
 
 ## Pending
