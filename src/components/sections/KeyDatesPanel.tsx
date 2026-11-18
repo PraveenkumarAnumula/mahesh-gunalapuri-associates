@@ -6,7 +6,8 @@ const dates = [
   { when: '11th', title: 'GSTR-1', note: 'Every month, for monthly filers' },
   { when: '20th', title: 'GSTR-3B', note: 'Every month, for monthly filers' },
   { when: '15th', title: 'Advance tax instalments', note: 'June, September, December and March' },
-  { when: '31 Jul', title: 'Income tax return', note: 'Non-audit cases' },
+  { when: '31 Jul', title: 'Income tax return (ITR 1 & 2)', note: 'Every year' },
+  { when: '31 Aug', title: 'Income tax return (ITR 3 & 4)', note: 'Non-audit cases' },
 ];
 
 export default function KeyDatesPanel() {

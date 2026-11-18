@@ -13,8 +13,8 @@ export default function Hero() {
             Your trusted partner in taxation, compliance &amp; financial advisory.
           </h1>
           <p className="max-w-xl text-[17.5px] text-navy-100/80">
-            {siteConfig.firm.slogan}. ITR filing, GST, business registrations, licences and loan assistance, handled with care and filed
-            on time. {siteConfig.firm.subSlogan}.
+            {siteConfig.firm.slogan}. ITR filing, GST, business registrations and licences, handled with care and filed on
+            time. {siteConfig.firm.subSlogan}.
           </p>
           <div className="flex flex-col gap-3 pt-2 sm:flex-row">
             <ButtonLink to="/contact" variant="gold">

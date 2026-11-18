@@ -74,7 +74,7 @@ export const siteConfig = {
      */
     logo: '',
     description:
-      'Mahesh Gunalapuri & Associates is a Chartered Accountancy firm in Nalgonda offering ITR filing, GST registration and returns, business registrations, MSME, labour and FSSAI licences, and loan assistance for individuals and businesses.',
+      'Mahesh Gunalapuri & Associates is a Chartered Accountancy firm in Nalgonda offering ITR filing, GST registration and returns, business registrations, and MSME, labour and FSSAI licences for individuals and businesses.',
     introduction:
       'We help individuals and businesses meet their tax and regulatory obligations with clarity and confidence. Our work is built on careful analysis, plain-language advice and filings that are done right and on time.',
     history:
@@ -183,7 +183,7 @@ export const siteConfig = {
   seo: {
     defaultTitle: 'Mahesh Gunalapuri & Associates | Chartered Accountants in Nalgonda — ITR, GST & Registrations',
     defaultDescription:
-      'Chartered Accountants in Nalgonda, Telangana: ITR filing, GST registration and returns, company, partnership, society and trust registration, MSME, labour licence, FSSAI and loan assistance.',
+      'Chartered Accountants in Nalgonda, Telangana: ITR filing, GST registration and returns, company, partnership, society and trust registration, MSME, labour licence and FSSAI.',
     keywords: 'Chartered Accountant Nalgonda, CA in Nalgonda, ITR filing, GST registration, GST consultant, income tax consultant, FSSAI license, MSME Udyam registration, Mahesh Gunalapuri & Associates',
     ogImage: '/og-image.png',
   },

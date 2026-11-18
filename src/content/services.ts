@@ -16,6 +16,8 @@ export interface Service {
   includes: string[];
   forWhom: string[];
   featured: boolean;
+  /** false hides the service from the footer list. Default: shown. */
+  inFooter?: boolean;
 }
 
 export const services: Service[] = [
@@ -121,7 +123,8 @@ export const services: Service[] = [
     ],
     includes: ['Business loans and overdraft (OD) limits', 'Home loans', 'Personal loans', 'Vehicle loans', 'Project reports and CMA data'],
     forWhom: ['Business owners seeking working capital', 'Families buying a home', 'Individuals planning a vehicle purchase'],
-    featured: true,
+    featured: false,
+    inFooter: false,
   },
   {
     id: 'audit',
@@ -148,7 +151,7 @@ export const services: Service[] = [
     ],
     includes: ['Bookkeeping and ledger maintenance', 'Bank and vendor reconciliations', 'Monthly MIS reports', 'Year-end finalisation'],
     forWhom: ['Small and medium businesses', 'Startups', 'Professional firms', 'Trusts and societies'],
-    featured: false,
+    featured: true,
   },
   {
     id: 'tax-planning',
