@@ -5,6 +5,7 @@ import {
   ChartColumn,
   Compass,
   Factory,
+  FileCheck,
   HardHat,
   Landmark,
   ReceiptText,
@@ -28,6 +29,7 @@ const icons = {
   shield: ShieldCheck,
   user: User,
   factory: Factory,
+  filecheck: FileCheck,
   hardhat: HardHat,
   utensils: UtensilsCrossed,
 } as const;

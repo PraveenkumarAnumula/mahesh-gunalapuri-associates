@@ -108,7 +108,7 @@ test('hero and founder CTAs lead to the right pages', async ({ page }) => {
 
 test('service cards jump to the matching section', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('link', { name: /GST Registration & Returns/ }).click();
+  await page.getByRole('link', { name: /GST Registration & Return Filing/ }).click();
   await expect(page).toHaveURL(/\/services#gst$/);
   await expect(page.locator('#gst')).toBeInViewport();
 });

@@ -75,9 +75,9 @@ describe('content integrity', () => {
       expect(Number.isNaN(new Date(a.date).getTime())).toBe(false);
     }
   });
-  it('has unique service ids, with the firm card services first and no loans service', () => {
+  it('has unique service ids, in the agreed order, with no loans service', () => {
     expect(new Set(services.map((s) => s.id)).size).toBe(services.length);
-    expect(services.slice(0, 6).map((s) => s.id)).toEqual(['itr-filing', 'gst', 'business-registration', 'msme-registration', 'labour-license', 'fssai']);
+    expect(services.slice(0, 5).map((s) => s.id)).toEqual(['itr-filing', 'gst', 'business-registration', 'tax-audit', 'audit']);
     expect(services.some((s) => /loan/i.test(s.title))).toBe(false);
   });
   it('links each expertise area to an existing service', () => {

@@ -66,7 +66,7 @@ export function ServicesOverview() {
             View all services
           </ButtonLink>
         </div>
-        <ul className="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((s) => (
             <li key={s.id} className="bg-white">
               <Link to={`/services#${s.id}`} className="group flex h-full flex-col gap-4 p-6 hover:bg-navy-50">

@@ -43,7 +43,7 @@ export const services: Service[] = [
     id: 'gst',
     icon: 'landmark',
     title: 'GST Registrations & Return Filings',
-    cardTitle: 'GST Registration & Returns',
+    cardTitle: 'GST Registration & Return Filing',
     short: 'GST registration, return filing and GST compliance.',
     details: [
       'From registration to monthly, quarterly and annual returns, we handle GST compliance and reconcile your input tax credit against GSTR-2B so that mismatches are caught early.',
@@ -57,7 +57,7 @@ export const services: Service[] = [
     id: 'business-registration',
     icon: 'building',
     title: 'Company / Partnership / Society / Trust Registrations',
-    cardTitle: 'Company, Partnership, Society & Trust Registration',
+    cardTitle: 'Company / Partnership / Society / Trust Registration',
     short: 'Start your business the right way.',
     details: [
       'We help you choose the right structure and complete the registration: private limited company, LLP, one-person company, partnership firm, society or trust.',
@@ -65,6 +65,34 @@ export const services: Service[] = [
     ],
     includes: ['Private limited company and OPC incorporation', 'LLP incorporation', 'Partnership deed and firm registration', 'Society and trust registration', 'PAN, TAN and GST registration for the new entity'],
     forWhom: ['New ventures and startups', 'Proprietors moving to a firm, LLP or company', 'Charitable and community organisations'],
+    featured: true,
+  },
+  {
+    id: 'tax-audit',
+    icon: 'filecheck',
+    title: 'Tax Audit',
+    cardTitle: 'Tax Audit',
+    short: 'Tax Audit Under The Income Tax Act For Businesses & Professionals',
+    details: [
+      'A tax audit is required under the Income-tax Act when a business’s turnover or a professional’s gross receipts cross the prescribed limits, and in certain presumptive-taxation cases.',
+      'We examine your books of account and records, prepare the tax audit report with the required particulars, and file it online before the due date, so that your income tax return can be filed on time.',
+    ],
+    includes: ['Checking whether a tax audit applies to you', 'Review of books of account and records', 'Preparation of the tax audit report', 'Online filing of the report', 'Coordination with your ITR filing'],
+    forWhom: ['Businesses above the turnover limit', 'Professionals above the receipts limit', 'Presumptive-taxation cases that need an audit', 'Firms, LLPs and companies'],
+    featured: true,
+  },
+  {
+    id: 'audit',
+    icon: 'search',
+    title: 'Statutory and Internal Audit',
+    cardTitle: 'Statutory / Internal Audit',
+    short: 'Independent audits that strengthen controls and credibility.',
+    details: [
+      'Statutory audits are carried out in line with the applicable Standards on Auditing and the relevant law, with clear communication throughout the engagement.',
+      'Internal audits focus on your processes and controls, and end with practical recommendations ranked by risk.',
+    ],
+    includes: ['Statutory audit', 'Internal audit and process reviews', 'Stock and fixed-asset verification'],
+    forWhom: ['Companies', 'LLPs and partnership firms', 'Trusts, societies and NGOs'],
     featured: true,
   },
   {
@@ -107,20 +135,6 @@ export const services: Service[] = [
     ],
     includes: ['FSSAI basic registration', 'State and central FSSAI licences', 'Renewals and modifications', 'Annual return guidance'],
     forWhom: ['Restaurants, hotels and caterers', 'Food manufacturers and processors', 'Grocery and food retailers', 'Home-based food businesses'],
-    featured: true,
-  },
-  {
-    id: 'audit',
-    icon: 'search',
-    title: 'Statutory, Tax & Internal Audit',
-    cardTitle: 'Statutory & Internal Audit',
-    short: 'Independent audits that strengthen controls and credibility.',
-    details: [
-      'Statutory and tax audits are carried out in line with the applicable Standards on Auditing and the relevant law, with clear communication throughout the engagement.',
-      'Internal audits focus on your processes and controls, and end with practical recommendations ranked by risk.',
-    ],
-    includes: ['Statutory audit', 'Tax audit under the Income-tax Act', 'Internal audit and process reviews', 'Stock and fixed-asset verification'],
-    forWhom: ['Companies', 'LLPs and partnership firms', 'Businesses subject to tax audit', 'Trusts, societies and NGOs'],
     featured: true,
   },
   {
