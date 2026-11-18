@@ -32,7 +32,8 @@ export interface Testimonial {
 }
 
 export interface ExperienceItem {
-  period: string;
+  /** Optional, e.g. '2024 – Present'. Hidden when empty. */
+  period?: string;
   role: string;
   organisation: string;
   summary: string;
@@ -109,7 +110,6 @@ export const siteConfig = {
     ],
     experience: [
       {
-        period: 'August 2026 – Present',
         role: 'Proprietor',
         organisation: 'Mahesh Gunalapuri & Associates',
         summary:

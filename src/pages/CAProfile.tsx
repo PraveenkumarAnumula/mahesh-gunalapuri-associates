@@ -79,9 +79,9 @@ export default function CAProfile() {
             <h2 id="experience" className="text-[28px] font-semibold">Professional experience</h2>
             <ol className="flex flex-col border-l border-line">
               {founder.experience.map((e) => (
-                <li key={e.role + e.period} className="relative flex flex-col gap-1 pb-8 pl-6 last:pb-0">
+                <li key={e.role + e.organisation} className="relative flex flex-col gap-1 pb-8 pl-6 last:pb-0">
                   <span aria-hidden="true" className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-white bg-gold-500" />
-                  <span className="font-mono text-[12.5px] tabular-nums text-gold-700">{e.period}</span>
+                  {e.period && <span className="font-mono text-[12.5px] tabular-nums text-gold-700">{e.period}</span>}
                   <h3 className="font-display text-[19px] font-semibold">{e.role}</h3>
                   <p className="text-[14.5px] font-medium text-navy-800">{e.organisation}</p>
                   <p className="text-[15px] text-slate">{e.summary}</p>

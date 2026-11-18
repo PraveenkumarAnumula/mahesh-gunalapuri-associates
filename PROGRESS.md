@@ -32,6 +32,7 @@ Last updated: 18 November 2026
 - Home figures updated to 1000+ ITR Filings and 200+ GST Registrations And Filings (50+ and 70+ unchanged).
 - New **Financial / Other Certificates** service (net worth certificates, project reports for MSME loans, other statutory certificates), added last everywhere: home cards, Services page, footer, contact form. Home services grid now shows ten cards as two rows of five on wide screens.
 - Footer: removed the "social media profiles will appear here" note (`dca0489`). Copyright year updates itself: "© 2026" now, "© 2026–2027" from January, with no rebuild needed.
+- CA Profile: removed the "August 2026 – Present" duration from the experience entry.
 - Accessibility: no nested landmark regions (`b0a5e0a`, plus the contact sidebar in `5f07bc6`).
 
 ## Pending
