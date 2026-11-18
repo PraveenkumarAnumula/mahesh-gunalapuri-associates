@@ -54,7 +54,7 @@ describe('pages', () => {
 
   it('shows the track-record figures without sample labels', () => {
     renderAt('/');
-    expect(screen.getByText('ITR filings')).toBeInTheDocument();
+    expect(screen.getByText('ITR Filings')).toBeInTheDocument();
     expect(screen.queryByText('Sample figure')).not.toBeInTheDocument();
   });
 

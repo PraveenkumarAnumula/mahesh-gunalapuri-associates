@@ -164,10 +164,10 @@ export const siteConfig = {
   },
 
   stats: [
-    { value: '500+', label: 'ITR filings', isSample: false },
-    { value: '100+', label: 'GST registrations and filings', isSample: false },
-    { value: '50+', label: 'Company incorporations', isSample: false },
-    { value: '70+', label: 'Partnership registrations', isSample: false },
+    { value: '500+', label: 'ITR Filings', isSample: false },
+    { value: '100+', label: 'GST Registrations And Filings', isSample: false },
+    { value: '50+', label: 'Company Incorporations', isSample: false },
+    { value: '70+', label: 'Partnership Registrations', isSample: false },
   ] as Stat[],
 
   values: [
