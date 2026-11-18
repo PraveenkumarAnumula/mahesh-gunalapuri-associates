@@ -42,3 +42,14 @@ npm run preview      # serves it at http://localhost:4173
 For live editing while changing code: `npm run dev` (http://localhost:5173).
 
 Checks: `npm run lint`, `npm run typecheck`, `npm run test`, and `npm run test:e2e` (first time: `npx playwright install chromium webkit`).
+
+## Netlify setup on a new computer (one time)
+
+Only needed on a computer that will deploy. Deploys still happen only when the user says "deploy to live".
+
+```bash
+npx netlify-cli@17.38.1 login
+npx netlify-cli@17.38.1 link --id bb94d8e7-7f7d-42be-bac9-753fbfb2ca2e   # links this folder to the existing live site
+```
+
+Do not run `netlify sites:create` or `netlify init`; they would create a second site.
