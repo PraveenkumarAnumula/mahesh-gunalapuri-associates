@@ -108,14 +108,8 @@ export const siteConfig = {
       'Company, partnership, society and trust registration',
       'MSME, labour licence and FSSAI registration',
     ],
-    experience: [
-      {
-        role: 'Proprietor',
-        organisation: 'Mahesh Gunalapuri & Associates',
-        summary:
-          'Leads the firm’s income tax, GST, registration and compliance work for individuals, professionals and businesses in and around Nalgonda.',
-      },
-    ] as ExperienceItem[],
+    /** Optional "Professional experience" entries for the CA Profile page. The section is hidden while empty. */
+    experience: [] as ExperienceItem[],
     /** Optional lists for the CA Profile page. Each box is hidden while its list is empty. */
     industries: [] as string[],
     achievements: [] as string[],

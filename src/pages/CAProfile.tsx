@@ -75,20 +75,22 @@ export default function CAProfile() {
             </section>
           )}
 
-          <section aria-labelledby="experience" className="flex flex-col gap-6">
-            <h2 id="experience" className="text-[28px] font-semibold">Professional experience</h2>
-            <ol className="flex flex-col border-l border-line">
-              {founder.experience.map((e) => (
-                <li key={e.role + e.organisation} className="relative flex flex-col gap-1 pb-8 pl-6 last:pb-0">
-                  <span aria-hidden="true" className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-white bg-gold-500" />
-                  {e.period && <span className="font-mono text-[12.5px] tabular-nums text-gold-700">{e.period}</span>}
-                  <h3 className="font-display text-[19px] font-semibold">{e.role}</h3>
-                  <p className="text-[14.5px] font-medium text-navy-800">{e.organisation}</p>
-                  <p className="text-[15px] text-slate">{e.summary}</p>
-                </li>
-              ))}
-            </ol>
-          </section>
+          {founder.experience.length > 0 && (
+            <section aria-labelledby="experience" className="flex flex-col gap-6">
+              <h2 id="experience" className="text-[28px] font-semibold">Professional experience</h2>
+              <ol className="flex flex-col border-l border-line">
+                {founder.experience.map((e) => (
+                  <li key={e.role + e.organisation} className="relative flex flex-col gap-1 pb-8 pl-6 last:pb-0">
+                    <span aria-hidden="true" className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-white bg-gold-500" />
+                    {e.period && <span className="font-mono text-[12.5px] tabular-nums text-gold-700">{e.period}</span>}
+                    <h3 className="font-display text-[19px] font-semibold">{e.role}</h3>
+                    <p className="text-[14.5px] font-medium text-navy-800">{e.organisation}</p>
+                    <p className="text-[15px] text-slate">{e.summary}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
 
           <section aria-labelledby="specialisation" className="flex flex-col gap-5">
             <h2 id="specialisation" className="text-[28px] font-semibold">Areas of specialisation</h2>
