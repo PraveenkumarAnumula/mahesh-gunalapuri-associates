@@ -5,7 +5,6 @@ import {
   ChartColumn,
   Compass,
   Factory,
-  HandCoins,
   HardHat,
   Landmark,
   ReceiptText,
@@ -31,7 +30,6 @@ const icons = {
   factory: Factory,
   hardhat: HardHat,
   utensils: UtensilsCrossed,
-  handcoins: HandCoins,
 } as const;
 
 export type IconName = keyof typeof icons;

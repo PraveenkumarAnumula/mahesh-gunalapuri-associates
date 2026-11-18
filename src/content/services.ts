@@ -16,8 +16,6 @@ export interface Service {
   includes: string[];
   forWhom: string[];
   featured: boolean;
-  /** false hides the service from the footer list. Default: shown. */
-  inFooter?: boolean;
 }
 
 export const services: Service[] = [
@@ -110,21 +108,6 @@ export const services: Service[] = [
     includes: ['FSSAI basic registration', 'State and central FSSAI licences', 'Renewals and modifications', 'Annual return guidance'],
     forWhom: ['Restaurants, hotels and caterers', 'Food manufacturers and processors', 'Grocery and food retailers', 'Home-based food businesses'],
     featured: true,
-  },
-  {
-    id: 'loans',
-    icon: 'handcoins',
-    title: 'Business, OD, Home, Personal & Vehicle Loans',
-    cardTitle: 'Business, Home & Personal Loans',
-    short: 'Financial support for your goals.',
-    details: [
-      'We help you prepare the financial documents lenders ask for, such as income tax returns, financial statements, project reports and CMA data, and assist with your loan application.',
-      'Loan approval, amount and interest rate are decided by the bank or financial institution.',
-    ],
-    includes: ['Business loans and overdraft (OD) limits', 'Home loans', 'Personal loans', 'Vehicle loans', 'Project reports and CMA data'],
-    forWhom: ['Business owners seeking working capital', 'Families buying a home', 'Individuals planning a vehicle purchase'],
-    featured: false,
-    inFooter: false,
   },
   {
     id: 'audit',

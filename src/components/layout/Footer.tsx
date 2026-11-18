@@ -32,7 +32,7 @@ export default function Footer() {
         <div>
           <h2 className="eyebrow-on-dark mb-4 !font-mono">Services</h2>
           <ul className="flex flex-col gap-2.5 text-[14.5px]">
-            {services.filter((s) => s.inFooter !== false).map((s) => (
+            {services.map((s) => (
               <li key={s.id}>
                 <Link to={`/services#${s.id}`} className="text-navy-100/85 underline-offset-4 hover:text-gold-300 hover:underline">{s.title}</Link>
               </li>
