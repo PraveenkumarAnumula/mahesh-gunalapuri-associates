@@ -96,7 +96,7 @@ export const siteConfig = {
     /** Path to a portrait inside /public, e.g. '/images/founder.jpg'. Leave '' for the placeholder. */
     photo: '/images/mahesh-gunalapuri.jpg',
     photoAlt: 'Portrait of CA Mahesh Gunalapuri',
-    qualifications: ['Chartered Accountant (ACA), Associate Member of ICAI since August 2026'],
+    qualifications: ['Chartered Accountant (ACA), Associate Member of ICAI'],
     /** Short line used on cards. */
     experienceSummary: 'ICAI membership no. 297023',
     /** Optional biography paragraphs for the CA Profile page. The section is hidden while empty. */
