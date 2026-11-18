@@ -188,7 +188,7 @@ export function Testimonials() {
 
 export function CtaBand({ title = `${siteConfig.firm.closingLine}.` }: { title?: string }) {
   return (
-    <section aria-labelledby="cta-band" className="ledger-lines bg-navy-900">
+    <section aria-labelledby="cta-band" className="bg-navy-900">
       <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center">
         <div className="flex max-w-2xl flex-col gap-3">
           <h2 id="cta-band" className="text-[30px] font-semibold leading-[1.15] !text-white sm:text-[36px]">{title}</h2>

@@ -5,7 +5,7 @@ import { siteConfig } from '../../config/siteConfig';
 
 export default function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="ledger-lines relative overflow-hidden bg-navy-900 text-white">
+    <section aria-labelledby="hero-title" className="relative overflow-hidden bg-navy-900 text-white">
       <div className="container-page grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:py-24">
         <div className="flex flex-col gap-6">
           <p className="eyebrow-on-dark">{siteConfig.firm.tagline} · Nalgonda</p>
@@ -27,7 +27,6 @@ export default function Hero() {
         </div>
         <KeyDatesPanel />
       </div>
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-gold-500/40" />
     </section>
   );
 }

@@ -60,7 +60,7 @@ export default function About() {
         </div>
       </section>
 
-      <section aria-labelledby="philosophy" className="ledger-lines bg-navy-900 py-20">
+      <section aria-labelledby="philosophy" className="bg-navy-900 py-20">
         <div className="container-page flex max-w-4xl flex-col gap-5">
           <p className="eyebrow-on-dark">Professional philosophy</p>
           <h2 id="philosophy" className="sr-only">Professional philosophy</h2>

@@ -8,7 +8,7 @@ const fonts = '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@4
 const lines = `background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(200,173,124,.09) 31px,rgba(200,173,124,.09) 32px)`;
 
 const og = `<html><head>${fonts}</head><body style="margin:0">
-<div style="width:1200px;height:630px;background:${navy};${lines};display:flex;flex-direction:column;justify-content:space-between;padding:72px 80px;box-sizing:border-box;font-family:Inter,sans-serif;color:white">
+<div style="width:1200px;height:630px;background:${navy};display:flex;flex-direction:column;justify-content:space-between;padding:72px 80px;box-sizing:border-box;font-family:Inter,sans-serif;color:white">
   <div style="display:flex;align-items:center;gap:20px">
     <div style="width:72px;height:72px;border:1.5px solid ${gold}99;display:grid;place-items:center;font-family:'Source Serif 4',serif;font-weight:600;font-size:26px;color:${goldLight}">MGA</div>
     <div style="font-family:monospace;letter-spacing:.18em;text-transform:uppercase;color:${goldLight};font-size:18px">Chartered Accountants</div>

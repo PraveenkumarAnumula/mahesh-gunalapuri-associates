@@ -12,13 +12,13 @@ const dates = [
 export default function KeyDatesPanel() {
   return (
     <aside aria-labelledby="key-dates-title" className="w-full rounded-md border border-white/10 bg-navy-950/60 p-5 shadow-panel sm:p-6">
-      <h2 id="key-dates-title" className="flex items-center gap-2 border-b border-white/10 pb-4 font-sans text-[14px] font-medium !text-white">
+      <h2 id="key-dates-title" className="flex items-center gap-2 pb-2 font-sans text-[14px] font-medium !text-white">
         <CalendarClock className="h-4 w-4 text-gold-300" aria-hidden="true" />
         Key compliance dates
       </h2>
-      <ul className="divide-y divide-white/10">
+      <ul className="flex flex-col gap-1">
         {dates.map((d) => (
-          <li key={d.title} className="grid grid-cols-[64px_1fr] items-baseline gap-3 py-3.5">
+          <li key={d.title} className="grid grid-cols-[64px_1fr] items-baseline gap-3 py-2.5">
             <span className="font-mono text-[14px] tabular-nums text-gold-300">{d.when}</span>
             <span className="flex min-w-0 flex-col">
               <span className="text-[14.5px] text-white">{d.title}</span>

@@ -13,7 +13,7 @@ interface Props {
 /** Navy band that opens every inner page, with breadcrumbs. */
 export default function PageHeader({ eyebrow, title, intro, crumbs = [], children }: Props) {
   return (
-    <header className="ledger-lines bg-navy-900 text-white">
+    <header className="bg-navy-900 text-white">
       <div className="container-page flex flex-col gap-4 py-12 sm:gap-5 sm:py-20">
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-1.5 text-[13px] text-navy-100/70">

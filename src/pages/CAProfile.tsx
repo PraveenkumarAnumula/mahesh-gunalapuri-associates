@@ -22,7 +22,7 @@ export default function CAProfile() {
           ...(isSet(founder.linkedinUrl) ? { sameAs: [founder.linkedinUrl] } : {}),
         }}
       />
-      <header className="ledger-lines bg-navy-900">
+      <header className="bg-navy-900">
         <div className="container-page grid items-end gap-10 pt-14 sm:pt-20 md:grid-cols-[0.75fr_1.25fr] lg:gap-16">
           <div className="mx-auto w-full max-w-xs md:mx-0 md:translate-y-12">
             <Portrait priority className="border-4 border-white shadow-panel" />

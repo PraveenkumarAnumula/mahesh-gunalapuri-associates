@@ -134,16 +134,6 @@
   .eyebrow-on-dark {
     @apply font-mono text-[12px] font-medium uppercase tracking-[0.14em] text-gold-300;
   }
-  /* Ledger rule texture used on navy bands: faint horizontal lines like accounting paper. */
-  .ledger-lines {
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 31px,
-      rgba(200, 173, 124, 0.09) 31px,
-      rgba(200, 173, 124, 0.09) 32px
-    );
-  }
   .sample-tag {
     @apply inline-flex items-center rounded-sm border border-dashed border-gold-500/70 px-1.5 py-px font-mono text-[10.5px] uppercase tracking-wider text-gold-700;
   }
