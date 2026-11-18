@@ -16,11 +16,18 @@ Last updated: 18 November 2026
 - Contact: click-to-call (93479 44995, 90595 96977), mailto (camaheshgunalapuri@gmail.com), WhatsApp (wa.me/919347944995); enquiry form opens the visitor's email app or WhatsApp.
 - Founder photo, professional philosophy and motto; all placeholder text removed.
 - Mobile layout tested on iPhone, Android and iPad sizes; self-hosted fonts; SEO tags, sitemap and robots.txt.
-- Tests: 48 unit tests; Playwright end-to-end and device suite.
+- Tests: 48 unit tests; Playwright end-to-end and device suite (214 passing, 18 Nov 2026); axe accessibility scan clean on all pages.
+
+### Fixed on `fixes`, not yet live (18 Nov 2026)
+
+- Scrolling: tapping a service shortcut while a page was still loading could jump back to the top (`6d54c3c`).
+- Removed the horizontal stripe lines from all navy sections, on mobile and desktop; also the gold line under the home hero and the dividers in the key-dates panel (`edf191c`).
+- Buttons and links made clearly clickable: solid buttons at least 48px tall with hover and pressed effects; "Learn more" and "Read article" are buttons; new "Call 93479 44995" buttons on Contact and in the "Let's Grow Together" band; phone, email and inline links are underlined in the brand colour (`5f07bc6`).
+- Accessibility: no nested landmark regions (`b0a5e0a`, plus the contact sidebar in `5f07bc6`).
 
 ## Pending
 
-- [ ] **Not yet live:** scrolling fix (commit `6d54c3c`). On slow phones, tapping a service shortcut during page load could jump back to the top. Low priority; publish with the next content update.
+- [ ] **Publish the fixes above** when the user says "deploy to live" (merge `fixes` into `main` only after the user says "deploy").
 - [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (500+ ITR filings etc.) and the loans service.
 - [ ] Mahesh sir to approve the philosophy and motto written in his voice (`founder.philosophy`, `founder.motto` in `siteConfig.ts`).
 - [ ] Optional details (each is hidden until added): business hours (`contact.hours`), LinkedIn (`founder.linkedinUrl`), social media links (`social`), biography paragraphs (`founder.fullBio`).
