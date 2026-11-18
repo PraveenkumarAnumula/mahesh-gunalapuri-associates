@@ -11,7 +11,7 @@ Last updated: 18 November 2026
 ## Done
 
 - Static site: every page pre-rendered to HTML; no server, API, database, form service or environment variables.
-- Pages: Home, About, CA Profile, Services (10), Expertise, Insights (5 demo articles), Contact, Privacy Policy, Terms, 404.
+- Pages: Home, About, CA Profile, Services (12), Expertise, Insights (5 demo articles), Contact, Privacy Policy, Terms, 404.
 - Firm details from the visiting card and the ICAI certificate: FRN 032056S, proprietor CA Mahesh Gunalapuri (ACA, membership no. 297023), established August 2026, head office H No 6-2-0005, Sri Laxmi Nagar Colony, Road No 4, Near Shanmuka Apartment, Nalgonda 508001.
 - Contact: click-to-call (93479 44995, 90595 96977), mailto (camaheshgunalapuri@gmail.com), WhatsApp (wa.me/919347944995); enquiry form opens the visitor's email app or WhatsApp.
 - Founder photo, professional philosophy and motto; all placeholder text removed.
@@ -30,6 +30,7 @@ Last updated: 18 November 2026
 - Key compliance dates in Title Case; dates bold and larger (`c6dfba9`).
 - Home figures' labels in Title Case (`082dfcf`).
 - Home figures updated to 1000+ ITR Filings and 200+ GST Registrations And Filings (50+ and 70+ unchanged).
+- New **Financial / Other Certificates** service (net worth certificates, project reports for MSME loans, other statutory certificates), added last everywhere: home cards, Services page, footer, contact form. Home services grid now shows ten cards as two rows of five on wide screens.
 - Accessibility: no nested landmark regions (`b0a5e0a`, plus the contact sidebar in `5f07bc6`).
 
 ## Pending

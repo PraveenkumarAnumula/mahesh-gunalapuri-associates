@@ -176,6 +176,20 @@ export const services: Service[] = [
     forWhom: ['Private limited companies', 'LLPs', 'One-person companies'],
     featured: false,
   },
+  {
+    id: 'certificates',
+    icon: 'filebadge',
+    title: 'Financial / Other Certificates',
+    cardTitle: 'Financial / Other Certificates',
+    short: 'Net Worth Certificate, Project Reports For MSME Loans & Other Statutory Certificates',
+    details: [
+      'Banks, embassies, government departments and tender authorities often ask for figures certified by a Chartered Accountant. We prepare these certificates after checking the supporting records.',
+      'We also prepare project reports for MSME loan applications, with projections and financial details in the format lenders expect.',
+    ],
+    includes: ['Net worth certificates', 'Project reports for MSME loans', 'Turnover certificates', 'Other statutory and financial certificates'],
+    forWhom: ['Individuals applying for visas or education loans', 'MSMEs applying for bank finance', 'Businesses bidding for tenders', 'Firms and companies needing certified figures'],
+    featured: true,
+  },
 ];
 
 export const serviceOptions = services.map((s) => s.title);
