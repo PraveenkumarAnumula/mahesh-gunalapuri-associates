@@ -11,7 +11,7 @@ const dates = [
 
 export default function KeyDatesPanel() {
   return (
-    <aside aria-labelledby="key-dates-title" className="w-full rounded-md border border-white/10 bg-navy-950/60 p-5 shadow-panel sm:p-6">
+    <div role="region" aria-labelledby="key-dates-title" className="w-full rounded-md border border-white/10 bg-navy-950/60 p-5 shadow-panel sm:p-6">
       <h2 id="key-dates-title" className="flex items-center gap-2 pb-2 font-sans text-[14px] font-medium !text-white">
         <CalendarClock className="h-4 w-4 text-gold-300" aria-hidden="true" />
         Key compliance dates
@@ -30,6 +30,6 @@ export default function KeyDatesPanel() {
       <p className="mt-3 text-[12px] leading-snug text-navy-100/50">
         Usual due dates for regular cases. The government sometimes extends them, so check with us before relying on a date.
       </p>
-    </aside>
+    </div>
   );
 }
