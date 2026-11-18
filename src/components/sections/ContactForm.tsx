@@ -89,7 +89,7 @@ export default function ContactForm({ defaultService = '', openLink = defaultOpe
             </p>
             <p className="text-slate">
               Nothing opened?{' '}
-              <a href={opened.href} target={opened.channel === 'whatsapp' ? '_blank' : undefined} rel="noopener noreferrer" className="font-medium text-navy-800 underline underline-offset-2">
+              <a href={opened.href} target={opened.channel === 'whatsapp' ? '_blank' : undefined} rel="noopener noreferrer" className="link">
                 {opened.channel === 'email' ? 'Open the email again' : 'Open WhatsApp again'}
               </a>
               , or call us on {contact.phone}.
@@ -139,7 +139,7 @@ export default function ContactForm({ defaultService = '', openLink = defaultOpe
         <button
           type="submit"
           onClick={() => (channelRef.current = 'email')}
-          className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md bg-navy-900 px-6 py-3 text-[15px] font-medium text-white hover:bg-navy-800 sm:w-auto"
+          className="btn btn-primary w-full sm:w-auto"
         >
           <Mail className="h-4 w-4" aria-hidden="true" /> Send by email
         </button>
@@ -147,7 +147,7 @@ export default function ContactForm({ defaultService = '', openLink = defaultOpe
           <button
             type="submit"
             onClick={() => (channelRef.current = 'whatsapp')}
-            className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md bg-[#1F7A4D] px-6 py-3 text-[15px] font-medium text-white hover:bg-[#19663F] sm:w-auto"
+            className="btn btn-whatsapp w-full sm:w-auto"
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" /> Send on WhatsApp
           </button>

@@ -35,7 +35,7 @@ export default function Expertise() {
                   ))}
                 </ul>
                 {service && (
-                  <Link to={`/services#${service.id}`} className="mt-auto inline-flex items-center gap-1.5 pt-2 text-[14px] font-medium text-navy-800 hover:text-navy-900">
+                  <Link to={`/services#${service.id}`} className="link mt-auto inline-flex items-center gap-1.5 self-start pt-2 text-[14px]">
                     Related service: {service.title} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </Link>
                 )}

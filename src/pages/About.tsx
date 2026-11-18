@@ -76,7 +76,7 @@ export default function About() {
             <h2 id="founder" className="text-[30px] font-semibold sm:text-[34px]">{founder.name}</h2>
             <p className="text-[15px] font-medium text-navy-800">{founder.designation}</p>
             <p className="max-w-prose font-display text-[19px] leading-snug text-navy-900">“{founder.motto}”</p>
-            <div><ButtonLink to="/ca-profile" variant="secondary">View Full Profile <ArrowRight className="h-4 w-4" aria-hidden="true" /></ButtonLink></div>
+            <div><ButtonLink to="/ca-profile">View Full Profile <ArrowRight className="h-4 w-4" aria-hidden="true" /></ButtonLink></div>
           </div>
         </div>
       </section>

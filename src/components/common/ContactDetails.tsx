@@ -14,7 +14,7 @@ export default function ContactDetails({ onDark = false, showHours = true }: { o
   const mail = mailtoHref(contact.email, `Enquiry for ${firm.name}`);
   const muted = onDark ? 'text-navy-100/70' : 'text-slate';
   const strong = onDark ? 'text-white' : 'text-ink';
-  const link = onDark ? 'text-white underline-offset-4 hover:underline' : 'text-navy-800 underline-offset-4 hover:underline';
+  const link = `${onDark ? 'link-on-dark' : 'link'} inline-block py-1`;
   const iconCls = `mt-0.5 h-4 w-4 shrink-0 ${onDark ? 'text-gold-300' : 'text-gold-700'}`;
 
   return (
@@ -65,17 +65,17 @@ export default function ContactDetails({ onDark = false, showHours = true }: { o
 /** WhatsApp button. Disabled, with an explanation, until siteConfig.contact.whatsapp is set. */
 export function WhatsAppButton({ className = '' }: { className?: string }) {
   const href = whatsappHref(contact.whatsapp, `Hello ${firm.name}, I would like to enquire about your services.`);
-  const cls = `inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-[15px] font-medium ${className}`;
+  const cls = `btn ${className}`;
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={`${cls} bg-[#1F7A4D] text-white hover:bg-[#19663F]`}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={`${cls} btn-whatsapp`}>
         <MessageCircle className="h-4 w-4" aria-hidden="true" /> Chat on WhatsApp
       </a>
     );
   }
   return (
     <span className="flex flex-col gap-1.5">
-      <button type="button" disabled aria-describedby="wa-note" className={`${cls} cursor-not-allowed border border-dashed border-line bg-mist text-slate-soft`}>
+      <button type="button" disabled aria-describedby="wa-note" className={`${cls} cursor-not-allowed border border-dashed border-line bg-mist text-slate-soft shadow-none hover:translate-y-0 hover:shadow-none`}>
         <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
       </button>
       <span id="wa-note" className="text-[12.5px] text-slate-soft">WhatsApp chat will be available once the firm’s number is added.</span>

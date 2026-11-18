@@ -1,21 +1,17 @@
 import { Link, type LinkProps } from 'react-router-dom';
 
-type Variant = 'primary' | 'secondary' | 'gold' | 'ghost-light';
+/**
+ * primary: navy button for light backgrounds.
+ * gold / light: for navy backgrounds (gold for the main action, white for the second one).
+ * Styles live in src/styles/index.css (.btn, .btn-*), so every button on the site matches.
+ * Class names are written out in full: Tailwind drops styles whose names are built from pieces.
+ */
+const variants = {
+  primary: 'btn btn-primary',
+  gold: 'btn btn-gold',
+  light: 'btn btn-light',
+} as const;
 
-const base =
-  'inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-[15px] font-medium transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
-
-const variants: Record<Variant, string> = {
-  primary: 'bg-navy-900 text-white hover:bg-navy-800 focus-visible:outline-gold-500',
-  secondary: 'border border-navy-900/20 bg-white text-navy-900 hover:border-navy-900/50 hover:bg-navy-50',
-  gold: 'bg-gold-400 text-navy-950 hover:bg-gold-300',
-  'ghost-light': 'border border-white/30 text-white hover:border-white/70 hover:bg-white/5',
-};
-
-function buttonClass(variant: Variant = 'primary', extra = '') {
-  return `${base} ${variants[variant]} ${extra}`;
-}
-
-export function ButtonLink({ variant = 'primary', className = '', ...props }: LinkProps & { variant?: Variant }) {
-  return <Link className={buttonClass(variant, className)} {...props} />;
+export function ButtonLink({ variant = 'primary', className = '', ...props }: LinkProps & { variant?: keyof typeof variants }) {
+  return <Link className={`${variants[variant]} ${className}`} {...props} />;
 }

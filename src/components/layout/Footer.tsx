@@ -23,7 +23,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-2.5 text-[14.5px]">
             {[...navRoutes, { path: '/ca-profile', label: 'CA Profile' }].map((r) => (
               <li key={r.path}>
-                <Link to={r.path} className="text-navy-100/80 hover:text-white">{r.label}</Link>
+                <Link to={r.path} className="text-navy-100/85 underline-offset-4 hover:text-gold-300 hover:underline">{r.label}</Link>
               </li>
             ))}
           </ul>
@@ -34,7 +34,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-2.5 text-[14.5px]">
             {services.map((s) => (
               <li key={s.id}>
-                <Link to={`/services#${s.id}`} className="text-navy-100/80 hover:text-white">{s.title}</Link>
+                <Link to={`/services#${s.id}`} className="text-navy-100/85 underline-offset-4 hover:text-gold-300 hover:underline">{s.title}</Link>
               </li>
             ))}
           </ul>
@@ -52,8 +52,8 @@ export default function Footer() {
             {siteConfig.firm.frn && <span className="block sm:inline"> ICAI Firm Reg. No. {siteConfig.firm.frn}</span>}
           </p>
           <ul className="flex gap-5">
-            <li><Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
-            <li><Link to="/terms" className="hover:text-white">Terms &amp; Conditions</Link></li>
+            <li><Link to="/privacy-policy" className="underline underline-offset-4 hover:text-gold-300">Privacy Policy</Link></li>
+            <li><Link to="/terms" className="underline underline-offset-4 hover:text-gold-300">Terms &amp; Conditions</Link></li>
           </ul>
         </div>
       </div>

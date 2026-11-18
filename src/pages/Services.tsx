@@ -82,7 +82,7 @@ export default function Services() {
           ))}
           <p className="mt-4 text-[13.5px] text-slate-soft">
             Services are provided subject to applicable professional regulations and the scope agreed in each engagement letter.
-            See our <Link to="/terms" className="underline underline-offset-2">Terms &amp; Conditions</Link>.
+            See our <Link to="/terms" className="link">Terms &amp; Conditions</Link>.
           </p>
         </div>
       </div>

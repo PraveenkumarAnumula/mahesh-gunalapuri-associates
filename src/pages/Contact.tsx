@@ -1,15 +1,16 @@
 import { useSearchParams } from 'react-router-dom';
-import { ExternalLink, MapPin } from 'lucide-react';
+import { ExternalLink, MapPin, Phone } from 'lucide-react';
 import Seo from '../components/common/Seo';
 import PageHeader from '../components/common/PageHeader';
 import ContactDetails, { WhatsAppButton } from '../components/common/ContactDetails';
 import ContactForm from '../components/sections/ContactForm';
 import { siteConfig } from '../config/siteConfig';
-import { formatAddress } from '../utils/contact';
+import { formatAddress, telHref } from '../utils/contact';
 
 export default function Contact() {
   const [params] = useSearchParams();
   const { contact, firm } = siteConfig;
+  const callHref = telHref(contact.phone);
   return (
     <>
       <Seo
@@ -28,13 +29,20 @@ export default function Contact() {
             <h2 className="mb-6 text-[26px] font-semibold">Send us an enquiry</h2>
             <ContactForm defaultService={params.get('service') ?? ''} />
           </div>
-          <aside className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8">
             <div className="rounded-md bg-mist p-6">
               <h2 className="mb-5 font-sans text-[13px] font-semibold uppercase tracking-wider !text-navy-800">Office details</h2>
               <ContactDetails />
             </div>
-            <WhatsAppButton />
-          </aside>
+            <div className="flex flex-col gap-3">
+              <WhatsAppButton />
+              {callHref && (
+                <a href={callHref} className="btn btn-primary">
+                  <Phone className="h-4 w-4" aria-hidden="true" /> Call {contact.phone}
+                </a>
+              )}
+            </div>
+          </div>
         </div>
       </section>
       <section aria-labelledby="find-us" className="container-page pb-20">
@@ -50,7 +58,7 @@ export default function Contact() {
             href={contact.mapsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[48px] w-full shrink-0 items-center justify-center gap-2 rounded-md border border-navy-900/20 bg-white px-5 py-3 text-[15px] font-medium text-navy-900 hover:border-navy-900/50 sm:w-auto"
+            className="btn btn-primary w-full shrink-0 sm:w-auto"
           >
             Open in Google Maps <ExternalLink className="h-4 w-4" aria-hidden="true" />
           </a>

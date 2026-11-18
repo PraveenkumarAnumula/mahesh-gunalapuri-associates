@@ -53,7 +53,7 @@ export default function Insights() {
           {list.length === 0 ? (
             <p className="rounded-md bg-mist p-8 text-center text-slate">
               No articles in this category yet.{' '}
-              <button type="button" onClick={() => select(null)} className="font-medium text-navy-800 underline underline-offset-2">Show all articles</button>
+              <button type="button" onClick={() => select(null)} className="link">Show all articles</button>
             </p>
           ) : (
             <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -70,12 +70,13 @@ export default function Insights() {
                       </Link>
                     </h2>
                     <p className="flex-1 text-[15px] text-slate">{a.excerpt}</p>
-                    <p className="flex items-center justify-between text-[13px] text-slate-soft">
+                    <p className="flex flex-wrap items-center gap-x-3 text-[13px] text-slate-soft">
                       <time dateTime={a.date}>{formatDate(a.date)}</time>
-                      <span className="inline-flex items-center gap-1 font-medium text-navy-800">
-                        {a.readMinutes} min read <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                      </span>
+                      <span>{a.readMinutes} min read</span>
                     </p>
+                    <span aria-hidden="true" className="btn btn-sm btn-primary self-start group-hover:bg-navy-700">
+                      Read article <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
                   </article>
                 </li>
               ))}

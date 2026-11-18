@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, Phone } from 'lucide-react';
 import SectionHeading from '../common/SectionHeading';
 import { ButtonLink } from '../common/Button';
 import Icon from '../common/Icon';
@@ -7,6 +7,7 @@ import Portrait from '../common/Portrait';
 import { siteConfig } from '../../config/siteConfig';
 import { services } from '../../content/services';
 import { approachSteps } from '../../content/approach';
+import { telHref } from '../../utils/contact';
 
 export function AboutIntro() {
   const { firm, values } = siteConfig;
@@ -29,7 +30,7 @@ export function AboutIntro() {
               <p className="text-[15px] text-slate">{firm.vision}</p>
             </div>
           </div>
-          <Link to="/about" className="inline-flex items-center gap-2 text-[15px] font-medium text-navy-800 hover:text-navy-900">
+          <Link to="/about" className="link inline-flex items-center gap-2 self-start text-[15px]">
             More about the firm <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
@@ -61,7 +62,7 @@ export function ServicesOverview() {
               Tax, compliance and accounting under one roof.
             </h2>
           </div>
-          <ButtonLink to="/services" variant="secondary" className="self-start md:self-auto">
+          <ButtonLink to="/services" className="self-start md:self-auto">
             View all services
           </ButtonLink>
         </div>
@@ -72,7 +73,7 @@ export function ServicesOverview() {
                 <Icon name={s.icon} className="h-7 w-7 text-gold-700" />
                 <h3 className="font-display text-[19px] font-semibold leading-snug">{s.cardTitle}</h3>
                 <p className="flex-1 text-[14.5px] text-slate">{s.short}</p>
-                <span className="inline-flex items-center gap-1.5 text-[14px] font-medium text-navy-800">
+                <span className="btn btn-sm btn-primary self-start group-hover:bg-navy-700">
                   Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                 </span>
               </Link>
@@ -187,6 +188,7 @@ export function Testimonials() {
 }
 
 export function CtaBand({ title = `${siteConfig.firm.closingLine}.` }: { title?: string }) {
+  const callHref = telHref(siteConfig.contact.phone);
   return (
     <section aria-labelledby="cta-band" className="bg-navy-900">
       <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center">
@@ -194,9 +196,16 @@ export function CtaBand({ title = `${siteConfig.firm.closingLine}.` }: { title?:
           <h2 id="cta-band" className="text-[30px] font-semibold leading-[1.15] !text-white sm:text-[36px]">{title}</h2>
           <p className="text-[16.5px] text-navy-100/80">Tell us what you need help with. We will respond to discuss your requirement and next steps.</p>
         </div>
-        <ButtonLink to="/contact" variant="gold" className="w-full shrink-0 md:w-auto">
-          Contact Us <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </ButtonLink>
+        <div className="flex w-full shrink-0 flex-col gap-3 sm:flex-row md:w-auto">
+          <ButtonLink to="/contact" variant="gold" className="w-full sm:w-auto">
+            Contact Us <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </ButtonLink>
+          {callHref && (
+            <a href={callHref} className="btn btn-light w-full sm:w-auto">
+              <Phone className="h-4 w-4" aria-hidden="true" /> Call {siteConfig.contact.phone}
+            </a>
+          )}
+        </div>
       </div>
     </section>
   );

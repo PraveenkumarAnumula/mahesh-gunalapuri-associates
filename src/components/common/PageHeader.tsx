@@ -18,13 +18,13 @@ export default function PageHeader({ eyebrow, title, intro, crumbs = [], childre
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-1.5 text-[13px] text-navy-100/70">
             <li>
-              <Link to="/" className="hover:text-white">Home</Link>
+              <Link to="/" className="underline underline-offset-4 hover:text-gold-300">Home</Link>
             </li>
             {crumbs.map((c) => (
               <li key={c.label} className="flex items-center gap-1.5">
                 <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
                 {c.to ? (
-                  <Link to={c.to} className="hover:text-white">{c.label}</Link>
+                  <Link to={c.to} className="underline underline-offset-4 hover:text-gold-300">{c.label}</Link>
                 ) : (
                   <span aria-current="page" className="text-white">{c.label}</span>
                 )}

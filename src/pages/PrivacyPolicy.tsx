@@ -52,7 +52,7 @@ export default function PrivacyPolicy() {
           body: (
             <p>
               You may ask us to access, correct or delete the personal information you have shared, subject to applicable law including the
-              Digital Personal Data Protection Act, 2023. Contact us through the <Link to="/contact" className="text-navy-800 underline">contact page</Link>.
+              Digital Personal Data Protection Act, 2023. Contact us through the <Link to="/contact" className="link">contact page</Link>.
             </p>
           ),
         },

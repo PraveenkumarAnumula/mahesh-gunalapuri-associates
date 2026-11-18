@@ -54,7 +54,7 @@ export default function CAProfile() {
                   href={founder.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-3 text-[15px] font-medium text-white hover:border-white/70"
+                  className="btn btn-light"
                 >
                   <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn profile
                 </a>

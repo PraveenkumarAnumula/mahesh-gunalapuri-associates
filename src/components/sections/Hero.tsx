@@ -20,7 +20,7 @@ export default function Hero() {
             <ButtonLink to="/contact" variant="gold">
               Schedule a Consultation <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </ButtonLink>
-            <ButtonLink to="/services" variant="ghost-light">
+            <ButtonLink to="/services" variant="light">
               Explore Our Services
             </ButtonLink>
           </div>

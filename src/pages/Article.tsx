@@ -71,9 +71,9 @@ export default function Article() {
           {article.body.map((b, i) => <Block key={i} block={b} />)}
           <p className="mt-6 border-t border-line pt-6 text-[13.5px] text-slate-soft">
             This article is for general information only and is not professional advice for your specific situation. Please{' '}
-            <Link to="/contact" className="text-navy-800 underline underline-offset-2">contact us</Link> before acting on it.
+            <Link to="/contact" className="link">contact us</Link> before acting on it.
           </p>
-          <Link to="/insights" className="inline-flex items-center gap-2 text-[15px] font-medium text-navy-800 hover:text-navy-900">
+          <Link to="/insights" className="link inline-flex items-center gap-2 self-start text-[15px]">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to all insights
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function Article() {
                 <li key={a.slug} className="rounded-md border border-line bg-white p-6">
                   <p className="font-mono text-[11.5px] uppercase tracking-wider text-gold-700">{a.category}</p>
                   <h3 className="mt-2 text-[19px] font-semibold">
-                    <Link to={`/insights/${a.slug}`} className="hover:text-navy-700">{a.title}</Link>
+                    <Link to={`/insights/${a.slug}`} className="link">{a.title}</Link>
                   </h3>
                 </li>
               ))}

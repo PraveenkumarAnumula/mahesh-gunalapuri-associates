@@ -134,6 +134,37 @@
   .eyebrow-on-dark {
     @apply font-mono text-[12px] font-medium uppercase tracking-[0.14em] text-gold-300;
   }
+  /* ---- Buttons: one shared style for every clickable button on the site ----
+     .btn + one colour: .btn-primary (navy, for light backgrounds), .btn-gold and .btn-light
+     (for navy backgrounds), .btn-whatsapp. Add .btn-sm for compact buttons inside cards. */
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-lg px-6 py-3 text-[15px] font-semibold leading-tight shadow-sm;
+    @apply transition duration-150 ease-out hover:-translate-y-px hover:shadow-md active:translate-y-0 active:scale-[0.98] active:shadow-sm;
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-sm {
+    @apply min-h-[44px] px-4 py-2 text-[14px];
+  }
+  .btn-primary {
+    @apply bg-navy-900 text-white hover:bg-navy-700 active:bg-navy-950;
+  }
+  .btn-gold {
+    @apply bg-gold-400 text-navy-950 hover:bg-gold-300 active:bg-gold-500;
+  }
+  .btn-light {
+    @apply bg-white text-navy-900 hover:bg-navy-50 active:bg-navy-100;
+  }
+  .btn-whatsapp {
+    @apply bg-[#1F7A4D] text-white hover:bg-[#19663F] active:bg-[#14532F];
+  }
+  /* ---- Text links: brand colour + underline so they never look like plain text ---- */
+  .link {
+    @apply font-medium text-navy-700 underline decoration-gold-500 decoration-2 underline-offset-4 transition-colors hover:text-navy-900 hover:decoration-navy-900;
+  }
+  .link-on-dark {
+    @apply font-medium text-gold-300 underline decoration-gold-300/60 decoration-2 underline-offset-4 transition-colors hover:text-white hover:decoration-white;
+  }
   .sample-tag {
     @apply inline-flex items-center rounded-sm border border-dashed border-gold-500/70 px-1.5 py-px font-mono text-[10.5px] uppercase tracking-wider text-gold-700;
   }

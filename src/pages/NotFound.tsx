@@ -14,9 +14,9 @@ export default function NotFound() {
           The link may be out of date, or the address may have been typed incorrectly. These pages may help:
         </p>
         <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
-          <li><Link to="/services" className="text-navy-800 underline underline-offset-4">Our services</Link></li>
-          <li><Link to="/insights" className="text-navy-800 underline underline-offset-4">Insights</Link></li>
-          <li><Link to="/contact" className="text-navy-800 underline underline-offset-4">Contact us</Link></li>
+          <li><Link to="/services" className="link">Our services</Link></li>
+          <li><Link to="/insights" className="link">Insights</Link></li>
+          <li><Link to="/contact" className="link">Contact us</Link></li>
         </ul>
         <ButtonLink to="/"><ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to home</ButtonLink>
       </section>
