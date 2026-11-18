@@ -24,18 +24,18 @@ Last updated: 18 November 2026
 - Removed the horizontal stripe lines from all navy sections, on mobile and desktop; also the gold line under the home hero and the dividers in the key-dates panel (`edf191c`).
 - Buttons and links made clearly clickable: solid buttons at least 48px tall with hover and pressed effects; "Learn more" and "Read article" are buttons; new "Call 93479 44995" buttons on Contact and in the "Let's Grow Together" band; phone, email and inline links are underlined in the brand colour (`5f07bc6`).
 - Qualification line shortened to "Chartered Accountant (ACA), Associate Member of ICAI" (removed "since August 2026").
-- Home page figures (500+ ITR filings etc.) shown in a bordered panel with a line between each figure, on mobile and desktop.
+- Home page figures (1000+ ITR filings etc.) shown in a bordered panel with a line between each figure, on mobile and desktop.
 - Home: due dates now list 31 Jul – ITR 1 & 2 and 31 Aug – ITR 3 & 4 (non-audit); loans removed from the hero line, home service cards (replaced by Accounting & Bookkeeping), footer services list and firm description. The loans service has since been removed from the whole site (Services page, contact form, footer).
 - New **Tax Audit** service (own card, document-with-checkmark icon). Services order everywhere (home, Services page, footer, contact form): ITR Filing, GST Registration & Return Filing, Company / Partnership / Society / Trust Registration, Tax Audit, Statutory / Internal Audit, then the rest. Tax audit removed from the Statutory / Internal Audit service; home grid shows nine cards, three across (`b96d783`).
 - Key compliance dates in Title Case; dates bold and larger (`c6dfba9`).
 - Home figures' labels in Title Case (`082dfcf`).
+- Home figures updated to 1000+ ITR Filings and 200+ GST Registrations And Filings (50+ and 70+ unchanged).
 - Accessibility: no nested landmark regions (`b0a5e0a`, plus the contact sidebar in `5f07bc6`).
 
 ## Pending
 
 - [ ] **Publish the fixes above** when the user says "deploy to live" (merge `fixes` into `main` only after the user says "deploy").
-- [ ] Confirm the track-record figures: the request of 18 Nov mentioned 1000+ and 200+, but the site shows 500+ ITR filings and 100+ GST registrations (unchanged until confirmed).
-- [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (500+ ITR filings etc.). (Loans service already removed.)
+- [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (1000+ ITR filings etc.). (Loans service already removed.)
 - [ ] Mahesh sir to approve the philosophy and motto written in his voice (`founder.philosophy`, `founder.motto` in `siteConfig.ts`).
 - [ ] Optional details (each is hidden until added): business hours (`contact.hours`), LinkedIn (`founder.linkedinUrl`), social media links (`social`), biography paragraphs (`founder.fullBio`).
 - [ ] Optional: exact office pin for the "Open in Google Maps" button (`contact.mapsLink`).
