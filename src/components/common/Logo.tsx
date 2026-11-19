@@ -24,7 +24,7 @@ export default function Logo({ variant = 'dark' }: { variant?: 'dark' | 'light' 
       )}
       <span className="flex min-w-0 flex-col leading-tight">
         <span className={`font-display text-[15px] font-semibold min-[380px]:text-[17px] ${onLight ? 'text-navy-900' : 'text-white'}`}>{firm.name}</span>
-        <span className={`font-mono text-[10.5px] uppercase tracking-[0.16em] ${onLight ? 'text-gold-700' : 'text-gold-300'}`}>
+        <span className={`font-mono text-[12px] uppercase tracking-[0.12em] ${onLight ? 'text-gold-700' : 'text-gold-300'}`}>
           {firm.tagline}
         </span>
       </span>

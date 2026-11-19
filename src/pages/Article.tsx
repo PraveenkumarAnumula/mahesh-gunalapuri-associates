@@ -63,7 +63,7 @@ export default function Article() {
           <span>{siteConfig.founder.name}</span>
           <time dateTime={article.date}>{formatDate(article.date)}</time>
           <span>{article.readMinutes} min read</span>
-          {article.isDemo && <span className="rounded-sm border border-dashed border-gold-300/70 px-1.5 font-mono text-[11px] uppercase tracking-wider text-gold-300">Demonstration content</span>}
+          {article.isDemo && <span className="rounded-sm border border-dashed border-gold-300/70 px-1.5 font-mono text-[12px] uppercase tracking-wider text-gold-300">Demonstration content</span>}
         </p>
       </PageHeader>
       <article className="container-page py-14">
@@ -85,7 +85,7 @@ export default function Article() {
             <ul className="grid gap-6 md:grid-cols-2">
               {related.map((a) => (
                 <li key={a.slug} className="rounded-md border border-line bg-white p-6">
-                  <p className="font-mono text-[11.5px] uppercase tracking-wider text-gold-700">{a.category}</p>
+                  <p className="font-mono text-[12px] uppercase tracking-wider text-gold-700">{a.category}</p>
                   <h3 className="mt-2 text-[19px] font-semibold">
                     <Link to={`/insights/${a.slug}`} className="link">{a.title}</Link>
                   </h3>

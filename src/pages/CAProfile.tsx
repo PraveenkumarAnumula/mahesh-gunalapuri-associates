@@ -29,21 +29,21 @@ export default function CAProfile() {
           </div>
           <div className="flex flex-col gap-4 pb-12">
             <p className="eyebrow-on-dark">CA Profile · {firm.name}</p>
-            <h1 className="text-[38px] font-semibold leading-[1.08] !text-white sm:text-[50px]">{founder.name}</h1>
+            <h1 className="text-[clamp(30px,8.5vw,36px)] font-semibold leading-[1.12] !text-white sm:text-[48px]">{founder.name}</h1>
             <p className="text-[17px] text-navy-100/85">{founder.designation}</p>
             <dl className="flex flex-wrap gap-x-8 gap-y-3 pt-2 text-[14px]">
               <div>
-                <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">ICAI membership no.</dt>
+                <dt className="font-mono text-[12px] uppercase tracking-wider text-navy-100/70">ICAI membership no.</dt>
                 <dd className="font-mono tabular-nums text-white">{founder.icaiMembershipNo || 'To be added'}</dd>
               </div>
               {firm.frn && (
                 <div>
-                  <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">Firm Reg. No. (ICAI)</dt>
+                  <dt className="font-mono text-[12px] uppercase tracking-wider text-navy-100/70">Firm Reg. No. (ICAI)</dt>
                   <dd className="font-mono tabular-nums text-white">{firm.frn}</dd>
                 </div>
               )}
               <div>
-                <dt className="font-mono text-[11px] uppercase tracking-wider text-navy-100/60">Qualification</dt>
+                <dt className="font-mono text-[12px] uppercase tracking-wider text-navy-100/70">Qualification</dt>
                 <dd className="text-white">{founder.qualifications[0]}</dd>
               </div>
             </dl>

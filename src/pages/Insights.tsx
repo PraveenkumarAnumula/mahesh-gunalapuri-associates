@@ -61,7 +61,7 @@ export default function Insights() {
                 <li key={a.slug}>
                   <article className="group relative flex h-full flex-col gap-3 rounded-md border border-line bg-white p-6 transition-colors hover:border-navy-700/40">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-[11.5px] uppercase tracking-wider text-gold-700">{a.category}</span>
+                      <span className="font-mono text-[12px] uppercase tracking-wider text-gold-700">{a.category}</span>
                       {a.isDemo && <span className="sample-tag">Demonstration content</span>}
                     </div>
                     <h2 className="text-[21px] font-semibold leading-snug">
