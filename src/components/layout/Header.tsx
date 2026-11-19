@@ -40,7 +40,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
       <div className="container-page flex h-[72px] items-center justify-between gap-3 sm:gap-6">
         <Logo />
-        <nav aria-label="Main" className="hidden xl:block">
+        <nav aria-label="Main" className="hidden shrink-0 xl:block">
           <ul className="flex items-center gap-5 min-[1400px]:gap-7">
             {navRoutes.map((r) => (
               <li key={r.path}>
@@ -51,7 +51,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <ButtonLink to="/contact" className="hidden whitespace-nowrap !px-4 !py-2.5 !text-[14px] sm:inline-flex">
             Get Consultation
           </ButtonLink>
