@@ -87,6 +87,14 @@ export const siteConfig = {
     icaiMembershipNo: '297023',
     /** Path to a portrait inside /public, e.g. '/images/founder.jpg'. Leave '' for the placeholder. */
     photo: '/images/mahesh-gunalapuri.jpg',
+    /**
+     * Smaller copies of the photo for faster loading on phones (made with the same crop).
+     * If you change the photo, update or remove these; the site then falls back to `photo`.
+     */
+    photoSources: {
+      webp: ['/images/mahesh-gunalapuri-480.webp 480w', '/images/mahesh-gunalapuri-800.webp 800w'],
+      jpg: ['/images/mahesh-gunalapuri-480.jpg 480w', '/images/mahesh-gunalapuri.jpg 800w'],
+    } as { webp: string[]; jpg: string[] } | null,
     photoAlt: 'Portrait of CA Mahesh Gunalapuri',
     qualifications: ['Chartered Accountant (ACA), Associate Member of ICAI'],
     /** Short line used on cards. */

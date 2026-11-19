@@ -6,18 +6,30 @@ import { asset } from '../../utils/site';
 export default function Portrait({ className = '', priority = false }: { className?: string; priority?: boolean }) {
   const { founder } = siteConfig;
   if (founder.photo) {
+    const srcset = (list: string[]) => list.map((entry) => { const [path, w] = entry.split(' '); return `${asset(path)} ${w}`; }).join(', ');
+    // Displayed at most ~384px wide; the browser picks the right file for the screen.
+    const sizes = '(min-width: 768px) 384px, 90vw';
     return (
-      <img
-        src={asset(founder.photo)}
-        alt={founder.photoAlt}
-        loading={priority ? 'eager' : 'lazy'}
-        // Lower-case attribute: React 18 doesn't know the camelCase prop yet.
-        {...{ fetchpriority: priority ? 'high' : 'auto' }}
-        decoding="async"
-        width={480}
-        height={600}
-        className={`aspect-[4/5] w-full max-w-full rounded-sm object-cover ${className}`}
-      />
+      // A tinted, gently pulsing layer sits behind the photo and shows only until the photo has downloaded.
+      <div className={`relative aspect-[4/5] w-full max-w-full overflow-hidden rounded-sm bg-navy-100 ${className}`}>
+        <span aria-hidden="true" className="absolute inset-0 bg-navy-100 motion-safe:animate-pulse" />
+        <picture className="relative block h-full w-full">
+          {founder.photoSources && <source type="image/webp" srcSet={srcset(founder.photoSources.webp)} sizes={sizes} />}
+          <img
+            src={asset(founder.photo)}
+            srcSet={founder.photoSources ? srcset(founder.photoSources.jpg) : undefined}
+            sizes={founder.photoSources ? sizes : undefined}
+            alt={founder.photoAlt}
+            loading={priority ? 'eager' : 'lazy'}
+            // Lower-case attribute: React 18 doesn't know the camelCase prop yet.
+            {...{ fetchpriority: priority ? 'high' : 'auto' }}
+            decoding="async"
+            width={800}
+            height={1000}
+            className="h-full w-full object-cover"
+          />
+        </picture>
+      </div>
     );
   }
   return (
