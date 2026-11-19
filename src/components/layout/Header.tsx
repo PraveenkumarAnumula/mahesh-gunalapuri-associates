@@ -37,7 +37,7 @@ export default function Header() {
     }`;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <header className="sticky top-0 z-40 border-b border-line bg-white shadow-sm">
       <div className="container-page flex h-[72px] items-center justify-between gap-3 sm:gap-6">
         <Logo />
         <nav aria-label="Main" className="hidden shrink-0 xl:block">
