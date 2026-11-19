@@ -6,7 +6,7 @@ Last updated: 18 November 2026
 
 **Branches**
 - `fixes`: all work happens here.
-- `main` on GitHub: matches the live site (`ca6adb1`, merged and pushed 18 Nov 2026).
+- `main` on GitHub: `2094a93` (merged and pushed 19 Nov 2026). **Ahead of the live site**, which still runs `ca6adb1`; the live deploy is waiting for the Google Search Console code so everything goes out in one deploy.
 
 ## Done
 
