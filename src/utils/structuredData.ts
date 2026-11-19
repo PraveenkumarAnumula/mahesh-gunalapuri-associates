@@ -13,6 +13,7 @@ export function organizationSchema(): Record<string, unknown> {
     description: firm.description,
     url: SITE_URL,
     image: `${SITE_URL}${siteConfig.seo.ogImage}`,
+    ...(firm.logo ? { logo: `${SITE_URL}${firm.logo}` } : {}),
     knowsAbout: services.map((s) => s.title),
     areaServed: contact.areaServed.map((name) => ({ '@type': 'Place', name })),
     founder: { '@type': 'Person', name: siteConfig.founder.name, jobTitle: siteConfig.founder.designation },

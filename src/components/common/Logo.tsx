@@ -9,7 +9,9 @@ export default function Logo({ variant = 'dark' }: { variant?: 'dark' | 'light' 
   return (
     <Link to="/" className="group inline-flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label={`${firm.name} — home`}>
       {firm.logo ? (
-        <img src={asset(firm.logo)} alt="" className="h-10 w-auto" width={120} height={40} />
+        <span className={`flex shrink-0 items-center ${onLight ? '' : 'rounded-md bg-white p-1'}`}>
+          <img src={asset(firm.logo)} alt="" className="h-10 w-auto" width={57} height={40} decoding="async" />
+        </span>
       ) : (
         <span
           aria-hidden="true"

@@ -64,7 +64,7 @@ export const siteConfig = {
      * Path to the logo image inside /public, e.g. '/images/logo.svg'.
      * Leave '' to use the built-in text monogram.
      */
-    logo: '',
+    logo: '/images/mga-logo.jpg',
     description:
       'Mahesh Gunalapuri & Associates is a Chartered Accountancy firm in Nalgonda offering ITR filing, GST registration and returns, business registrations, and MSME, labour and FSSAI licences for individuals and businesses.',
     introduction:

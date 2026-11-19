@@ -37,8 +37,8 @@ Last updated: 18 November 2026
 
 ## Pending
 
-- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google; ICAI-style wording (new headlines, 'Areas of Professional Practice', 'Contact the Firm', 'Send an Enquiry', philosophy rewritten); achievement counters removed. Deploy together once the Search Console code is added.
-- [ ] **Logo:** `CA__logo.jpg` in the project root is the CA India logo, not an MGA logo, so it was not used. The site still uses the "MGA" text monogram. Waiting for the actual MGA logo file.
+- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google; ICAI-style wording (new headlines, 'Areas of Professional Practice', 'Contact the Firm', 'Send an Enquiry', philosophy rewritten); achievement counters removed; header overlap fix; new logo. Deploy together once the Search Console code is added.
+- [ ] **Logo:** the user confirmed `CA__logo.jpg` (the CA India logo) as the firm logo; now `public/images/mga-logo.jpg`, used in the header, footer (white badge), favicon, share image and structured data. Mahesh sir to confirm use follows ICAI's CA logo guidelines.
 - [ ] **Promotional wording review (19 Nov):** list of remaining phrases with suggested neutral replacements sent to the user; change only after approval.
 - [ ] **Google Search Console:** user adds the site (URL prefix), sends the `google-site-verification` code → put it in `seo.googleSiteVerification`, deploy, then user clicks Verify, submits `sitemap.xml` and requests indexing.
 - [ ] **Google Business Profile** (for "chartered accountant near me"): user creates and verifies it at business.google.com (category: Chartered accountant), then send the profile link → `seo.googleBusinessProfileUrl`. Business hours also needed (`contact.hours`).

@@ -74,7 +74,7 @@ test('sitemap.xml and robots.txt are served', async ({ request }) => {
   expect(xml).toContain('/insights/');
   const robots = await request.get('/robots.txt');
   expect(await robots.text()).toMatch(/Sitemap: https?:\/\/.+\/sitemap\.xml/);
-  for (const asset of ['/favicon.svg', '/favicon.ico', '/og-image.png', '/apple-touch-icon.png', '/fonts/inter-400.woff2']) {
+  for (const asset of ['/images/mga-logo.jpg', '/favicon-192.png', '/favicon.ico', '/og-image.png', '/apple-touch-icon.png', '/fonts/inter-400.woff2']) {
     expect((await request.get(asset)).ok(), asset).toBe(true);
   }
 });
