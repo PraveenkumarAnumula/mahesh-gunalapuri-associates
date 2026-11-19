@@ -2,11 +2,11 @@
 
 Last updated: 18 November 2026
 
-**Live site:** https://mahesh-gunalapuri-associates.netlify.app (Netlify free plan, deployed by Netlify CLI; last deploy 18 Nov 2026 from commit `ca6adb1`; not connected to GitHub, so pushing never deploys)
+**Live site:** https://mahesh-gunalapuri-associates.netlify.app (Netlify free plan, deployed by Netlify CLI; last deploy 19 Nov 2026 from commit `0c2fcc5`; not connected to GitHub, so pushing never deploys)
 
 **Branches**
 - `fixes`: all work happens here.
-- `main` on GitHub: `2094a93` (merged and pushed 19 Nov 2026). **Ahead of the live site**, which still runs `ca6adb1`; the live deploy is waiting for the Google Search Console code so everything goes out in one deploy.
+- `main` on GitHub: `0c2fcc5`, matches the live site (19 Nov 2026).
 
 ## Done
 
@@ -37,10 +37,9 @@ Last updated: 18 November 2026
 
 ## Pending
 
-- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google; ICAI-style wording (new headlines, 'Areas of Professional Practice', 'Contact the Firm', 'Send an Enquiry', philosophy rewritten); achievement counters removed; header overlap fix; new logo; solid white header; typography fixes (serif regular weight, 12px minimum, consistent titles); founder photo placeholder + WebP. Deploy together once the Search Console code is added.
 - [ ] **Logo:** the user confirmed `CA__logo.jpg` (the CA India logo) as the firm logo; now `public/images/mga-logo.jpg`, used in the header, footer (white badge), favicon, share image and structured data. Mahesh sir to confirm use follows ICAI's CA logo guidelines.
 - [ ] **Promotional wording review (19 Nov):** list of remaining phrases with suggested neutral replacements sent to the user; change only after approval.
-- [ ] **Google Search Console:** verification code added to `seo.googleSiteVerification` (19 Nov). After the next live deploy, user clicks Verify in Search Console, submits `sitemap.xml` and requests indexing for the home page.
+- [ ] **Google Search Console:** verification tag is live (19 Nov). User to click Verify in Search Console, submits `sitemap.xml` and requests indexing for the home page.
 - [ ] **Google Business Profile** (for "chartered accountant near me"): user creates and verifies it at business.google.com (category: Chartered accountant), then send the profile link → `seo.googleBusinessProfileUrl`. Business hours also needed (`contact.hours`).
 - [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (1000+ ITR filings etc.). (Loans service already removed.)
 - [ ] Mahesh sir to approve the philosophy and motto written in his voice (`founder.philosophy`, `founder.motto` in `siteConfig.ts`).
