@@ -37,7 +37,9 @@ Last updated: 18 November 2026
 
 ## Pending
 
-- [ ] **Netlify badge:** Netlify adds a floating "Powered by Netlify" badge (bottom-right) to the live site. Turning it off (`built_with_badge_enabled: false`) was refused by Netlify on this plan. On phones it can cover whatever is in that corner, e.g. the footer's Terms link at the very bottom. Options: extra bottom space in the footer on phones (small code change + redeploy), a paid Netlify plan, or moving to a free host without a badge (GitHub Pages / Cloudflare Pages).
+- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google (area served, map link). Deploy together once the Search Console code is added.
+- [ ] **Google Search Console:** user adds the site (URL prefix), sends the `google-site-verification` code → put it in `seo.googleSiteVerification`, deploy, then user clicks Verify, submits `sitemap.xml` and requests indexing.
+- [ ] **Google Business Profile** (for "chartered accountant near me"): user creates and verifies it at business.google.com (category: Chartered accountant), then send the profile link → `seo.googleBusinessProfileUrl`. Business hours also needed (`contact.hours`).
 - [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (1000+ ITR filings etc.). (Loans service already removed.)
 - [ ] Mahesh sir to approve the philosophy and motto written in his voice (`founder.philosophy`, `founder.motto` in `siteConfig.ts`).
 - [ ] Optional details (each is hidden until added): business hours (`contact.hours`), LinkedIn (`founder.linkedinUrl`), social media links (`social`), biography paragraphs (`founder.fullBio`).
