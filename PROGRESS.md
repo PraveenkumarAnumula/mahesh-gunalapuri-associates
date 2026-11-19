@@ -37,9 +37,10 @@ Last updated: 18 November 2026
 
 ## Pending
 
-- [ ] **Logo:** the user confirmed `CA__logo.jpg` (the CA India logo) as the firm logo; now `public/images/mga-logo.jpg`, used in the header, footer (white badge), favicon, share image and structured data. Mahesh sir to confirm use follows ICAI's CA logo guidelines.
+- [x] **Logo:** CA India logo (`public/images/mga-logo.jpg`) confirmed as allowed for ICAI members / registered firms that follow ICAI's design and ethical guidelines; used unaltered next to the firm name.
 - [ ] **Promotional wording review (19 Nov):** list of remaining phrases with suggested neutral replacements sent to the user; change only after approval.
-- [ ] **Google Search Console:** verification tag is live (19 Nov). User to click Verify in Search Console, submits `sitemap.xml` and requests indexing for the home page.
+- [x] **Google Search Console:** ownership verified 19 Nov 2026 (HTML tag). Keep `seo.googleSiteVerification` in `siteConfig.ts`; removing it loses verification.
+- [ ] **Search Console next steps (user):** Sitemaps → submit `sitemap.xml`; URL inspection → request indexing for the home page.
 - [ ] **Google Business Profile** (for "chartered accountant near me"): user creates and verifies it at business.google.com (category: Chartered accountant), then send the profile link → `seo.googleBusinessProfileUrl`. Business hours also needed (`contact.hours`).
 - [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (1000+ ITR filings etc.). (Loans service already removed.)
 - [ ] Mahesh sir to approve the philosophy and motto written in his voice (`founder.philosophy`, `founder.motto` in `siteConfig.ts`).

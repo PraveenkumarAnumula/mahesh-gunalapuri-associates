@@ -175,8 +175,8 @@ export const siteConfig = {
     keywords: 'Chartered Accountant Nalgonda, CA in Nalgonda, ITR filing, GST registration, GST consultant, income tax consultant, FSSAI license, MSME Udyam registration, Mahesh Gunalapuri & Associates',
     ogImage: '/og-image.png',
     /**
-     * Google Search Console verification. Paste only the content="..." value from the
-     * <meta name="google-site-verification" ...> tag Google gives you. Leave '' until then.
+     * Google Search Console verification (verified 19 Nov 2026). Do NOT remove or change this,
+     * or Search Console loses ownership. It is the content="..." value of Google's meta tag.
      */
     googleSiteVerification: 'Q3VX68r2U1g8Sx_zE0tbIWVtIZ7qDOtyyD2efc1jtq4',
     /** Link to the firm's Google Business Profile (Maps listing), once it exists. Leave '' until then. */
