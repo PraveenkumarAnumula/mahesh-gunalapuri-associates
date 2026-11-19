@@ -29,7 +29,7 @@ Last updated: 18 November 2026
 - New **Tax Audit** service (own card, document-with-checkmark icon). Services order everywhere (home, Services page, footer, contact form): ITR Filing, GST Registration & Return Filing, Company / Partnership / Society / Trust Registration, Tax Audit, Statutory / Internal Audit, then the rest. Tax audit removed from the Statutory / Internal Audit service; home grid shows nine cards, three across (`b96d783`).
 - Key compliance dates in Title Case; dates bold and larger (`c6dfba9`).
 - Home figures' labels in Title Case (`082dfcf`).
-- Home figures updated to 1000+ ITR Filings and 200+ GST Registrations And Filings (50+ and 70+ unchanged).
+- Home figures updated to 1000+ / 200+ (later removed on 19 Nov with the whole counters section).
 - New **Financial / Other Certificates** service (net worth certificates, project reports for MSME loans, other statutory certificates), added last everywhere: home cards, Services page, footer, contact form. Home services grid now shows ten cards as two rows of five on wide screens.
 - Footer: removed the "social media profiles will appear here" note (`dca0489`). Copyright year updates itself: "© 2026" now, "© 2026–2027" from January, with no rebuild needed.
 - CA Profile: removed the "Professional experience" section (hidden while `founder.experience` is empty).
@@ -37,7 +37,9 @@ Last updated: 18 November 2026
 
 ## Pending
 
-- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google (area served, map link). Deploy together once the Search Console code is added.
+- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google; ICAI-style wording (new headlines, 'Areas of Professional Practice', 'Contact the Firm', 'Send an Enquiry', philosophy rewritten); achievement counters removed. Deploy together once the Search Console code is added.
+- [ ] **Logo:** `CA__logo.jpg` in the project root is the CA India logo, not an MGA logo, so it was not used. The site still uses the "MGA" text monogram. Waiting for the actual MGA logo file.
+- [ ] **Promotional wording review (19 Nov):** list of remaining phrases with suggested neutral replacements sent to the user; change only after approval.
 - [ ] **Google Search Console:** user adds the site (URL prefix), sends the `google-site-verification` code → put it in `seo.googleSiteVerification`, deploy, then user clicks Verify, submits `sitemap.xml` and requests indexing.
 - [ ] **Google Business Profile** (for "chartered accountant near me"): user creates and verifies it at business.google.com (category: Chartered accountant), then send the profile link → `seo.googleBusinessProfileUrl`. Business hours also needed (`contact.hours`).
 - [ ] Mahesh sir to review the site against ICAI website guidelines, especially the track-record figures (1000+ ITR filings etc.). (Loans service already removed.)
