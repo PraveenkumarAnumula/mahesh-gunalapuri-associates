@@ -37,7 +37,7 @@ Last updated: 18 November 2026
 
 ## Pending
 
-- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google; ICAI-style wording (new headlines, 'Areas of Professional Practice', 'Contact the Firm', 'Send an Enquiry', philosophy rewritten); achievement counters removed; header overlap fix; new logo; solid white header. Deploy together once the Search Console code is added.
+- [ ] **Not yet live (on `fixes`):** footer space for the Netlify badge; Search Console tag setting; local business details for Google; ICAI-style wording (new headlines, 'Areas of Professional Practice', 'Contact the Firm', 'Send an Enquiry', philosophy rewritten); achievement counters removed; header overlap fix; new logo; solid white header; typography fixes (serif regular weight, 12px minimum, consistent titles); founder photo placeholder + WebP. Deploy together once the Search Console code is added.
 - [ ] **Logo:** the user confirmed `CA__logo.jpg` (the CA India logo) as the firm logo; now `public/images/mga-logo.jpg`, used in the header, footer (white badge), favicon, share image and structured data. Mahesh sir to confirm use follows ICAI's CA logo guidelines.
 - [ ] **Promotional wording review (19 Nov):** list of remaining phrases with suggested neutral replacements sent to the user; change only after approval.
 - [ ] **Google Search Console:** user adds the site (URL prefix), sends the `google-site-verification` code → put it in `seo.googleSiteVerification`, deploy, then user clicks Verify, submits `sitemap.xml` and requests indexing.
