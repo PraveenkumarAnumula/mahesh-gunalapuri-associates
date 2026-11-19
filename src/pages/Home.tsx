@@ -1,6 +1,5 @@
 import Seo from '../components/common/Seo';
 import Hero from '../components/sections/Hero';
-import TrustStrip from '../components/sections/TrustStrip';
 import { AboutIntro, Approach, CtaBand, FounderIntro, ServicesOverview, Testimonials, WhyChooseUs } from '../components/sections/HomeSections';
 
 export default function Home() {
@@ -8,7 +7,6 @@ export default function Home() {
     <>
       <Seo />
       <Hero />
-      <TrustStrip />
       <AboutIntro />
       <ServicesOverview />
       <WhyChooseUs />

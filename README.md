@@ -47,7 +47,6 @@ All firm details are in **one file: `src/config/siteConfig.ts`**. Text in `[squa
 | Firm name, taglines, history, mission, FRN | `firm` |
 | CA name, ICAI no., qualifications, biography, photo | `founder` |
 | Phones, WhatsApp, email, address, Google Maps link, hours | `contact` |
-| Track-record figures | `stats` |
 | Social media links (hidden while empty) | `social` |
 | Live web address | `siteUrl` |
 

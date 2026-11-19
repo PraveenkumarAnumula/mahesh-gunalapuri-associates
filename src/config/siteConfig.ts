@@ -10,20 +10,12 @@
  *  - Leave a contact value as an empty string ('') until the real value is
  *    known. The site hides the related link or button, or shows
  *    "To be added", instead of linking to a fake number or address.
- *  - Set `isSample: false` on a statistic only once the figure is verified.
  *  - When everything is real, set `showPreviewBanner` to false.
  *
  *  Services live in src/content/services.ts, expertise areas in
  *  src/content/expertise.ts and articles in src/content/articles.ts.
  * ============================================================================
  */
-
-export interface Stat {
-  value: string;
-  label: string;
-  /** true = figure is a placeholder and is labelled "Sample figure" on the site. */
-  isSample: boolean;
-}
 
 export interface Testimonial {
   quote: string;
@@ -157,13 +149,6 @@ export const siteConfig = {
     instagram: '',
     youtube: '',
   },
-
-  stats: [
-    { value: '1000+', label: 'ITR Filings', isSample: false },
-    { value: '200+', label: 'GST Registrations And Filings', isSample: false },
-    { value: '50+', label: 'Company Incorporations', isSample: false },
-    { value: '70+', label: 'Partnership Registrations', isSample: false },
-  ] as Stat[],
 
   values: [
     { title: 'Integrity', text: 'We give honest advice, even when it is not what a client hoped to hear.' },

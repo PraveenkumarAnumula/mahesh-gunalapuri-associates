@@ -52,9 +52,10 @@ describe('pages', () => {
     expect(await screen.findByRole('heading', { level: 1, name: heading })).toBeInTheDocument();
   });
 
-  it('shows the track-record figures without sample labels', () => {
+  it('has no achievement counters on the home page', () => {
     renderAt('/');
-    expect(screen.getByText('ITR Filings')).toBeInTheDocument();
+    expect(screen.queryByText('ITR Filings')).not.toBeInTheDocument();
+    expect(screen.queryByText(/1000\+|200\+/)).not.toBeInTheDocument();
     expect(screen.queryByText('Sample figure')).not.toBeInTheDocument();
   });
 
