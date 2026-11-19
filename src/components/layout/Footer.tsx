@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-3 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-[13px] text-navy-100/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col gap-3 pt-6 pb-[calc(5rem+env(safe-area-inset-bottom))] text-[13px] text-navy-100/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {years} {siteConfig.firm.name}. All rights reserved.
             {siteConfig.firm.frn && <span className="block sm:inline"> ICAI Firm Reg. No. {siteConfig.firm.frn}</span>}
