@@ -178,7 +178,7 @@ export const siteConfig = {
      * Google Search Console verification. Paste only the content="..." value from the
      * <meta name="google-site-verification" ...> tag Google gives you. Leave '' until then.
      */
-    googleSiteVerification: '',
+    googleSiteVerification: 'Q3VX68r2U1g8Sx_zE0tbIWVtIZ7qDOtyyD2efc1jtq4',
     /** Link to the firm's Google Business Profile (Maps listing), once it exists. Leave '' until then. */
     googleBusinessProfileUrl: '',
   },
