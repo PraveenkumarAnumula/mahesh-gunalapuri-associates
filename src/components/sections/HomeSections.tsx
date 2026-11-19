@@ -98,7 +98,7 @@ export function WhyChooseUs() {
     <section aria-labelledby="why-us" className="bg-white py-20 sm:py-24">
       <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <SectionHeading
-          eyebrow="Why choose us"
+          eyebrow="Our Professional Approach"
           title="What clients can expect from working with us."
           intro="Five commitments that shape every engagement, from a single tax return to a full audit."
         />
@@ -187,7 +187,7 @@ export function Testimonials() {
   );
 }
 
-export function CtaBand({ title = `${siteConfig.firm.closingLine}.` }: { title?: string }) {
+export function CtaBand({ title = siteConfig.firm.closingLine }: { title?: string }) {
   const callHref = telHref(siteConfig.contact.phone);
   return (
     <section aria-labelledby="cta-band" className="bg-navy-900">

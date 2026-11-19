@@ -35,11 +35,11 @@ async function fillValidForm(user: ReturnType<typeof userEvent.setup>) {
 
 describe('pages', () => {
   it.each([
-    ['/', /your trusted partner in taxation/i],
+    ['/', /professional services in taxation, accounting and regulatory compliance/i],
     ['/about', /about mahesh gunalapuri & associates/i],
     ['/ca-profile', /CA Mahesh Gunalapuri/],
     ['/services', /services for individuals/i],
-    ['/expertise', /areas of professional expertise/i],
+    ['/expertise', /areas of professional practice/i],
     ['/insights', /updates, reminders and practical guidance/i],
     ['/insights/advance-tax-instalments-explained', /advance tax instalments/i],
     ['/contact', /request a consultation/i],

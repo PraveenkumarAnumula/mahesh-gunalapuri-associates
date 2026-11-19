@@ -10,7 +10,7 @@ export const staticRoutes: StaticRoute[] = [
   { path: '/', label: 'Home', inNav: true, inSitemap: true },
   { path: '/about', label: 'About Us', inNav: true, inSitemap: true },
   { path: '/services', label: 'Our Services', inNav: true, inSitemap: true },
-  { path: '/expertise', label: 'Our Expertise', inNav: true, inSitemap: true },
+  { path: '/expertise', label: 'Areas of Professional Practice', inNav: true, inSitemap: true },
   { path: '/insights', label: 'Insights', inNav: true, inSitemap: true },
   { path: '/contact', label: 'Contact', inNav: true, inSitemap: true },
   { path: '/ca-profile', label: 'CA Profile', inNav: false, inSitemap: true },

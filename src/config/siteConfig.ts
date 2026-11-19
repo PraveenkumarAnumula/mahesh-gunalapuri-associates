@@ -60,9 +60,8 @@ export const siteConfig = {
     /** Service line from the firm's card, shown under the hero eyebrow. */
     serviceLine: 'Tax · Compliance · Registration · Financial Solutions',
     /** Taglines from the firm's card. */
-    slogan: 'Your Partner for Business Growth & Compliance',
-    subSlogan: 'Supporting Your Today for a Brighter Tomorrow',
-    closingLine: 'Let’s Grow Together',
+    slogan: 'Chartered Accountancy and Regulatory Compliance Services',
+    closingLine: 'Contact the Firm',
     /** Year the firm was established, e.g. '2012'. Leave '' to hide. */
     established: 'August 2026',
     /** ICAI Firm Registration Number (from the ICAI firm certificate). */
@@ -115,7 +114,7 @@ export const siteConfig = {
     achievements: [] as string[],
     /** Professional philosophy, written in the founder’s voice. */
     philosophy:
-      'Every return I file and every registration I complete is a promise kept to a client. I believe good financial advice should be honest, easy to understand and always on time, so that you can focus on building your future with confidence.',
+      'I carry out every engagement in line with my professional responsibilities and the standards of the profession: advice that is accurate and clearly explained, and compliance with applicable statutory timelines.',
     /** Short motivational line shown in the founder sections on the Home and About pages. */
     motto: 'Compliance done right today builds the confidence to grow tomorrow.',
     linkedinUrl: '',

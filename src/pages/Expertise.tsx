@@ -11,14 +11,14 @@ export default function Expertise() {
   return (
     <>
       <Seo
-        title="Our Expertise"
-        description="Areas of professional expertise: individual and business taxation, GST compliance, financial reporting, audit and assurance, business structuring and regulatory compliance."
+        title="Areas of Professional Practice"
+        description="Areas of professional practice: individual and business taxation, GST compliance, financial reporting, audit and assurance, business structuring and regulatory compliance."
       />
       <PageHeader
-        eyebrow="Our expertise"
-        title="Areas of professional expertise"
+        eyebrow="Areas of Professional Practice"
+        title="Areas of Professional Practice"
         intro="The subjects we work in every day, across taxation, reporting, audit and compliance."
-        crumbs={[{ label: 'Our Expertise' }]}
+        crumbs={[{ label: 'Areas of Professional Practice' }]}
       />
       <section aria-label="Expertise areas" className="bg-mist py-16 sm:py-20">
         <ul className="container-page grid gap-6 md:grid-cols-2 lg:grid-cols-3">

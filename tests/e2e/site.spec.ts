@@ -1,11 +1,11 @@
 import { expect, test, type Page } from '@playwright/test';
 
 const pages = [
-  { path: '/', h1: /trusted partner in taxation/i },
+  { path: '/', h1: /professional services in taxation/i },
   { path: '/about', h1: /about mahesh gunalapuri & associates/i },
   { path: '/ca-profile', h1: /mahesh gunalapuri/i },
   { path: '/services', h1: /services for individuals/i },
-  { path: '/expertise', h1: /areas of professional expertise/i },
+  { path: '/expertise', h1: /areas of professional practice/i },
   { path: '/insights', h1: /updates, reminders/i },
   { path: '/insights/choosing-between-old-and-new-tax-regime', h1: /old and new tax regimes/i },
   { path: '/contact', h1: /request a consultation/i },
@@ -81,7 +81,7 @@ test('sitemap.xml and robots.txt are served', async ({ request }) => {
 
 test('navigation reaches every main page', async ({ page }) => {
   await page.goto('/');
-  for (const label of ['About Us', 'Our Services', 'Our Expertise', 'Insights', 'Contact']) {
+  for (const label of ['About Us', 'Our Services', 'Areas of Professional Practice', 'Insights', 'Contact']) {
     if (isMobile(page)) {
       await page.getByRole('button', { name: /open menu/i }).click();
       await page.getByRole('navigation', { name: 'Mobile' }).getByRole('link', { name: label }).click();

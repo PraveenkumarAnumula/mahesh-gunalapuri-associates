@@ -9,12 +9,11 @@ export default function Hero() {
       <div className="container-page grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:py-24">
         <div className="flex flex-col gap-6">
           <p className="eyebrow-on-dark">{siteConfig.firm.tagline} · Nalgonda</p>
-          <h1 id="hero-title" className="text-[clamp(31px,9vw,38px)] font-semibold leading-[1.1] !text-white sm:text-[52px] lg:text-[58px]">
-            Your trusted partner in taxation, compliance &amp; financial advisory.
+          <h1 id="hero-title" className="text-[clamp(31px,9vw,38px)] font-semibold leading-[1.1] !text-white sm:text-[48px] lg:text-[50px]">
+            Professional Services in Taxation, Accounting and Regulatory Compliance
           </h1>
           <p className="max-w-xl text-[17.5px] text-navy-100/80">
-            {siteConfig.firm.slogan}. ITR filing, GST, business registrations and licences, handled with care and filed on
-            time. {siteConfig.firm.subSlogan}.
+            {siteConfig.firm.slogan}. ITR filing, GST, tax audit, business registrations and licences.
           </p>
           <div className="flex flex-col gap-3 pt-2 sm:flex-row">
             <ButtonLink to="/contact" variant="gold">

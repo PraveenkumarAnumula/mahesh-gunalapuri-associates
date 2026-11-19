@@ -12,7 +12,7 @@ export default function CAProfile() {
     <>
       <Seo
         title={`${founder.name} — Chartered Accountant`}
-        description={`Professional profile of ${founder.name}, ${founder.designation} at ${firm.name}: qualifications, experience and areas of specialisation.`}
+        description={`Professional profile of ${founder.name}, ${founder.designation} at ${firm.name}: qualifications and areas of professional practice.`}
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'Person',
@@ -48,7 +48,7 @@ export default function CAProfile() {
               </div>
             </dl>
             <div className="flex flex-wrap gap-3 pt-3">
-              <ButtonLink to="/contact" variant="gold">Book a consultation</ButtonLink>
+              <ButtonLink to="/contact" variant="gold">Send an Enquiry</ButtonLink>
               {isSet(founder.linkedinUrl) ? (
                 <a
                   href={founder.linkedinUrl}
@@ -93,7 +93,7 @@ export default function CAProfile() {
           )}
 
           <section aria-labelledby="specialisation" className="flex flex-col gap-5">
-            <h2 id="specialisation" className="text-[28px] font-semibold">Areas of specialisation</h2>
+            <h2 id="specialisation" className="text-[28px] font-semibold">Areas of Professional Practice</h2>
             <ul className="grid gap-3 sm:grid-cols-2">
               {founder.specializations.map((s) => (
                 <li key={s} className="flex items-start gap-3 rounded-md border border-line p-4 text-[15px]">

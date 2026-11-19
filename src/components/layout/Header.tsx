@@ -41,7 +41,7 @@ export default function Header() {
       <div className="container-page flex h-[72px] items-center justify-between gap-3 sm:gap-6">
         <Logo />
         <nav aria-label="Main" className="hidden xl:block">
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-5 min-[1400px]:gap-7">
             {navRoutes.map((r) => (
               <li key={r.path}>
                 <NavLink to={r.path} end={r.path === '/'} className={linkCls}>
@@ -52,7 +52,7 @@ export default function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-3">
-          <ButtonLink to="/contact" className="hidden !px-4 !py-2.5 !text-[14px] sm:inline-flex">
+          <ButtonLink to="/contact" className="hidden whitespace-nowrap !px-4 !py-2.5 !text-[14px] sm:inline-flex">
             Get Consultation
           </ButtonLink>
           <button
