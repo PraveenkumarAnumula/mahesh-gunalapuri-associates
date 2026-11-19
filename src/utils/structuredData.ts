@@ -14,7 +14,11 @@ export function organizationSchema(): Record<string, unknown> {
     url: SITE_URL,
     image: `${SITE_URL}${siteConfig.seo.ogImage}`,
     knowsAbout: services.map((s) => s.title),
+    areaServed: contact.areaServed.map((name) => ({ '@type': 'Place', name })),
+    founder: { '@type': 'Person', name: siteConfig.founder.name, jobTitle: siteConfig.founder.designation },
   };
+  if (isSet(contact.mapsLink)) data.hasMap = contact.mapsLink;
+  if (contact.hours.length) data.openingHours = contact.hours.map((h) => `${h.days}: ${h.time}`);
   if (isSet(contact.phone)) data.telephone = contact.phone;
   if (isSet(contact.email)) data.email = contact.email;
   if (contact.addressIsReal) {
@@ -27,7 +31,7 @@ export function organizationSchema(): Record<string, unknown> {
       addressCountry: 'IN',
     };
   }
-  const sameAs = Object.values(social).filter(isSet);
+  const sameAs = [...Object.values(social), siteConfig.seo.googleBusinessProfileUrl].filter(isSet);
   if (sameAs.length) data.sameAs = sameAs;
   return data;
 }

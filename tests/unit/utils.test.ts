@@ -90,4 +90,9 @@ describe('content integrity', () => {
     expect(data.telephone).toBe('93479 44995');
     expect(data.email).toBe('camaheshgunalapuri@gmail.com');
   });
+  it('tells search engines the firm serves Nalgonda and links the map', () => {
+    const data = organizationSchema();
+    expect(JSON.stringify(data.areaServed)).toContain('Nalgonda');
+    expect(String(data.hasMap)).toContain('google.com/maps');
+  });
 });

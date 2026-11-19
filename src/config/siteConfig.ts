@@ -144,6 +144,8 @@ export const siteConfig = {
      * Google Maps listing, tap Share and paste that link here.
      */
     mapsLink: 'https://www.google.com/maps/search/?api=1&query=Sri%20Laxmi%20Nagar%20Colony%20Road%20No%204%2C%20Near%20Shanmuka%20Apartment%2C%20Nalgonda%20508001',
+    /** Places the firm serves; tells search engines this is a local Nalgonda business. */
+    areaServed: ['Nalgonda', 'Nalgonda district', 'Telangana'],
     /** Office hours, e.g. { days: 'Monday – Saturday', time: '10:00 AM – 7:00 PM' }. Hidden while empty. */
     hours: [] as { days: string; time: string }[],
   },
@@ -180,6 +182,13 @@ export const siteConfig = {
       'Chartered Accountants in Nalgonda, Telangana: ITR filing, GST registration and returns, company, partnership, society and trust registration, MSME, labour licence and FSSAI.',
     keywords: 'Chartered Accountant Nalgonda, CA in Nalgonda, ITR filing, GST registration, GST consultant, income tax consultant, FSSAI license, MSME Udyam registration, Mahesh Gunalapuri & Associates',
     ogImage: '/og-image.png',
+    /**
+     * Google Search Console verification. Paste only the content="..." value from the
+     * <meta name="google-site-verification" ...> tag Google gives you. Leave '' until then.
+     */
+    googleSiteVerification: '',
+    /** Link to the firm's Google Business Profile (Maps listing), once it exists. Leave '' until then. */
+    googleBusinessProfileUrl: '',
   },
 };
 

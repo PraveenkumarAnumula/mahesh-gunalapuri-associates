@@ -41,6 +41,9 @@ export default function Layout() {
     <div className="flex min-h-screen flex-col">
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(organizationSchema())}</script>
+        {siteConfig.seo.googleSiteVerification && (
+          <meta name="google-site-verification" content={siteConfig.seo.googleSiteVerification} />
+        )}
       </Helmet>
       <a
         href="#main"
