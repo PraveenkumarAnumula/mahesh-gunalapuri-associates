@@ -1,5 +1,19 @@
 import { expect, test } from '@playwright/test';
 
+// On the live site Netlify adds a fixed "Powered by Netlify" badge (bottom-right). It is not part of
+// our pages and can sit on top of whatever a test taps, so hide it during tests.
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    const hide = () => {
+      const s = document.createElement('style');
+      s.textContent = '#nl-badge-frame{display:none!important}';
+      document.documentElement.appendChild(s);
+    };
+    if (document.documentElement) hide();
+    else document.addEventListener('DOMContentLoaded', hide);
+  });
+});
+
 /**
  * Device checks run on every page for each phone/tablet project in playwright.config.ts:
  * no sideways scrolling, nothing spilling off-screen, readable form fields (iOS zooms below 16px),
